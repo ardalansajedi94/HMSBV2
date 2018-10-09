@@ -3,6 +3,7 @@ package ir.hotelairport.androidapp.airportHotels.adapters;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -28,6 +29,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import ir.hotelairport.androidapp.Constants;
 import ir.hotelairport.androidapp.airportHotels.PersianDigitConverter;
 import ir.hotelairport.androidapp.airportHotels.PreferenceManager.MyPreferenceManager;
 import ir.hotelairport.androidapp.R;
@@ -157,11 +159,11 @@ public class DailyRoomListAdapter extends RecyclerView.Adapter<DailyRoomListAdap
 
         if (roomList.get( position ).getHotel_title_en().equals( "Ibis" )){
             holder.hotelName.setText("هتل ایبیس" );
-            holder.hotelPic.setImageResource( R.drawable.ibis );
+            holder.hotelPic.setBackgroundResource( R.drawable.ibis );
         }
         else {
             holder.hotelName.setText("هتل نووتل" );
-            holder.hotelPic.setImageResource( R.drawable.novotel );
+            holder.hotelPic.setBackgroundResource( R.drawable.novotel );
         }
 
 
@@ -175,10 +177,11 @@ public class DailyRoomListAdapter extends RecyclerView.Adapter<DailyRoomListAdap
         TextView
                 adultCount,
                 price , stay , hotelName;
-        ImageView star , hotelPic;
+        ImageView star ;
         Button plus , minus;
         RecyclerView prices;
         TextView count;
+        ConstraintLayout hotelPic;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -191,7 +194,7 @@ public class DailyRoomListAdapter extends RecyclerView.Adapter<DailyRoomListAdap
             minus= itemView.findViewById( R.id.service_sub);
             prices = itemView.findViewById( R.id.prices );
             stay = itemView.findViewById(R.id.time_stay);
-            hotelPic = itemView.findViewById( R.id.hotel_pic );
+            hotelPic = itemView.findViewById( R.id.above );
         }
     }
 
