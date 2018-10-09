@@ -7,17 +7,20 @@ import com.google.gson.JsonObject;
 
 import ir.hotelairport.androidapp.airportHotels.api.model.AvailabilityRes;
 import ir.hotelairport.androidapp.airportHotels.api.model.LoginRes;
-import ir.hotelairport.api.model.BookResponse;
+import ir.hotelairport.androidapp.airportHotels.api.model.BookResponse;
 import ir.hotelairport.androidapp.airportHotels.api.model.CheckStatusResponse;
 import ir.hotelairport.androidapp.airportHotels.api.model.GetApi;
 import ir.hotelairport.androidapp.airportHotels.api.model.ReserveRes;
 import ir.hotelairport.androidapp.airportHotels.api.model.ServicesResponse;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Url;
 
 public interface HotelApi {
     String BASE_URL = "https://hotelairport.ir/api/v1/haw/";
@@ -78,6 +81,12 @@ public interface HotelApi {
         void onFailure(String cause);
         void onError(String cause);
     }
-
+    @GET
+    Call<ResponseBody> Voucher(@Header("Authorization") String auth , @Url String url);
+    interface VoucherCallBack{
+        void onResponse(ResponseBody responseBody);
+        void onFailure(String cause);
+        void onError(String cause);
+    }
 
 }
