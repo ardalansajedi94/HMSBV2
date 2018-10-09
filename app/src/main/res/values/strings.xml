@@ -1,0 +1,296 @@
+<resources>
+    <string name="app_name" translatable="false">خدمات هتل فرودگاهی تهران</string>
+    <string name="welcome_to_hotel">Welcome To Hotel Persian</string>
+    <string name="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ut enim quis nulla hendrerit euismod. </string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="about_hotel">About Hotel</string>
+    <string name="about_city">About Tehran</string>
+    <string name="hotel_news">Hotel News</string>
+    <string name="login_register">Login/Register</string>
+    <string name="app_info">About Application</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="national_id">National ID</string>
+    <string name="password">Password</string>
+    <string name="national_id_error">National ID must be 10 digit</string>
+    <string name="password_error">Password must have at least 6 character</string>
+    <string name="connecting_to_server">در حال ارسال و دریافت اطلاعات</string>
+    <string name="server_problem">Problem occurred on connecting to server please try again</string>
+    <string name="user_not_found">Username or password is incorrect</string>
+    <string name="services">Services</string>
+    <string name="but_services">Services</string>
+    <string name="Opinion">Suggestions and Critics</string>
+    <string name="guide">Guide</string>
+    <string name="settings">Settings</string>
+    <string name="short_staye">Short stay</string>
+    <string name="exit">Logout</string>
+    <string name="exit_confirm_dlg">Are you sure wants to logout?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="change_lng">Change Language</string>
+    <string name="taxi">Request Taxi</string>
+    <string name="house_keeping">House Keeping</string>
+    <string name="clothes">Clothes</string>
+    <string name="wake_up">Wakeup Service</string>
+    <string name="stay">Stay</string>
+    <string name="invoice">Invoice</string>
+    <string name="problems">Report Problems</string>
+    <string name="select_date">Select Date</string>
+    <string name="time">Select Time</string>
+    <string name="car_type">Car Type</string>
+    <string name="address">Address</string>
+    <string name="sedan">Sedan</string>
+    <string name="van">Van</string>
+    <string name="send_req">Send Request</string>
+    <string name="not_allowed_user">You "Can't" Send This Request. Please Login Again.</string>
+    <string name="send_success">Your Request Has Been Stored Successfully</string>
+    <string name="service">Choose Service</string>
+    <string name="service_type">Choose Service Type</string>
+    <string name="explanation">Explanation</string>
+    <string name="towel">Towel</string>
+    <string name="towel_key" translatable="false">towel</string>
+    <string name="detergent_and_sanitary">Detergent and sanitary</string>
+    <string name="detergent_and_sanitary_key" translatable="false">detergent-and-sanitary</string>
+    <string name="room_cleaning">Room Cleaning</string>
+    <string name="room_cleaning_key" translatable="false">room-cleaning</string>
+    <string name="body_towel">Body Towels</string>
+    <string name="body_towel_key" translatable="false">body-towels</string>
+    <string name="hand_face_towels">Hand and face towels</string>
+    <string name="hand_face_towels_key" translatable="false">hand-and-face-towels</string>
+    <string name="under_foot_towel">Under foot towel</string>
+    <string name="under_foot_towel_key" translatable="false">under-foot-towel</string>
+    <string name="face_soap">Face soap</string>
+    <string name="face_soap_key" translatable="false">face-soap</string>
+    <string name="body_shampoo">Body shampoo</string>
+    <string name="body_shampoo_key" translatable="false">body-shampoo</string>
+    <string name="hair_shampoo">Hair shampoo</string>
+    <string name="hair_shampoo_key" translatable="false">hair-shampoo</string>
+    <string name="toothpaste">Toothpaste</string>
+    <string name="toothpaste_key" translatable="false">toothpaste</string>
+    <string name="shaving_cream">Shaving cream</string>
+    <string name="shaving_cream_key" translatable="false">shaving-cream</string>
+    <string name="toothbrush">Toothbrush</string>
+    <string name="toothbrush_key" translatable="false">toothbrush</string>
+    <string name="blade">Blade</string>
+    <string name="blade_key" translatable="false">blade</string>
+    <string name="wash_with_water">Wash with water</string>
+    <string name="wash_with_water_key" translatable="false">wash-with-water</string>
+    <string name="laundry">Laundry</string>
+    <string name="laundry_key" translatable="false">laundry</string>
+    <string name="whitening">Whitening</string>
+    <string name="whitening_key" translatable="false">whitening</string>
+    <string name="rinse">Rinse</string>
+    <string name="rinse_key" translatable="false">rinse</string>
+    <string name="ironing">Ironing</string>
+    <string name="ironing_key" translatable="false">ironing</string>
+    <string name="dry_cleaning">Dry cleaning</string>
+    <string name="dry_cleaning_key" translatable="false">dry-cleaning</string>
+    <string name="steaming">Steaming</string>
+    <string name="steaming_key" translatable="false">steaming</string>
+    <string name="clothes_hanger">Clothes hanger</string>
+    <string name="clothes_hanger_key" translatable="false">clothes-hanger</string>
+    <string name="additional_cover">Additional cover</string>
+    <string name="additional_cover_key" translatable="false">additional-cover</string>
+    <string name="sedan_key" translatable="false">sedans</string>
+    <string name="van_key" translatable="false">van</string>
+    <string name="extend_stay">Extend stay</string>
+    <string name="extend_stay_key" translatable="false">extend-stay</string>
+    <string name="room_reserve">Room reservation</string>
+    <string name="room_reserve_key" translatable="false">room-reservation</string>
+    <string name="subject">Subject</string>
+    <string name="opinion_success">Your message has been sent successfully</string>
+    <string name="long_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dapibus non elit ac condimentum. In hac habitasse platea dictumst. Aliquam tempor ex id mi aliquet feugiat. Suspendisse ut odio finibus, malesuada tellus quis, ultricies leo. In hac habitasse platea dictumst. Aenean eu elit quis turpis vestibulum elementum. In nec ipsum vel enim sodales ultricies. Integer sed nunc quam. In semper, nulla ac maximus luctus, velit odio hendrerit diam, at malesuada nisl odio in erat. Quisque quis fringilla eros. Phasellus venenatis libero nec quam sodales bibendum. Praesent tempor posuere eleifend. Vestibulum eros justo, faucibus sed tincidunt vel, mattis sit amet odio. Pellentesque scelerisque quam id leo molestie, sed fermentum est cursus.
+
+Quisque vulputate faucibus felis, at vulputate arcu aliquam a. Vestibulum tincidunt, est quis faucibus pulvinar, nunc purus convallis ex, nec posuere elit nisi vitae felis. Ut pellentesque eget erat eget sagittis. Etiam bibendum, tellus ac convallis pulvinar, sem velit faucibus nulla, in eleifend ligula sapien eget tortor. In ultrices non ex non rhoncus. Suspendisse finibus, nibh et rutrum facilisis, libero felis mattis nunc, in vestibulum enim nunc id ligula. Curabitur pharetra quis ante vel iaculis. Proin dignissim suscipit porta. Integer egestas hendrerit ipsum, a feugiat elit lobortis eu. Cras malesuada justo odio, ac malesuada risus sodales eget. Aliquam erat volutpat. Phasellus eget libero eu libero dictum pellentesque. Nullam non velit quis nisl gravida dictum id euismod ligula. Mauris finibus tellus efficitur risus lobortis, sed facilisis turpis feugiat. Maecenas condimentum diam sit amet viverra fringilla.
+
+Pellentesque accumsan urna id neque luctus dignissim. Sed vel lorem at ligula consequat tincidunt et vitae quam. Aenean at blandit ipsum. Vestibulum non bibendum sapien, at tempus magna. Morbi vel turpis a mauris convallis suscipit rutrum et lectus. Vestibulum quam purus, varius sit amet congue at, vehicula vitae odio. Vivamus iaculis mauris eu ligula condimentum, nec posuere mauris semper. Sed maximus congue risus sit amet tristique. Nam pretium nisi vel iaculis facilisis. Vivamus imperdiet libero venenatis fermentum condimentum. Fusce ultrices non sapien non congue. Integer et porta nisl. Sed vel massa lorem. Vivamus dignissim pretium leo, id varius libero scelerisque euismod. Vivamus et tortor quis odio porttitor porttitor eu sed urna.
+
+Donec ut laoreet risus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam et dignissim lacus. Pellentesque vulputate suscipit dolor, et mollis ex rutrum sit amet. In euismod porttitor eros. Donec nec tincidunt velit. Aliquam ut velit vel risus ultrices pharetra. Etiam eget odio et eros fermentum commodo. Nunc bibendum nec libero eget egestas. Aenean vulputate id lacus id vehicula. Ut sed dignissim mauris. Morbi pellentesque feugiat blandit. Nunc porttitor odio at tortor hendrerit, et tincidunt leo viverra.
+
+Phasellus sed nisi porta, gravida neque non, mattis ligula. Donec aliquam dolor vel faucibus varius. Nulla lacinia, ante quis dapibus ullamcorper, turpis eros scelerisque metus, sit amet rutrum est est non felis. Vivamus ut elit feugiat, cursus mauris a, molestie risus. Phasellus eget massa at sem facilisis volutpat. Vestibulum est libero, posuere sit amet arcu non, pellentesque malesuada mi. Morbi id cursus lacus. Integer eu viverra nisl.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="room_air">Room air</string>
+    <string name="room_air_key" translatable="false">room-air</string>
+    <string name="water">Water</string>
+    <string name="lack_of_proper_cold">Lack of proper cold</string>
+    <string name="lack_of_proper_heat">Lack of proper heat</string>
+    <string name="low_cold_water_pressure">Low cold water pressure</string>
+    <string name="low_hot_water_pressure">Low hot water pressure</string>
+    <string name="water_key" translatable="false">water</string>
+    <string name="lack_of_proper_cold_key" translatable="false">lack-of-proper-cold</string>
+    <string name="lack_of_proper_heat_key" translatable="false">lack-of-proper-heat</string>
+    <string name="low_cold_water_pressure_key" translatable="false">low-cold-water-pressure</string>
+    <string name="low_hot_water_pressure_key" translatable="false">low-hot-water-pressure</string>
+    <string name="send">Send</string>
+    <string name="required_error">This field is required</string>
+    <string name="time_line">Timeline</string>
+    <string name="name">Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="phone">Phone</string>
+    <string name="mobile">Mobile</string>
+    <string name="job">Job</string>
+    <string name="zip_code">Zip Code</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="email">Email</string>
+    <string name="not_same_pass">Password are not equal</string>
+    <string name="register_success">You have been registered successfully</string>
+    <string name="services_header">Other Services</string>
+    <string name="foods_header">Food and Drink</string>
+    <string name="browse_restaurants">Restaurants</string>
+    <string name="browse_cafes">Browse Cafes</string>
+    <string name="table_reserve">Reserve a table</string>
+    <string name="minibar_charge">Charge minibar</string>
+    <string name="material">Material</string>
+    <string name="add_to_basket">Add to basket</string>
+    <string name="count">Count</string>
+    <string name="menu">Menu</string>
+    <string name="order">Order</string>
+    <string name="order_success">your order added to your food basket</string>
+    <string name="submit_basket_success">Your order has been submitted successfully</string>
+    <string name="submit_basket">Submit Food Basket</string>
+    <string name="basket">Food Basket</string>
+    <string name="location">Location</string>
+    <string name="human_count">Number of guests</string>
+    <string name="west_restaurant_key" translatable="false">west-restaurant</string>
+    <string name="east_restaurant">Mahtab Restaurant</string>
+    <string name="east_restaurant_key" translatable="false">east-restaurant</string>
+    <string name="italian_restaurant">Italian Restaurant</string>
+    <string name="italian_restaurant_key" translatable="false">italian_restaurant</string>
+    <string name="cafe">Cafe</string>
+    <string name="cafe_key" translatable="false">cafe</string>
+    <string name="west_restaurant">Aftab Restaurant</string>
+    <string name="room_no">Room NO.</string>
+    <string name="invoice_request_hint">You can request invoice and pay it online if you wish</string>
+    <string name="request_invoice">Request Invoice</string>
+    <string name="date">Date</string>
+    <string name="file">File</string>
+    <string name="amount">Amount</string>
+    <string name="processes">Process</string>
+    <string name="download">Download</string>
+    <string name="pay_now">Pay Now!</string>
+    <string name="processing">Processing</string>
+    <string name="profile">Profile</string>
+    <string name="change_profile_photo">Change profile photo</string>
+    <string name="change_profile_photo_desc">How do you want to change your photo?</string>
+    <string name="from_camera">From Camera</string>
+    <string name="from_gallery">From Gallery</string>
+    <string name="cancel">Cancel</string>
+    <string name="uploading">Uploading&#8230;</string>
+    <string name="uploaded">Uploaded</string>
+    <string name="write_perm_hint">You should grant write permission to take picture from camera</string>
+    <string name="account">Account</string>
+    <string name="notifications">Notifications</string>
+    <string name="language">Language</string>
+    <string name="dialog_title_language">Select your language</string>
+    <string name="persian" translatable="false">فارسی</string>
+    <string name="english" translatable="false">English</string>
+    <string name="guest_user_request_invoice_hint">You are not staying at hotel at this moment.</string>
+    <string name="user_not_staying">Service unavailable</string>
+    <string name="user_not_staying_desc">This section will be activated after you will stay at hotel</string>
+    <string name="basket_empty">Your basket is empty</string>
+    <string name="timeline_empty">There is no notification yet</string>
+    <string name="unit">Unit</string>
+    <string name="basket_item_name">Product name</string>
+    <string name="operation">Operation</string>
+    <string name="delete">Delete</string>
+    <string name="order_updated">Your order has been updated</string>
+    <string name="need_your_device_id">We need your device IMEI for send you push notification</string>
+    <string name="ok">OK</string>
+    <string name="want_notification">Do you want to receive push notifications?(if yes we need your phone IMEI to sen you notification please allow permission)</string>
+    <string name="initing_app">App is initialing from server please be patient &#8230;</string>
+    <string name="delete_basket_item_confirm">Do you want to remove this item from basket?</string>
+    <string name="need_internet">Internet needed</string>
+    <string name="need_internet_desc">We need an internet connection for this action</string>
+    <string name="oopen_key" translatable="false">oopen</string>
+    <string name="oopen_rest">Oopen Restaurant</string>
+    <string name="white_key" translatable="false">white-restaurant</string>
+    <string name="white_res">White Restaurant</string>
+    <string name="oriental_key" translatable="false">oriental</string>
+    <string name="oriental_res">Oriental Restaurant</string>
+    <string name="oopen_cafe_key" translatable="false">oopen-coffee-shop</string>
+    <string name="oopen_cafe">Oopen coffee shop</string>
+    <string name="red_cafe_key" translatable="false">red-coffee-shop</string>
+    <string name="red_cafe">Red coffee shop</string>
+    <string name="shiralat">Valves crash</string>
+    <string name="gereftegi">Water way blocked</string>
+    <string name="sifun">Siphon breakdown</string>
+    <string name="barg">Electric failure</string>
+    <string name="lamp">Replacing the burnt bulb</string>
+    <string name="tahvie_bad">Inappropriate air conditioning</string>
+    <string name="smell_smoke">Smell smoke</string>
+    <string name="abe_garm_pb">Inappropriate temperature of hot water</string>
+    <string name="washstand">Washstand</string>
+    <string name="bathtub">bathtub</string>
+    <string name="bathroom">bathroom</string>
+    <string name="wc">wc</string>
+    <string name="qr_login">Login with Qr code</string>
+    <string name="qr_code_cancelled">Login with Qr code cancelled</string>
+    <string name="qr_guide">Please show your Qr Code to camera</string>
+    <string name="qr_code_not_valid">This Qr Code is not valid</string>
+    <string name="short_stay">رزور کوتاه مدت</string>
+    <string name="service_only">Other services</string>
+
+    <!-- airport hotel-->
+
+    <string name="ah_logo_base">نرم‌افزار رزرواسیون آنلاین هتل فرودگاهی امام‌خمینی (ره)</string>
+    <string name="ah_arrival_date_btn">تاریخ ورود</string>
+    <string name="ah_arrival_time_btn">ساعت ورود</string>
+    <string name="ah_depart_date_btn">تاریخ خروج</string>
+    <string name="ah_continue">ادامه</string>
+    <string name="ah_short_stay_tag">رزرو اقامت کوتاه‌مدت</string>
+    <string name="ah_room_count_tag">تعداد اتاق</string>
+    <string name="ah_stay_duration_tag">مدت زمان اقامت</string>
+    <string name="ah_room_result">نتایج جستجو</string>
+    <string name="ah_adult">بزرگسال</string>
+    <string name="ah_child">کودک</string>
+    <string name="ah_pass_first_name">نام و نام خانوادگی:</string>
+    <string name="ah_pass_name_family">نام و نام خانوادگی:</string>
+    <string name="ah_pass_last_name">نام خانوادگی</string>
+    <string name="ah_pass_cell_num">شماره همراه:</string>
+    <string name="ah_pass_cell_num_hint">شماره همراه</string>
+    <string name="ah_pass_email">پست الکترونیک:</string>
+    <string name="ah_pass_email_hint">پست الکترونیک</string>
+    <string name="ah_pass_national_code">کد ملی:</string>
+    <string name="ah_pass_national_code_hint">کد ملی</string>
+    <string name="ah_menu_room_ws">اقامت</string>
+    <string name="ah_menu_service_ws">سرویس ها</string>
+
+    <string name="ah_count">تعداد</string>
+    <string name="ah_price">قیمت</string>
+    <string name="ah_service_name">نام سرویس</string>
+
+    <string name="ah_chosen_services">سرویس‌های انتخاب شده</string>
+    <string name="ah_checkbox_txt">اطلاعات بالا مورد تایید است و [قوانین و مقررات] را مطالعه و قبول دارم.</string>
+
+    <string name="ah_rules">قوانین و مقررات</string>
+    <string name="ah_dia_accept">قبول</string>
+    <string name="ah_pax_data">اطلاعات خرید</string>
+    <string name="nationality">ملیت:</string>
+    <string name="three_hour">سه ساعت</string>
+    <string name="six_hour">شش ساعت</string>
+    <string name="stay_time">مدت زمان اقامت:</string>
+    <string name="persian_name">نام به فارسی</string>
+    <string name="name_to_english">نام به انگلیسی</string>
+    <string name="ah_edit">ویرایش</string>
+    <string name="done_payment">پرداخت با موفقیت انجام شد</string>
+    <string name="return_back">خرید مجدد</string>
+    <string name="payment_failed">در پرداخت مشکلی رخ داده است</string>
+    <string name="payment">پرداخت</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="date_select">تاریخ ورود</string>
+    <string name="search">جستجو</string>
+    <string name="select_time">ساعت ورود</string>
+    <string name="reserv_three_hour">رزرو سه ساعته</string>
+    <string name="reserve_six_hour">رزرو شش ساعته</string>
+    <string name="service_reserve">رزرو سرویس</string>
+    <string name="daily_reserve">رزرو روزانه</string>
+
+</resources>

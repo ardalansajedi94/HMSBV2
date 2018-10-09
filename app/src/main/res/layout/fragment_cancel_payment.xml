@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/error">
+
+    <Button
+        android:id="@+id/return_but"
+        android:layout_width="150dp"
+        android:layout_height="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/button_border"
+        android:textColor="@color/colorAccent"
+        android:textSize="12sp"
+        android:text=" جستجوی مجدد "/>
+
+
+</android.support.constraint.ConstraintLayout>

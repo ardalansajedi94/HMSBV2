@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/room_ws"
+        android:title="@string/ah_short_stay_tag"/>
+        <!--android:icon="@drawable/ic_hotel"-->
+    <item
+        android:id="@+id/service_ws"
+        android:title="@string/ah_menu_service_ws"/>
+        <!--android:icon="@drawable/ic_location"-->
+
+</menu>

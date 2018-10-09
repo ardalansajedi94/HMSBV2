@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:key="account_pf_cat"
+        android:title="@string/account">
+
+        <SwitchPreferenceCompat
+            android:key="notification_switch_preference"
+            android:title="@string/notifications"
+            android:icon="@drawable/ic_notifications"
+            android:defaultValue="enabled"/>
+
+        <ListPreference
+            android:key="change_lang_preference"
+            android:title="@string/change_lng"
+            android:icon="@drawable/ic_language"
+            android:dialogTitle="@string/dialog_title_language" />
+        <Preference
+            android:title="@string/exit"
+            android:key="logout_pref">
+        </Preference>
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#f3f3f3</color>
+    <color name="colorPrimaryDark">#c0c0c0</color>
+    <color name="colorAccent">#2d9fd6</color>
+    <color name="light">#fff</color>
+    <color name="milky">#fff</color>
+    <color name="mdtp_accent_color">#2d9fd6</color>
+    <color name="mdtp_accent_color_dark">#0071a4</color>
+    <color name="grey_text">#bbb</color>
+    <!--<color name="colorPrimary">#1976d2</color>-->
+
+    <color name="primary_transparent">#b41976d2</color>
+
+    <color name="colorPrimaryLight">#01aeb2</color>
+
+
+
+    <color name="primary_text">#ffffff</color>
+    <color name="textColorPrimary">#ffffff</color>
+    <color name="light_grey">#e0e0e0</color>
+    <color name="secondary_text">#757575</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#BDBDBD</color>
+    <color name="transparent">#80ffffff</color>
+    <color name="black">#000000</color>
+    <color name="blue">#00f</color>
+    <color name="red">#f00</color>
+    <color name="primaryTextColor">#ffffff</color>
+
+
+
+    <color name="white">#fff</color>
+    <color name="dark_white">#e0e0e0</color>
+    <color name="content_text_color">#373737</color>
+    <color name="color_green">#14808d</color>
+    <color name="color_brown">#343838</color>
+    <color name="color_orange">#f38a32</color>
+    <color name="color_blue">#1479b7</color>
+    <color name="GainsBoro">#d8d8d8</color>
+    <color name="divider_grey">#e4e4e5</color>
+    <array name="rect_color">
+        <item>@color/color_blue</item>
+        <item>@color/color_brown</item>
+        <item>@color/color_green</item>
+        <item>@color/divider_grey</item>
+        <item>@color/color_orange</item>
+    </array>
+
+    <color name="hotel_primary">#058e91</color>
+    <color name="hotel_back">#f8f8f8</color>
+    <color name="hotel_black">#101010</color>
+    <color name="hotel_white">#ffffff</color>
+    <color name="done_page">#4caf50</color>
+    <color name="done_page_light">#80e27e</color>
+    <color name="done_page_dark">#087f23</color>
+    <color name="cancel_page">#ef5350</color>
+    <color name="cancel_page_light">#ff867c</color>
+    <color name="cancel_page_dark">#b61827</color>
+
+
+
+
+</resources>

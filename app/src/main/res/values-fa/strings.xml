@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome_to_hotel">به هتل پارسیان خوش آمدید</string>
+    <string name="description">لورم ایپسوم دلار سیت امیت، کانسکتتور ادیپی‎چینگ الیت، سِد دیام نانومی نیب ایسمود تینسی‌دنت اوت لاوریت دلاری مگنا الیکوام اَرآت ولوتپات. اوت ویسی انیم اد مینیم ونیام، کویز ناسترود اکسرچی تاشن اولام‌کورپر ساچیپیت لابارتیس نیسل اوت الی‌کوئیپ اکس ئی کومودو کانسکوات. دوئیس آئوتیم ول ایوم ایریوره دلار این هندرریت این وولپوتایت ولیت اسّی مالستی کانسکوات، ول ایلیوم دلاره ایو فیوگیات نولا فاسیلیسی ات ورو اروس ات اکومسان ات ایوستو اودیو دیگنسیم کوئی بلاندیت پرائیسنت لوپتاتوم زریل دلنیت آوگیو دوئیس دلاره تی فیوگایت نولا فاسیلیسی.</string>
+    <string name="about_city">درباره تهران</string>
+    <string name="about_hotel">درباره هتل</string>
+    <string name="app_info">درباره اپلیکیشن</string>
+    <string name="drawer_close">بستن منو</string>
+    <string name="drawer_open">بازکردن منون</string>
+    <string name="hotel_news">اخبار هتل</string>
+    <string name="login_register">ورود/ثبت نام</string>
+    <string name="register">ثبت نام</string>
+    <string name="password">رمز عبور</string>
+    <string name="connecting_to_server">در حال ارسال/دریافت اطلاعات &#8230;</string>
+    <string name="server_problem">خطایی هنگام ارتباط با سرور رخداد لطفا دوباره سعی کنید</string>
+    <string name="user_not_found">کدملی و یا رمز عبور اشتباه است</string>
+    <string name="Opinion">پیشنهادات و انتقادات</string>
+    <string name="exit">خروج</string>
+    <string name="guide">راهنما</string>
+    <string name="hello_blank_fragment">جای خالی برای محتویات</string>
+    <string name="buy_services">خرید سرویس ها</string>
+    <string name="services">خدمات</string>
+    <string name="settings">تنظیمات</string>
+    <string name="exit_confirm_dlg">آیا واقعا قصد خروج دارید؟</string>
+    <string name="yes">بله</string>
+    <string name="change_lng">تغییر زبان</string>
+    <string name="clothes">البسه</string>
+    <string name="house_keeping">خانه داری</string>
+    <string name="invoice">حسابداری</string>
+    <string name="problems">گزارش مشکلات</string>
+    <string name="stay">اقامت</string>
+    <string name="taxi">درخواست تاکسی</string>
+    <string name="wake_up">سرویس بیدارباش</string>
+    <string name="car_type">نوع خودرو</string>
+    <string name="address">آدرس</string>
+    <string name="select_date">انتخاب تاریخ</string>
+    <string name="time">انتخاب زمان</string>
+    <string name="sedan">سواری</string>
+    <string name="van">ون</string>
+    <string name="send_req">ارسال درخواست</string>
+    <string name="blade">خودتراش</string>
+    <string name="body_shampoo">شامپوی بدن</string>
+    <string name="body_towel">حوله بدن</string>
+    <string name="detergent_and_sanitary">شوینده و بهداشتی</string>
+    <string name="explanation">توضیحات</string>
+    <string name="face_soap">صابون دست و صورت</string>
+    <string name="hair_shampoo">شامپوی سر</string>
+    <string name="hand_face_towels">حوله ی دست و صورت</string>
+    <string name="room_cleaning">نظافت اتاق</string>
+    <string name="send_success">درخواست شما با موفقیت ثبت شد</string>
+    <string name="service">لطفا سرویس مورد نظر خود را انتخاب کنید</string>
+    <string name="service_type">لطفا نوع سرویس مورد نظر خود را انتخاب کنید</string>
+    <string name="shaving_cream">خمیر اصلا</string>
+    <string name="toothbrush">مسواک</string>
+    <string name="toothpaste">خمیر دندان</string>
+    <string name="towel">حوله</string>
+    <string name="under_foot_towel">حوله زیرپایی</string>
+    <string name="additional_cover">کاور اضافی</string>
+    <string name="clothes_hanger">رخت آویز</string>
+    <string name="rinse">آبکشی</string>
+    <string name="dry_cleaning">لکه گیری</string>
+    <string name="whitening">سفیدشویی</string>
+    <string name="ironing">اتوکشی</string>
+    <string name="laundry">خشکشویی</string>
+    <string name="steaming">بخارزدن</string>
+    <string name="wash_with_water">شستشو با آب</string>
+    <string name="long_text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
+
+لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
+
+لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
+
+لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
+
+لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</string>
+    <string name="extend_stay">تمدید اقامت</string>
+    <string name="login">ورود</string>
+    <string name="national_id_error">کدملی باید حداقل دارای 10 کاراکتر باشد</string>
+    <string name="not_allowed_user">شما مجاز به ارسال این درخواست نیستید.لطفا دوباره وارد شوید</string>
+    <string name="opinion_success">پیام شما با موفقیت ارسال شد</string>
+    <string name="no">خیر</string>
+    <string name="password_error">رمز عبور باید حداقل دارای 6 کاراکتر باشد.</string>
+    <string name="room_reserve">رزرو اتاق برای آینده</string>
+    <string name="national_id">کد ملی</string>
+    <string name="subject">موضوع</string>
+    <string name="room_air">هوای اتاق</string>
+    <string name="water">آب</string>
+    <string name="lack_of_proper_cold">عدم وجود سرمای مناسب</string>
+    <string name="lack_of_proper_heat">عدم وجود گرمای مناسب</string>
+    <string name="low_cold_water_pressure">فشار کم آب سرد</string>
+    <string name="low_hot_water_pressure">فشار کم آب گرم</string>
+    <string name="send">ارسال</string>
+    <string name="required_error">این ردیف الزامی است</string>
+    <string name="time_line">صفحه اعلانات</string>
+    <string name="confirm_password">تکرار رمزعبور</string>
+    <string name="job">شغل</string>
+    <string name="last_name">نام خانوادگی</string>
+    <string name="low_hot_water_pressure_key" translatable="false"></string>
+    <string name="mobile">شماره تلفن همراه</string>
+    <string name="name">نام</string>
+    <string name="phone">شماره تلفن ثابت</string>
+    <string name="zip_code">کد پستی</string>
+    <string name="email">ایمیل</string>
+    <string name="not_same_pass">رمزهای عبور باید یکسان باشند</string>
+    <string name="register_success">ثبت نام شما با موفقیت انجام شد</string>
+    <string name="foods_header">غذا و نوشیدنی</string>
+    <string name="services_header">سایر خدمات</string>
+    <string name="browse_cafes">کافی شاپ ها</string>
+    <string name="browse_restaurants">رستوران ها</string>
+    <string name="minibar_charge">شارژ مینی بار</string>
+    <string name="table_reserve">رزرو میز</string>
+    <string name="material">مواد تشکیل دهنده</string>
+    <string name="add_to_basket">افزودن به سبد غذا</string>
+    <string name="count">تعداد</string>
+    <string name="menu">منو</string>
+    <string name="order">سفارش</string>
+    <string name="order_success">سفارش شما به سبد غذا اضافه شد</string>
+    <string name="submit_basket">نهایی کردن سبد غذا</string>
+    <string name="basket">سبد غذا</string>
+    <string name="submit_basket_success">سفارش شما با موفقیت ثبت شد</string>
+    <string name="human_count">تعداد مهمانان</string>
+    <string name="location">محل</string>
+    <string name="cafe">کافی شاپ</string>
+    <string name="east_restaurant">رستوران مهتاب</string>
+    <string name="italian_restaurant">رستوران ایتالیایی</string>
+    <string name="west_restaurant">رستوران آفتاب</string>
+    <string name="room_no">شماره اتاق</string>
+    <string name="invoice_request_hint">شما می توانید صورتحساب خود را درخواست نموده و در صورت تمایل، آنلاین پرداخت نمایید</string>
+    <string name="request_invoice">درخواست صورتحساب</string>
+    <string name="amount">مقدار</string>
+    <string name="date">زمان</string>
+    <string name="download">دانلود</string>
+    <string name="file">فایل</string>
+    <string name="pay_now">پرداخت کن</string>
+    <string name="processes">عملیات ها</string>
+    <string name="processing">در حال پردازش</string>
+    <string name="profile">پروفایل</string>
+    <string name="account">حساب کاربری</string>
+    <string name="cancel">انصراف</string>
+    <string name="change_profile_photo">تغییر آواتار</string>
+    <string name="change_profile_photo_desc">چگونه میخواهید آواتار خود را تغییر دهید؟</string>
+    <string name="dialog_title_language">زبان مورد نظر را انتخاب کنید</string>
+    <string name="from_camera">از دوربین</string>
+    <string name="from_gallery">از گالری</string>
+    <string name="language">زبان</string>
+    <string name="notifications">اعلانات</string>
+    <string name="uploaded">آپلود شد</string>
+    <string name="uploading">در حال آپلود &#8230;\n</string>
+    <string name="write_perm_hint">برای ذخیره عکس دوربین باید اجازه نوشتن در حافظه را بدهید</string>
+    <string name="guest_user_request_invoice_hint">شما در حال حاضر در هتل اقامت ندارید.</string>
+    <string name="user_not_staying">سرویس فعال نیست</string>
+    <string name="user_not_staying_desc">این بخش پس از اقامت شما در هتل فعال خواهد شد.</string>
+    <string name="basket_empty">سبد غذای شما خالی است</string>
+    <string name="timeline_empty">هنوز هیچ اعلانی وجود ندارد</string>
+    <string name="unit">واحد</string>
+    <string name="basket_item_name">نام محصول</string>
+    <string name="operation">عملیات</string>
+    <string name="delete">حذف</string>
+    <string name="order_updated">سفارش شما با موفقیت به روزرسانی شد</string>
+    <string name="ok">باشه</string>
+    <string name="need_your_device_id">ما به IMEI دستگاه شما به منظور ارسال نوتیفیکیشن نیاز داریم</string>
+    <string name="want_notification">آیا مایل به دریافت پوش نوتویفیکیشن هستید؟(اگر بله لطفا مجوز درخواستی را قبول فرمایید</string>
+    <string name="initing_app">&#8230;</string>
+    <string name="delete_basket_item_confirm">آیا می خواهید این محصول را از سبد غذای خود حذف کنید؟</string>
+    <string name="need_internet">نیاز به اینترنت</string>
+    <string name="need_internet_desc">برای انجام این عمل به اینترنت نیاز است</string>
+    <string name="oopen_cafe">کافی شاپ Oopen</string>
+    <string name="oopen_rest">رستوران Oopen</string>
+    <string name="oriental_res">رستوران شرقی</string>
+    <string name="red_cafe">کافی شاپ قرمز</string>
+    <string name="white_res">رستوران سفید</string>
+    <string name="barg">خرابی برق</string>
+    <string name="gereftegi">گرفتگی راه آب</string>
+    <string name="lamp">تعویض لامپ سوخته</string>
+    <string name="shiralat">خرابی شیرآلات</string><string name="sifun">خرابی سیفون
+</string>
+    <string name="abe_garm_pb">دمای نامناسب آب گرم</string>
+    <string name="bathroom">حمام</string>
+    <string name="bathtub">وان</string>
+    <string name="smell_smoke">استشمام بوی سیگار</string>
+    <string name="tahvie_bad">تهویه نامناسب هوا</string>
+    <string name="washstand">روشویی</string>
+    <string name="wc">دستشویی</string>
+    <string name="qr_login">ورود با استفاده از کد Qr</string>
+    <string name="qr_code_cancelled">ورود با استفاده از کد Qr لغو شد</string>
+    <string name="qr_guide">لطفا کد خود را مقابل دوربین گوشی قرار دهید</string>
+    <string name="qr_code_not_valid">این کد Qr معتبر نیست</string>
+    <string name="short_stay">اقامت کوتاه‌مدت فرودگاهی</string>
+    <string name="service_only">خدمات دیگر</string>
+
+    <!-- airport hotel-->
+
+    <string name="ah_logo_base">نرم‌افزار رزرواسیون آنلاین هتل فرودگاهی امام‌خمینی (ره)</string>
+    <string name="ah_arrival_date_btn">انتخاب تاریخ ورود</string>
+    <string name="ah_arrival_time_btn">انتخاب ساعت ورود</string>
+    <string name="ah_depart_date_btn">انتخاب تاریخ خروج</string>
+    <string name="ah_continue">ادامه</string>
+    <string name="ah_short_stay_tag">رزرو اقامت کوتاه‌مدت</string>
+    <string name="ah_room_count_tag">تعداد اتاق</string>
+    <string name="ah_stay_duration_tag">مدت زمان اقامت</string>
+    <string name="ah_room_result">نتایج جستجو</string>
+    <string name="ah_adult">بزرگسال</string>
+    <string name="ah_child">کودک</string>
+    <string name="ah_pass_first_name">نام:</string>
+    <string name="ah_pass_last_name">نام خانوادگی:</string>
+    <string name="ah_pass_cell_num">شماره همراه:</string>
+    <string name="ah_pass_email">پست الکترونیک:</string>
+    <string name="ah_pass_national_code">کد ملی:</string>
+    <string name="ah_menu_room_ws">اقامت</string>
+    <string name="ah_menu_service_ws">سرویس ها</string>
+
+    <string name="ah_count">تعداد</string>
+    <string name="ah_price">قیمت</string>
+    <string name="ah_service_name">نام سرویس</string>
+
+    <string name="country_prompt">Choose a country</string>
+    <string name="return_back">خرید مجدد</string>
+
+    <string-array name="country_arrays">
+        <item>Malaysia</item>
+        <item>United States</item>
+        <item>Indonesia</item>
+        <item>France</item>
+        <item>Italy</item>
+        <item>Singapore</item>
+        <item>New Zealand</item>
+        <item>India</item>
+    </string-array>
+</resources>

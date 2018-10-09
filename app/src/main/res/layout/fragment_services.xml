@@ -1,0 +1,25 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ir.hotelairport.androidapp.ServicesFragment"
+    android:background="@color/milky"
+    android:clickable="true">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:alpha="0.3"
+        android:cropToPadding="false"
+        android:scaleType="centerInside"
+        android:src="@drawable/ibis_bg" />
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/services_list"
+        android:numColumns="2"
+        android:divider="@android:color/transparent" />
+
+</FrameLayout>

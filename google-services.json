@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "746425837632",
+    "firebase_url": "https://fifth-glazing-208407.firebaseio.com",
+    "project_id": "fifth-glazing-208407",
+    "storage_bucket": "fifth-glazing-208407.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:746425837632:android:478d2be3175a224e",
+        "android_client_info": {
+          "package_name": "ir.hotelairport.androidapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "746425837632-51d1mk6n87v2f6ghnidpm1g3dcs8ltso.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKicDaCOQSN4akeinW7vshFral3u70AxY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/logged_in_menu_gp" android:checkableBehavior="single">
+        <item
+            android:id="@+id/services"
+            android:title="@string/services"
+            android:icon="@drawable/ic_tool_box"/>
+
+        <item
+            android:id="@+id/basket"
+            android:title="@string/basket"
+            android:icon="@drawable/shopping_cart"/>
+        <item
+            android:id="@+id/time_line"
+            android:title="@string/time_line"
+            android:icon="@drawable/ic_notifications"/>
+        <item
+            android:id="@+id/about_hotel"
+            android:title="@string/about_hotel"
+            android:icon="@drawable/ic_hotel"/>
+        <item
+            android:id="@+id/about_city"
+            android:title="@string/about_city"
+            android:icon="@drawable/ic_location"/>
+        <item
+            android:id="@+id/hotel_news"
+            android:title="@string/hotel_news"
+            android:icon="@drawable/ic_newspaper"/>
+        <item
+            android:id="@+id/opinion"
+            android:title="@string/Opinion"
+            android:icon="@drawable/ic_chat"/>
+        <item
+            android:id="@+id/guide"
+            android:title="@string/guide"
+            android:icon="@drawable/ic_help"/>
+        <item
+            android:id="@+id/profile"
+            android:title="@string/profile"
+            android:icon="@drawable/ic_person"/>
+        <item
+            android:id="@+id/settings"
+            android:title="@string/settings"
+            android:icon="@drawable/ic_settings"/>
+    </group>
+</menu>

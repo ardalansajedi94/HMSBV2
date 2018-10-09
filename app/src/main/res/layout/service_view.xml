@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_margin="16dp"
+    app:cardElevation="10dp">
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    android:clickable="true"
+    android:layoutDirection="ltr">
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/above"
+        android:layout_width="0dp"
+        android:layout_height="90dp"
+        android:background="@drawable/novotel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/service_title"
+        android:layout_width="120dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorAccent"
+        android:paddingRight="10dp"
+        android:gravity="center_vertical"
+        android:textColor="@color/milky"
+        android:textDirection="rtl"
+        android:textSize="10sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/service_price"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        app:layout_constraintTop_toBottomOf="@id/above"
+        app:layout_constraintRight_toLeftOf="@id/text1"
+ />
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="16dp"
+        android:gravity="right|center_vertical"
+        android:text="قیمت:"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/above"
+       />
+
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="right|center_vertical"
+        android:text="بازه ی زمانی:"
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text1" />
+
+    <TextView
+        android:id="@+id/service_num"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:background="@color/milky"
+        android:gravity="center"
+        android:text="0"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/hotel_black"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toRightOf="@+id/service_sub"
+        app:layout_constraintRight_toLeftOf="@+id/service_add"
+        app:layout_constraintTop_toBottomOf="@id/above"
+        />
+
+    <Button
+        android:id="@+id/service_sub"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/ic_minus_inactive"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@id/service_num" />
+
+    <Button
+        android:id="@+id/service_add"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/ic_plus"
+        app:layout_constraintLeft_toRightOf="@+id/service_num"
+        app:layout_constraintTop_toTopOf="@id/service_num" />
+
+    <TextView
+        android:id="@+id/service_time_table"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toStartOf="@+id/text2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/service_price" />
+
+</android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.CardView>
