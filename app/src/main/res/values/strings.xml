@@ -19,11 +19,11 @@
     <string name="server_problem">Problem occurred on connecting to server please try again</string>
     <string name="user_not_found">Username or password is incorrect</string>
     <string name="services">Services</string>
-    <string name="but_services">Services</string>
+    <string name="but_services" translatable="false">Services</string>
     <string name="Opinion">Suggestions and Critics</string>
     <string name="guide">Guide</string>
     <string name="settings">Settings</string>
-    <string name="short_staye">Short stay</string>
+    <string name="short_staye" translatable="false">Short stay</string>
     <string name="exit">Logout</string>
     <string name="exit_confirm_dlg">Are you sure wants to logout?</string>
     <string name="yes">Yes</string>
@@ -104,11 +104,11 @@
 
 Quisque vulputate faucibus felis, at vulputate arcu aliquam a. Vestibulum tincidunt, est quis faucibus pulvinar, nunc purus convallis ex, nec posuere elit nisi vitae felis. Ut pellentesque eget erat eget sagittis. Etiam bibendum, tellus ac convallis pulvinar, sem velit faucibus nulla, in eleifend ligula sapien eget tortor. In ultrices non ex non rhoncus. Suspendisse finibus, nibh et rutrum facilisis, libero felis mattis nunc, in vestibulum enim nunc id ligula. Curabitur pharetra quis ante vel iaculis. Proin dignissim suscipit porta. Integer egestas hendrerit ipsum, a feugiat elit lobortis eu. Cras malesuada justo odio, ac malesuada risus sodales eget. Aliquam erat volutpat. Phasellus eget libero eu libero dictum pellentesque. Nullam non velit quis nisl gravida dictum id euismod ligula. Mauris finibus tellus efficitur risus lobortis, sed facilisis turpis feugiat. Maecenas condimentum diam sit amet viverra fringilla.
 
-Pellentesque accumsan urna id neque luctus dignissim. Sed vel lorem at ligula consequat tincidunt et vitae quam. Aenean at blandit ipsum. Vestibulum non bibendum sapien, at tempus magna. Morbi vel turpis a mauris convallis suscipit rutrum et lectus. Vestibulum quam purus, varius sit amet congue at, vehicula vitae odio. Vivamus iaculis mauris eu ligula condimentum, nec posuere mauris semper. Sed maximus congue risus sit amet tristique. Nam pretium nisi vel iaculis facilisis. Vivamus imperdiet libero venenatis fermentum condimentum. Fusce ultrices non sapien non congue. Integer et porta nisl. Sed vel massa lorem. Vivamus dignissim pretium leo, id varius libero scelerisque euismod. Vivamus et tortor quis odio porttitor porttitor eu sed urna.
+Pellentesque accumsan urna id neque luctus dignissim. Sed vel lorem at ligula consequat tincidunt et vitae quam. Aenean at blandit ipsum. Vestibulum non bibendum sapien, at tempus magna. Morbi vel turpis a mauris convallis suscipit rutrum et lectus. Vestibulum quam purus, varius sit amet congue at, vehicula vitae odio. Vivamus iaculis mauris eu ligula condimentum, nec posuere mauris semper. Sed maximus congue risus sit amet tristique. Nam pretium nisi vel iaculis facilisis. Vivamus imperdiet libero venenatis fermentum condimentum. Fusce ultrices non sapien non congue. Integer et porta nisl. Sed vel massa lorem. Vivamus dignissim pretium leo, id varius libero scelerisque euismod. Vivamus et tortor quis odio  eu sed urna.
 
 Donec ut laoreet risus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam et dignissim lacus. Pellentesque vulputate suscipit dolor, et mollis ex rutrum sit amet. In euismod porttitor eros. Donec nec tincidunt velit. Aliquam ut velit vel risus ultrices pharetra. Etiam eget odio et eros fermentum commodo. Nunc bibendum nec libero eget egestas. Aenean vulputate id lacus id vehicula. Ut sed dignissim mauris. Morbi pellentesque feugiat blandit. Nunc porttitor odio at tortor hendrerit, et tincidunt leo viverra.
 
-Phasellus sed nisi porta, gravida neque non, mattis ligula. Donec aliquam dolor vel faucibus varius. Nulla lacinia, ante quis dapibus ullamcorper, turpis eros scelerisque metus, sit amet rutrum est est non felis. Vivamus ut elit feugiat, cursus mauris a, molestie risus. Phasellus eget massa at sem facilisis volutpat. Vestibulum est libero, posuere sit amet arcu non, pellentesque malesuada mi. Morbi id cursus lacus. Integer eu viverra nisl.</string>
+Phasellus sed nisi porta, gravida neque non, mattis ligula. Donec aliquam dolor vel faucibus varius. Nulla lacinia, ante quis dapibus ullamcorper, turpis eros scelerisque metus, sit amet rutrum  non felis. Vivamus ut elit feugiat, cursus mauris a, molestie risus. Phasellus eget massa at sem facilisis volutpat. Vestibulum est libero, posuere sit amet arcu non, pellentesque malesuada mi. Morbi id cursus lacus. Integer eu viverra nisl.</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="room_air">Room air</string>
@@ -246,14 +246,14 @@ Phasellus sed nisi porta, gravida neque non, mattis ligula. Donec aliquam dolor 
     <string name="ah_adult">بزرگسال</string>
     <string name="ah_child">کودک</string>
     <string name="ah_pass_first_name">نام و نام خانوادگی:</string>
-    <string name="ah_pass_name_family">نام و نام خانوادگی:</string>
+    <string name="ah_pass_name_family" translatable="false">نام و نام خانوادگی:</string>
     <string name="ah_pass_last_name">نام خانوادگی</string>
     <string name="ah_pass_cell_num">شماره همراه:</string>
-    <string name="ah_pass_cell_num_hint">شماره همراه</string>
+    <string name="ah_pass_cell_num_hint" translatable="false">شماره همراه</string>
     <string name="ah_pass_email">پست الکترونیک:</string>
-    <string name="ah_pass_email_hint">پست الکترونیک</string>
+    <string name="ah_pass_email_hint" translatable="false">پست الکترونیک</string>
     <string name="ah_pass_national_code">کد ملی:</string>
-    <string name="ah_pass_national_code_hint">کد ملی</string>
+    <string name="ah_pass_national_code_hint" translatable="false">کد ملی</string>
     <string name="ah_menu_room_ws">اقامت</string>
     <string name="ah_menu_service_ws">سرویس ها</string>
 
@@ -261,36 +261,36 @@ Phasellus sed nisi porta, gravida neque non, mattis ligula. Donec aliquam dolor 
     <string name="ah_price">قیمت</string>
     <string name="ah_service_name">نام سرویس</string>
 
-    <string name="ah_chosen_services">سرویس‌های انتخاب شده</string>
-    <string name="ah_checkbox_txt">اطلاعات بالا مورد تایید است و [قوانین و مقررات] را مطالعه و قبول دارم.</string>
+    <string name="ah_chosen_services" translatable="false">سرویس‌های انتخاب شده</string>
+    <string name="ah_checkbox_txt" translatable="false">اطلاعات بالا مورد تایید است و [قوانین و مقررات] را مطالعه و قبول دارم.</string>
 
-    <string name="ah_rules">قوانین و مقررات</string>
-    <string name="ah_dia_accept">قبول</string>
-    <string name="ah_pax_data">اطلاعات خرید</string>
-    <string name="nationality">ملیت:</string>
-    <string name="three_hour">سه ساعت</string>
-    <string name="six_hour">شش ساعت</string>
-    <string name="stay_time">مدت زمان اقامت:</string>
-    <string name="persian_name">نام به فارسی</string>
-    <string name="name_to_english">نام به انگلیسی</string>
-    <string name="ah_edit">ویرایش</string>
-    <string name="done_payment">پرداخت با موفقیت انجام شد</string>
+    <string name="ah_rules" translatable="false">قوانین و مقررات</string>
+    <string name="ah_dia_accept" translatable="false">قبول</string>
+    <string name="ah_pax_data" translatable="false">اطلاعات خرید</string>
+    <string name="nationality" translatable="false">ملیت:</string>
+    <string name="three_hour" translatable="false">سه ساعت</string>
+    <string name="six_hour" translatable="false">شش ساعت</string>
+    <string name="stay_time" translatable="false">مدت زمان اقامت:</string>
+    <string name="persian_name" translatable="false">نام به فارسی</string>
+    <string name="name_to_english" translatable="false">نام به انگلیسی</string>
+    <string name="ah_edit" translatable="false">ویرایش</string>
+    <string name="done_payment" translatable="false">پرداخت با موفقیت انجام شد</string>
     <string name="return_back">خرید مجدد</string>
-    <string name="payment_failed">در پرداخت مشکلی رخ داده است</string>
-    <string name="payment">پرداخت</string>
+    <string name="payment_failed" translatable="false">در پرداخت مشکلی رخ داده است</string>
+    <string name="payment" translatable="false">پرداخت</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
-    <string name="date_select">تاریخ ورود</string>
-    <string name="search">جستجو</string>
-    <string name="select_time">ساعت ورود</string>
-    <string name="reserv_three_hour">رزرو سه ساعته</string>
-    <string name="reserve_six_hour">رزرو شش ساعته</string>
-    <string name="service_reserve">رزرو سرویس</string>
-    <string name="daily_reserve">رزرو روزانه</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+    <string name="nav_header_title" translatable="false">Android Studio</string>
+    <string name="nav_header_subtitle" translatable="false">android.studio@android.com</string>
+    <string name="nav_header_desc" translatable="false">Navigation header</string>
+    <string name="action_settings" translatable="false">Settings</string>
+    <string name="date_select" translatable="false">تاریخ ورود</string>
+    <string name="search" translatable="false">جستجو</string>
+    <string name="select_time" translatable="false">ساعت ورود</string>
+    <string name="reserv_three_hour" translatable="false">رزرو سه ساعته</string>
+    <string name="reserve_six_hour" translatable="false">رزرو شش ساعته</string>
+    <string name="service_reserve" translatable="false">رزرو سرویس</string>
+    <string name="daily_reserve" translatable="false">رزرو روزانه</string>
 
 </resources>
