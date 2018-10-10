@@ -35,7 +35,7 @@ import ir.hotelairport.androidapp.airportHotels.PreferenceManager.MyPreferenceMa
 import ir.hotelairport.androidapp.airportHotels.adapters.ServiceConfirmReviewAdapter;
 import ir.hotelairport.androidapp.airportHotels.api.data.BookServiceController;
 import ir.hotelairport.androidapp.airportHotels.api.data.HotelApi;
-import ir.hotelairport.api.model.BookResponse;
+import ir.hotelairport.androidapp.airportHotels.api.model.BookResponse;
 import ir.hotelairport.androidapp.airportHotels.api.model.BookServiceReq;
 import ir.hotelairport.androidapp.airportHotels.dialogFragments.RulesDialog;
 
@@ -153,7 +153,7 @@ public class ServiceBookConfirmFragment extends Fragment {
                     }
                     req.add("services" , services);
                     BookServiceController bookServiceController = new BookServiceController(callBack);
-                    bookServiceController.start(req);
+                    bookServiceController.start(req,MyPreferenceManager.getInstace(getActivity()).getLoginRes().getToken_type() +" "+ MyPreferenceManager.getInstace(getActivity()).getLoginRes().getAccess_token());
                     recyclerView.setVisibility(View.INVISIBLE);
                     progressBar.setVisibility(View.VISIBLE);
                 }

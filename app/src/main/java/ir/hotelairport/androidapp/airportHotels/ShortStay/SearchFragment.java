@@ -132,7 +132,7 @@ public class SearchFragment extends Fragment{
                     rooms.add(obj);
                     object.add("rooms" , rooms);
                     AvailabilityRoomController availabilityRoomController = new AvailabilityRoomController(callBack);
-                    availabilityRoomController.start(object);
+                    availabilityRoomController.start(object,MyPreferenceManager.getInstace(getActivity()).getLoginRes().getToken_type() +" "+ MyPreferenceManager.getInstace(getActivity()).getLoginRes().getAccess_token());
                     main.setVisibility( View.GONE );
                     progressBar.setVisibility( View.VISIBLE );
                 }

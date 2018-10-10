@@ -37,6 +37,13 @@ public class MyPreferenceManager {
         editor.putString("token" , token);
         editor.apply();
     }
+    public int getBookId(){
+        return sharedPreferences.getInt("BookId" , 0);
+    }
+    public void putBookId(int bookId){
+        editor.putInt("BookId" , bookId);
+        editor.apply();
+    }
     public String getCheckIn(){
         return sharedPreferences.getString("checkIn" , null);
     }

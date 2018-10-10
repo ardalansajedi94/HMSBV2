@@ -22,7 +22,7 @@ public class RegisterController {
     public void start(JsonObject req){
         Retrofit retrofit = new Retrofit.Builder().baseUrl("https://hotelairport.ir/").addConverterFactory(GsonConverterFactory.create()).build();
         HotelApi hotelApi =  retrofit.create(HotelApi.class);
-        Call<LoginRes> call = hotelApi.Register(req , "application/json" ,"application/json");
+        Call<LoginRes> call = hotelApi.Register(req , "application/json" ,"application/json" );
         call.enqueue(new Callback<LoginRes>() {
             @Override
             public void onResponse(Call<LoginRes> call, Response<LoginRes> response) {

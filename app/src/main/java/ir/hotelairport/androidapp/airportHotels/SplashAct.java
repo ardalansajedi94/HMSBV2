@@ -15,6 +15,7 @@ public class SplashAct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.splash_activity );
+
         mWaitHandler.postDelayed(new Runnable() {
 
             @Override
@@ -44,5 +45,8 @@ public class SplashAct extends AppCompatActivity {
         //Remove all the callbacks otherwise navigation will execute even after activity is killed or closed.
         mWaitHandler.removeCallbacksAndMessages(null);
     }
+
+
+
     }
 

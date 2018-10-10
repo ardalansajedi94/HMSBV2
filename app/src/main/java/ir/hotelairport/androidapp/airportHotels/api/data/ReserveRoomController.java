@@ -17,10 +17,10 @@ public class ReserveRoomController {
         this.reserveRoomCallBack = reserveRoomCallBack;
     }
 
-    public void start(JsonObject req){
+    public void start(JsonObject req , String token){
         Retrofit retrofit = new Retrofit.Builder().baseUrl(HotelApi.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
         HotelApi hotelApi =  retrofit.create(HotelApi.class);
-        Call<ReserveRes> call = hotelApi.ReserveRoom(req , "application/json" ,"application/json");
+        Call<ReserveRes> call = hotelApi.ReserveRoom(req , "application/json" ,"application/json" , token);
         call.enqueue(new Callback<ReserveRes>() {
             @Override
             public void onResponse(Call<ReserveRes> call, Response<ReserveRes> response) {

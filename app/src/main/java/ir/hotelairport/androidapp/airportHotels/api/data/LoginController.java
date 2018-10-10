@@ -5,7 +5,7 @@ package ir.hotelairport.androidapp.airportHotels.api.data;
 import com.google.gson.JsonObject;
 
 import ir.hotelairport.androidapp.airportHotels.api.model.LoginRes;
-import ir.hotelairport.api.model.BookResponse;
+import ir.hotelairport.androidapp.airportHotels.api.model.BookResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

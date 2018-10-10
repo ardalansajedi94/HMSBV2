@@ -29,7 +29,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.Locale;
 
-import ir.hotelairport.PersianDate;
+import ir.hotelairport.androidapp.airportHotels.PersianDate;
 import ir.hotelairport.androidapp.Constants;
 import ir.hotelairport.androidapp.Models.BlogContent;
 import ir.hotelairport.androidapp.R;

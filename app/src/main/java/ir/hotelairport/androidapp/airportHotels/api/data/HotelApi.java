@@ -20,6 +20,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Streaming;
 import retrofit2.http.Url;
 
 public interface HotelApi {
@@ -29,13 +30,13 @@ public interface HotelApi {
 
 
     @POST("availability")
-    Call<AvailabilityRes> AvailabilityRoom(@Body JsonObject req , @Header("Accept") String a , @Header("Content-Type") String c);
+    Call<AvailabilityRes> AvailabilityRoom(@Body JsonObject req , @Header("Accept") String a , @Header("Content-Type") String c,@Header("Authorization") String auth );
     interface AvailabilityRoomCallBack{
         void onResponse(AvailabilityRes res);
         void onFailure(String cause);
     }
     @POST("service")
-    Call<ServicesResponse> ServiceList(@Body JsonObject req , @Header("Accept") String a , @Header("Content-Type") String c);
+    Call<ServicesResponse> ServiceList(@Body JsonObject req , @Header("Accept") String a , @Header("Content-Type") String c,@Header("Authorization") String auth );
     interface ServiceListCallBack{
         void onResponse(ServicesResponse res);
         void onFailure(String cause);
@@ -43,44 +44,45 @@ public interface HotelApi {
 
 
     @POST("reserve")
-    Call<ReserveRes> ReserveRoom(@Body JsonObject req , @Header("Accept") String a , @Header("Content-Type") String c);
+    Call<ReserveRes> ReserveRoom(@Body JsonObject req , @Header("Accept") String a , @Header("Content-Type") String c,@Header("Authorization") String auth );
     interface ReserveRoomCallBack{
         void onResponse(ReserveRes res);
         void onFailure(String cause);
     }
 
     @POST("book")
-    Call<BookResponse> BookRoom(@Body JsonObject req  , @Header("Accept") String a , @Header("Content-Type") String c);
+    Call<BookResponse> BookRoom(@Body JsonObject req  , @Header("Accept") String a , @Header("Content-Type") String c,@Header("Authorization") String auth );
     interface BookRoomCallBack {
         void onResponse(BookResponse url);
         void onFailure(String cause);
     }
     @POST("bookService")
-    Call<BookResponse> BookService(@Body JsonObject req  , @Header("Accept") String a , @Header("Content-Type") String c);
+    Call<BookResponse> BookService(@Body JsonObject req  , @Header("Accept") String a , @Header("Content-Type") String c,@Header("Authorization") String auth );
     interface BookServiceCallBack {
         void onResponse(BookResponse url);
         void onFailure(String cause);
     }
     @POST("checkBookStatus")
-    Call<CheckStatusResponse> CheckBookStatus(@Body JsonObject req  , @Header("Accept") String a , @Header("Content-Type") String c);
+    Call<CheckStatusResponse> CheckBookStatus(@Body JsonObject req  , @Header("Accept") String a , @Header("Content-Type") String c,@Header("Authorization") String auth );
     interface CheckBookStatusCallBack{
         void onResponse(CheckStatusResponse response);
         void onFailure(String cause);
     }
     @POST("api/v1/register")
-    Call<LoginRes> Register(@Body JsonObject req  , @Header("Accept") String a , @Header("Content-Type") String c);
+    Call<LoginRes> Register(@Body JsonObject req  , @Header("Accept") String a , @Header("Content-Type") String c );
     interface RegisterCallback{
         void onResponse(LoginRes response);
         void onFailure(String cause);
         void onError(String cause);
     }
     @POST("oauth/token")
-    Call<LoginRes> Login(@Body JsonObject req  , @Header("Accept") String a , @Header("Content-Type") String c);
+    Call<LoginRes> Login(@Body JsonObject req  , @Header("Accept") String a , @Header("Content-Type") String c );
     interface LoginCallBack{
         void onResponse(LoginRes response);
         void onFailure(String cause);
         void onError(String cause);
     }
+    @Streaming
     @GET
     Call<ResponseBody> Voucher(@Header("Authorization") String auth , @Url String url);
     interface VoucherCallBack{

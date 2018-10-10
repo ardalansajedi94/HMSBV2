@@ -10,7 +10,7 @@
         android:layout_width="150dp"
         android:layout_height="28dp"
         android:background="@drawable/button_border"
-        android:text=" جستجوی مجدد "
+        android:text=" دانلود ووچر "
         android:textColor="@color/colorAccent"
         android:textSize="12sp"
         android:layout_marginBottom="36dp"

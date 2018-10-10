@@ -26,7 +26,7 @@ import org.greenrobot.eventbus.Subscribe;
 import java.text.DecimalFormat;
 
 import ir.hotelairport.androidapp.airportHotels.DailyStay.DailySearchFragment;
-import ir.hotelairport.PersianDate;
+import ir.hotelairport.androidapp.airportHotels.PersianDate;
 import ir.hotelairport.androidapp.R;
 import ir.hotelairport.androidapp.airportHotels.EventBus.Ok;
 import ir.hotelairport.androidapp.airportHotels.PersianDigitConverter;
@@ -141,7 +141,7 @@ public class ServiceListFragment extends Fragment {
                 ServiceListController serviceListController = new ServiceListController(callBack);
                 JsonObject object = new JsonObject();
                 object.addProperty("api_token" , MyPreferenceManager.getInstace(getActivity()).getToken());
-                serviceListController.start(object);
+                serviceListController.start(object,MyPreferenceManager.getInstace(getActivity()).getLoginRes().getToken_type() +" "+ MyPreferenceManager.getInstace(getActivity()).getLoginRes().getAccess_token());
                 main.setVisibility( View.GONE );
                 progressBar.setVisibility( View.VISIBLE );
 

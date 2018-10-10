@@ -25,7 +25,7 @@ import org.greenrobot.eventbus.Subscribe;
 
 import java.text.DecimalFormat;
 
-import ir.hotelairport.PersianDate;
+import ir.hotelairport.androidapp.airportHotels.PersianDate;
 ;
 import ir.hotelairport.androidapp.airportHotels.EventBus.Ok;
 import ir.hotelairport.androidapp.airportHotels.EventBus.ResultFragmentShow;
@@ -129,7 +129,7 @@ public class DailySearchFragment extends Fragment {
                     object.add("rooms" , rooms);
                     dateFlag=false;
                     AvailabilityRoomController availabilityRoomController = new AvailabilityRoomController(callBack);
-                    availabilityRoomController.start(object);
+                    availabilityRoomController.start(object,MyPreferenceManager.getInstace(getActivity()).getLoginRes().getToken_type() +" "+ MyPreferenceManager.getInstace(getActivity()).getLoginRes().getAccess_token());
                     main.setVisibility( View.GONE );
                     progressBar.setVisibility( View.VISIBLE );
                 }

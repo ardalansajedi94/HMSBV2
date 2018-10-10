@@ -118,7 +118,7 @@ public class ResultFragment extends Fragment {
                     object.addProperty("ip", "0");
                     MyPreferenceManager.getInstace( getActivity() ).putRoom( roomConfirmation );
                     ReserveRoomController reserveRoomController = new ReserveRoomController(callBack);
-                    reserveRoomController.start(object);
+                    reserveRoomController.start(object,MyPreferenceManager.getInstace(getActivity()).getLoginRes().getToken_type() +" "+ MyPreferenceManager.getInstace(getActivity()).getLoginRes().getAccess_token());
                 }
                 else {
                     Toast.makeText(getActivity() , "حداقل یک اتاق باید انتخاب شود", Toast.LENGTH_LONG).show();

@@ -17,10 +17,10 @@ public class ServiceListController {
         this.serviceListCallBack = serviceListCallBack;
     }
 
-    public void start(JsonObject req){
+    public void start(JsonObject req,String token){
         Retrofit retrofit = new Retrofit.Builder().baseUrl(HotelApi.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
         HotelApi hotelApi =  retrofit.create(HotelApi.class);
-        Call<ServicesResponse> call = hotelApi.ServiceList(req , "application/json" ,"application/json");
+        Call<ServicesResponse> call = hotelApi.ServiceList(req , "application/json" ,"application/json" ,token);
         call.enqueue(new Callback<ServicesResponse>() {
             @Override
             public void onResponse(Call<ServicesResponse> call, Response<ServicesResponse> response) {

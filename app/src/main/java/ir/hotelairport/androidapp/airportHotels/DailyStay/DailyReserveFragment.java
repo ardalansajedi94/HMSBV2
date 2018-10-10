@@ -44,7 +44,7 @@ import ir.hotelairport.androidapp.airportHotels.api.model.PaxReview;
 import ir.hotelairport.androidapp.airportHotels.api.model.RoomList;
 import ir.hotelairport.androidapp.airportHotels.api.model.RoomReview;
 import ir.hotelairport.androidapp.airportHotels.dialogFragments.RulesDialog;
-import ir.hotelairport.api.model.BookResponse;
+import ir.hotelairport.androidapp.airportHotels.api.model.BookResponse;
 
 
 public class DailyReserveFragment extends android.support.v4.app.Fragment {
@@ -187,7 +187,7 @@ public class DailyReserveFragment extends android.support.v4.app.Fragment {
                 req.add("room" , room);
 
                 BookRoomController bookRoomController = new BookRoomController(callBack);
-                bookRoomController.start(req);
+                bookRoomController.start(req, MyPreferenceManager.getInstace(getActivity()).getLoginRes().getToken_type() +" "+ MyPreferenceManager.getInstace(getActivity()).getLoginRes().getAccess_token());
                 progress.setVisibility(View.VISIBLE);
                 recyclerView.setVisibility(View.INVISIBLE);
                 }

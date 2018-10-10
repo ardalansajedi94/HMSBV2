@@ -99,4 +99,5 @@ dependencies {
     implementation 'com.github.recruit-lifestyle:WaveSwipeRefreshLayout:1.6'
     implementation 'com.github.samanzamani.persiandate:PersianDate:0.4'
     implementation 'co.ronash.android:pushe-base:1.4.1'
+    implementation 'org.apache.directory.studio:org.apache.commons.io:2.4'
 }
