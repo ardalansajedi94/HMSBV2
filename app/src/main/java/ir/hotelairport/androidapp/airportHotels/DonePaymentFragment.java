@@ -78,6 +78,7 @@ private static final int MY_PERMISION_REQUEST = 120;
                         FileOutputStream fileOutputStream = new FileOutputStream(file);
                         IOUtils.write(responseBody.bytes(), fileOutputStream);
 
+
                         MimeTypeMap map = MimeTypeMap.getSingleton();
                         String ext = MimeTypeMap.getFileExtensionFromUrl(file.getName());
                         String type = map.getMimeTypeFromExtension(ext);

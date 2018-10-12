@@ -4,6 +4,7 @@ package ir.hotelairport.androidapp;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.support.multidex.MultiDexApplication;
 import android.support.v7.app.AppCompatDelegate;
 
 import com.crashlytics.android.Crashlytics;
@@ -20,7 +21,7 @@ import io.fabric.sdk.android.Fabric;
  * Created by Mohammad on 9/1/2017.
  */
 
-public final class Application extends android.app.Application {
+public final class Application extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();

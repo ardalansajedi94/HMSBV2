@@ -4,7 +4,7 @@ buildscript {
         maven { url 'https://maven.fabric.io/public' }
     }
     dependencies {
-        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:0.8.0'
+        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:0.8.1'
         classpath 'io.fabric.tools:gradle:1.+'
     }
 }
@@ -24,13 +24,14 @@ repositories {
 android {
 
     compileSdkVersion 27
-    buildToolsVersion '28.0.2'
+    buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "ir.hotelairport.androidapp"
         minSdkVersion 19
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         manifestPlaceholders = [onesignal_app_id               : "296f33d8-71cf-4dce-9f9a-faf8b3ac6772",
                                 // Project number pulled from dashboard, local value is ignored.
@@ -100,4 +101,5 @@ dependencies {
     implementation 'com.github.samanzamani.persiandate:PersianDate:0.4'
     implementation 'co.ronash.android:pushe-base:1.4.1'
     implementation 'org.apache.directory.studio:org.apache.commons.io:2.4'
+    implementation 'com.android.support:multidex:1.0.3'
 }
