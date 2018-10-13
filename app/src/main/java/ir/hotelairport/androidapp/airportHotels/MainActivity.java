@@ -24,6 +24,7 @@ import ir.hotelairport.androidapp.HotelNewsFragment;
 import ir.hotelairport.androidapp.LoginRegistrationFragment;
 import ir.hotelairport.androidapp.R;
 import ir.hotelairport.androidapp.TabsFragment;
+import ir.hotelairport.androidapp.airportHotels.Auth.MyProfileFragment;
 import ir.hotelairport.androidapp.airportHotels.DailyStay.DailySearchFragment;
 import ir.hotelairport.androidapp.airportHotels.DailyStay.DailyStayBookFragment;
 import ir.hotelairport.androidapp.airportHotels.EventBus.DailyReserveResultBackEvent;
@@ -100,6 +101,10 @@ public class MainActivity extends AppCompatActivity
         else if (id == R.id.hotel_news) {
             HotelNewsFragment hotelNewsFragment = new HotelNewsFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.content_frame ,hotelNewsFragment).commit();
+        }
+        else if (id == R.id.profile) {
+            MyProfileFragment myProfileFragment = new MyProfileFragment();
+            getFragmentManager().beginTransaction().replace(R.id.content_frame ,myProfileFragment).commit();
         }
         else if (id == R.id.guide) {
             TabsFragment tabsFragment =TabsFragment.newInstance(3);

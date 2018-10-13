@@ -26,6 +26,9 @@
         <item
             android:id="@+id/hotel_news"
             android:title="اخبار" />
+        <item
+            android:id="@+id/profile"
+            android:title="حساب کاربری" />
 
         <item
             android:id="@+id/exit"
