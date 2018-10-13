@@ -10,6 +10,7 @@ import ir.hotelairport.androidapp.airportHotels.api.model.LoginRes;
 import ir.hotelairport.androidapp.airportHotels.api.model.BookResponse;
 import ir.hotelairport.androidapp.airportHotels.api.model.CheckStatusResponse;
 import ir.hotelairport.androidapp.airportHotels.api.model.GetApi;
+import ir.hotelairport.androidapp.airportHotels.api.model.ProfileResponse;
 import ir.hotelairport.androidapp.airportHotels.api.model.ReserveRes;
 import ir.hotelairport.androidapp.airportHotels.api.model.ServicesResponse;
 import okhttp3.ResponseBody;
@@ -55,6 +56,13 @@ public interface HotelApi {
     interface BookRoomCallBack {
         void onResponse(BookResponse url);
         void onFailure(String cause);
+    }
+    @GET("showProfile")
+    Call<ProfileResponse> ShowProfile(@Header("Accept") String a , @Header("Content-Type") String c, @Header("Authorization") String auth );
+    interface ShowProfile {
+        void onResponse(ProfileResponse response);
+        void onFailure(String cause);
+        void onError(String cause);
     }
     @POST("bookService")
     Call<BookResponse> BookService(@Body JsonObject req  , @Header("Accept") String a , @Header("Content-Type") String c,@Header("Authorization") String auth );
