@@ -4,15 +4,12 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.gson.JsonArray;
@@ -29,7 +26,6 @@ import ir.hotelairport.androidapp.airportHotels.EventBus.ReserveButtonClickedSer
 import ir.hotelairport.androidapp.airportHotels.EventBus.ReserveResultBackEvent;
 import ir.hotelairport.androidapp.airportHotels.PreferenceManager.MyPreferenceManager;
 import ir.hotelairport.androidapp.R;
-import ir.hotelairport.androidapp.airportHotels.adapters.RoomListAdapter;
 import ir.hotelairport.androidapp.airportHotels.adapters.ServiceListAdapter;
 import ir.hotelairport.androidapp.airportHotels.api.data.HotelApi;
 import ir.hotelairport.androidapp.airportHotels.api.model.ReserveRes;
@@ -109,7 +105,7 @@ public class ServiceResultFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerView=view.findViewById( R.id.hotel_list);
-        send=view.findViewById( R.id.reserve_accept);
+        send=view.findViewById( R.id.return_btn);
 
         MyPreferenceManager.getInstace(getActivity()).putRefId(res.getRef_id());
         List<Service> actServices = new ArrayList<>();

@@ -28,6 +28,7 @@ import org.apache.commons.io.IOUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.text.Format;
 
 import ir.hotelairport.androidapp.Manifest;
 import ir.hotelairport.androidapp.R;
@@ -53,14 +54,17 @@ private static final int MY_PERMISION_REQUEST = 120;
         if (ContextCompat.checkSelfPermission(getActivity() , android.Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(getActivity(), new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE},MY_PERMISION_REQUEST);
         }
+        VoucherController voucherController = new VoucherController(callBack);
+
+        voucherController.start(MyPreferenceManager.getInstace(getActivity()).getLoginRes().getToken_type() +" "+ MyPreferenceManager.getInstace(getActivity()).getLoginRes().getAccess_token() ,String.valueOf(MyPreferenceManager.getInstace(getActivity()).getBookId()) );
         returnBut= view.findViewById(R.id.return_but);
         returnBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                VoucherController voucherController = new VoucherController(callBack);
-                voucherController.start(MyPreferenceManager.getInstace(getActivity()).getToken() ,String.valueOf(MyPreferenceManager.getInstace(getActivity()).getBookId()) );
+
                 Intent intent = new Intent( getActivity() , MainActivity.class );
                 getActivity().startActivity( intent );
+                intent.putExtra("fragmentNumber",1000);
                 getActivity().finish();
             }
         });

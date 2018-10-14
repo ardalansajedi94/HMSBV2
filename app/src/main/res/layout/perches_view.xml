@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layoutDirection="ltr"
+    >
+    <android.support.v7.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:cardElevation="8dp">
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:layout_marginRight="16dp"
+                android:background="@color/colorAccent"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/check_in"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:textSize="10sp"
+                android:text="تاریخ ورود"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintRight_toLeftOf="@id/title"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="19dp"/>
+            <TextView
+                android:id="@+id/check_out"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:textSize="10sp"
+                android:text="تاریخ خروج"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                app:layout_constraintRight_toLeftOf="@+id/check_in"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="19dp"/>
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:textSize="10sp"
+                android:text="هزینه کل"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                app:layout_constraintRight_toLeftOf="@+id/check_out"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="19dp"/>
+
+            <TextView
+                android:id="@+id/check_in_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="10sp"
+                app:layout_constraintRight_toRightOf="@id/check_in"
+                app:layout_constraintTop_toBottomOf="@+id/check_in" />
+            <TextView
+                android:id="@+id/check_out_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                app:layout_constraintRight_toRightOf="@id/check_out"
+                app:layout_constraintTop_toBottomOf="@+id/check_out"
+                android:textSize="10sp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:id="@+id/price_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                app:layout_constraintRight_toRightOf="@id/price"
+                app:layout_constraintTop_toBottomOf="@+id/price"
+                android:textSize="10sp"
+                android:textColor="@color/black"/>
+
+            <Button
+                android:id="@+id/voucher"
+                android:layout_width="60dp"
+                android:layout_height="22dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                android:text="دانلود ووچر"
+                android:background="@drawable/button_border_accent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/price_text" />
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+
+</android.support.constraint.ConstraintLayout>

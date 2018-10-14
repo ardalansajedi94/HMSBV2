@@ -10,7 +10,7 @@
             android:title="رزرو روزانه" />
         <item
             android:id="@+id/nav_short_stay"
-            android:title="رزرو کوتاه مدت" />
+            android:title="رزرو کوتاه\u200cمدت" />
         <item
             android:id="@+id/nav_services"
             android:title="رزرو سرویس" />
@@ -26,6 +26,9 @@
         <item
             android:id="@+id/hotel_news"
             android:title="اخبار" />
+        <item
+            android:id="@+id/purch_list"
+            android:title="خرید\u200cهای من" />
         <item
             android:id="@+id/profile"
             android:title="حساب کاربری" />

@@ -5,6 +5,8 @@ package ir.hotelairport.androidapp.airportHotels.api.data;
 import com.google.gson.JsonObject;
 
 
+import java.util.List;
+
 import ir.hotelairport.androidapp.airportHotels.api.model.AvailabilityRes;
 import ir.hotelairport.androidapp.airportHotels.api.model.LoginRes;
 import ir.hotelairport.androidapp.airportHotels.api.model.BookResponse;
@@ -13,6 +15,7 @@ import ir.hotelairport.androidapp.airportHotels.api.model.GetApi;
 import ir.hotelairport.androidapp.airportHotels.api.model.ProfileResponse;
 import ir.hotelairport.androidapp.airportHotels.api.model.ReserveRes;
 import ir.hotelairport.androidapp.airportHotels.api.model.ServicesResponse;
+import ir.hotelairport.androidapp.airportHotels.api.model.Voucher;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -95,6 +98,13 @@ public interface HotelApi {
     Call<ResponseBody> Voucher(@Header("Authorization") String auth , @Url String url);
     interface VoucherCallBack{
         void onResponse(ResponseBody responseBody);
+        void onFailure(String cause);
+        void onError(String cause);
+    }
+    @GET("purchase-list")
+    Call<List<Voucher>> PurchaseList(@Header("Authorization") String auth );
+    interface PurchaseListCallBack{
+        void onResponse(List<Voucher> voucherList);
         void onFailure(String cause);
         void onError(String cause);
     }

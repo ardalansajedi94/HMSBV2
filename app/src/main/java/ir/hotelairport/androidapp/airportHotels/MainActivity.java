@@ -61,8 +61,13 @@ public class MainActivity extends AppCompatActivity
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_nav);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        if (getIntent().getIntExtra("fragmentNumber" , 0)==1000){
+            MyTicketFragment myTicketFragment = new MyTicketFragment();
+            getFragmentManager().beginTransaction().add(R.id.content_frame , myTicketFragment).addToBackStack(null).commit();
+        }
+        else {
         SearchFragment searchFragment = new SearchFragment();
-        getFragmentManager().beginTransaction().replace(R.id.content_frame , searchFragment ).commit();
+        getFragmentManager().beginTransaction().replace(R.id.content_frame , searchFragment ).commit();}
 
     }
 
@@ -101,6 +106,10 @@ public class MainActivity extends AppCompatActivity
         else if (id == R.id.hotel_news) {
             HotelNewsFragment hotelNewsFragment = new HotelNewsFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.content_frame ,hotelNewsFragment).commit();
+        }
+        else if (id == R.id.purch_list) {
+            MyTicketFragment myTicketFragment = new MyTicketFragment();
+            getFragmentManager().beginTransaction().add(R.id.content_frame , myTicketFragment).addToBackStack(null).commit();
         }
         else if (id == R.id.profile) {
             MyProfileFragment myProfileFragment = new MyProfileFragment();

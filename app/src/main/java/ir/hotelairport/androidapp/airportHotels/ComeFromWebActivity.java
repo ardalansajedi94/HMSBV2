@@ -55,45 +55,23 @@ import ir.hotelairport.androidapp.airportHotels.api.data.VoucherController;
 import ir.hotelairport.androidapp.airportHotels.api.model.CheckStatusResponse;
 import okhttp3.ResponseBody;
 
-public class ComeFromWebActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class ComeFromWebActivity extends AppCompatActivity {
     private static final int MY_PERMISION_REQUEST = 120;
     @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
-        setContentView( R.layout.activity_main);
-
+        setContentView( R.layout.activity_progress);
         checkStatus();
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("");
-        setSupportActionBar(toolbar);
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_nav);
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-        SearchFragment searchFragment = new SearchFragment();
-        getFragmentManager().beginTransaction().replace(R.id.content_frame , searchFragment ).commit();
 
     }
+
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.END)) {
-            drawer.closeDrawer(GravityCompat.END);
-        } else {
-            super.onBackPressed();
-        }
-    }
 
+    }
 
     public void checkStatus(){
         JsonObject req = new JsonObject();
@@ -102,42 +80,6 @@ public class ComeFromWebActivity extends AppCompatActivity
         checkBookStatusController.start(req , MyPreferenceManager.getInstace(getApplicationContext()).getLoginRes().getToken_type() +" "+ MyPreferenceManager.getInstace(getApplicationContext()).getLoginRes().getAccess_token());
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_daily) {
-            DailySearchFragment dailySearchFragment = new DailySearchFragment();
-            getFragmentManager().beginTransaction().replace( R.id.content_frame ,dailySearchFragment ).commit();
-        } else if (id == R.id.nav_short_stay) {
-            SearchFragment searchFragment = new SearchFragment();
-            getFragmentManager().beginTransaction().replace( R.id.content_frame ,searchFragment).commit();
-        } else if (id == R.id.nav_services) {
-            ServiceListFragment serviceListFragment = new ServiceListFragment();
-            getFragmentManager().beginTransaction().replace( R.id.content_frame ,serviceListFragment).commit();
-        }
-        else if (id == R.id.about_hotel) {
-            TabsFragment tabsFragment = TabsFragment.newInstance(2);
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame ,tabsFragment).commit();
-        }
-        else if (id == R.id.hotel_news) {
-            HotelNewsFragment hotelNewsFragment = new HotelNewsFragment();
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame ,hotelNewsFragment).commit();
-        }
-
-        else if (id == R.id.guide) {
-            TabsFragment tabsFragment =TabsFragment.newInstance(3);
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame ,tabsFragment).commit();
-        }
-
-
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
 
     HotelApi.CheckBookStatusCallBack checkCallBack = new HotelApi.CheckBookStatusCallBack() {
         @Override
