@@ -6,8 +6,10 @@ import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.annotation.Nullable;
+import android.text.Editable;
 import android.text.Html;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -86,31 +88,100 @@ public class ServicePaxFragment extends Fragment {
         email    = view.findViewById(R.id.edit_email);
         accept= view.findViewById(R.id.accept);
 
+        fullName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                fullName.setBackgroundResource(R.drawable.editor_valid);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        natCode.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                natCode.setBackgroundResource(R.drawable.editor_valid);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        phone.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                phone.setBackgroundResource(R.drawable.editor_valid);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        email.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                email.setBackgroundResource(R.drawable.editor_valid);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
     public boolean isValidation() {
 
 
             if (fullName.getText().toString().equals("") ) {
                 Toast.makeText(getActivity(), "نام نمی تواند خالی باشد", Toast.LENGTH_LONG).show();
+                fullName.setBackgroundResource(R.drawable.editor);
                 return false;
             }
                 if (natCode.getText().toString().equals("") ) {
                     Toast.makeText(getActivity(), "کد ملی نمی تواند خالی باشد", Toast.LENGTH_LONG).show();
+                    natCode.setBackgroundResource(R.drawable.editor);
                     return false;
                 }
                 if (!isValidNatId(natCode.getText().toString())) {
                     Toast.makeText(getActivity(), "کد ملی صحیح وارد نشده است", Toast.LENGTH_LONG).show();
+                    natCode.setBackgroundResource(R.drawable.editor);
                     return false;
                 }
-
+        if (!mobileValidation(phone.getText().toString())){
+            Toast.makeText(getActivity(), "موبایل صحیح وارد نشده است", Toast.LENGTH_LONG).show();
+            phone.setBackgroundResource(R.drawable.editor);
+            return false;
+        }
             if (!isValidEmail(email.getText().toString())) {
                 Toast.makeText(getActivity(), "ایمیل صحیح وارد نشده است", Toast.LENGTH_LONG).show();
+                email.setBackgroundResource(R.drawable.editor);
                 return false;
             }
-            if (!mobileValidation(phone.getText().toString())){
-                Toast.makeText(getActivity(), "موبایل صحیح وارد نشده است", Toast.LENGTH_LONG).show();
-                return false;
-            }
+
 
 
         return true;}

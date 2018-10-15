@@ -95,6 +95,7 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.ViewHo
         String serNames = "";
 
         for(int i = 0; i < serveList.size(); i++){
+            if(serveList.get(i).getService_id() !=234 &&serveList.get(i).getService_id() !=235)
             serNames += serveList.get(i).getTitle_fa() + " - ";
         }
         if (serNames.length()>1)

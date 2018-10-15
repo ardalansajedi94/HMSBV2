@@ -53,6 +53,7 @@ public class PassengerStayBookAdapter extends RecyclerView.Adapter<PassengerStay
     private boolean[] flag={true , true},persianName = {true , true} , englishName ={false , false} , iranId={true , true}, foreignId ={false , false} ,validation= {true , true};
     private ArrayList<ArrayList<Service>> services = new ArrayList<>();
     private View view;
+    ViewHolder hold;
 
 
     public PassengerStayBookAdapter(Context context , int position  ) {
@@ -146,8 +147,10 @@ public class PassengerStayBookAdapter extends RecyclerView.Adapter<PassengerStay
     }
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
-        final int servicesSize = MyPreferenceManager.getInstace(context).getRoom().get( index ).getServices().size();
+        hold = holder;
+        int servicesSize = MyPreferenceManager.getInstace(context).getRoom().get( index ).getServices().size();
         ArrayList<Service> services= MyPreferenceManager.getInstace(context).getRoom().get( index ).getServices();
+        servicesSize-=2;
         ServiceStayBookAdapter serviceListAdapter = new ServiceStayBookAdapter(context , servicesSize , services ,myCheckedService , position );
         final LinearLayoutManager layout = new LinearLayoutManager(context , LinearLayoutManager.HORIZONTAL , false);
         layout.setAutoMeasureEnabled(true);
@@ -249,6 +252,7 @@ public class PassengerStayBookAdapter extends RecyclerView.Adapter<PassengerStay
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                holder.name.setBackgroundResource(R.drawable.editor_valid);
                 try {
                     nameString.remove(position);
                     nameString.add(position, s.toString());
@@ -274,6 +278,7 @@ public class PassengerStayBookAdapter extends RecyclerView.Adapter<PassengerStay
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                holder.id.setBackgroundResource(R.drawable.editor_valid);
                 try {
                     idString.remove(position);
                     idString.add(position,s.toString());
@@ -299,6 +304,7 @@ public class PassengerStayBookAdapter extends RecyclerView.Adapter<PassengerStay
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                holder.mobile.setBackgroundResource(R.drawable.editor_valid);
                 try {
                     mobileString.remove(position);
                     mobileString.add(position,s.toString());
@@ -323,6 +329,7 @@ public class PassengerStayBookAdapter extends RecyclerView.Adapter<PassengerStay
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                holder.email.setBackgroundResource(R.drawable.editor_valid);
                 try{
                     emailString.remove(position);
                     emailString.add(position,s.toString());
@@ -427,16 +434,19 @@ public class PassengerStayBookAdapter extends RecyclerView.Adapter<PassengerStay
             for (int i = 0 ; i <nameString.size() ; i++) {
                 if (nameString.get(i) == null) {
                     Toast.makeText(context, "نام نمی تواند خالی باشد", Toast.LENGTH_LONG).show();
+                    hold.name.setBackgroundResource(R.drawable.editor);
                     return false;
                 } else {
                     if (persianName[i]) {
                         if (!textPersian(nameString.get(i))) {
                             Toast.makeText(context, "نام را به فارسی وارد کنید", Toast.LENGTH_LONG).show();
+                            hold.name.setBackgroundResource(R.drawable.editor);
                             return false;
                         }
                     } else if (englishName[i]) {
                         if (textPersian(nameString.get(i))) {
                             Toast.makeText(context, "نام را به انگلیسی وارد کنید", Toast.LENGTH_LONG).show();
+                            hold.name.setBackgroundResource(R.drawable.editor);
                             return false;
                         }
                     }
@@ -444,27 +454,32 @@ public class PassengerStayBookAdapter extends RecyclerView.Adapter<PassengerStay
                 if (iranId[i]) {
                     if (idString.get(i) == null) {
                         Toast.makeText(context, "کد ملی نمی تواند خالی باشد", Toast.LENGTH_LONG).show();
+                        hold.id.setBackgroundResource(R.drawable.editor);
                         return false;
                     }
                     if (!isValidNatId(idString.get(i))) {
                         Toast.makeText(context, "کد ملی صحیح وارد نشده است", Toast.LENGTH_LONG).show();
+                        hold.id.setBackgroundResource(R.drawable.editor);
                         return false;
                     }
                 } else if (foreignId[i]) {
                     if (idString.get(i) == null) {
                         Toast.makeText(context, "شماره پاسپورت نمی تواند خالی باشد", Toast.LENGTH_LONG).show();
+                        hold.id.setBackgroundResource(R.drawable.editor);
                         return false;
                     }
                 }
-
-                if (!isValidEmail(emailString.get(i))) {
-                    Toast.makeText(context, "ایمیل صحیح وارد نشده است", Toast.LENGTH_LONG).show();
-                    return false;
-                }
                 if (!mobileValidation(mobileString.get(i))){
                     Toast.makeText(context, "موبایل صحیح وارد نشده است", Toast.LENGTH_LONG).show();
+                    hold.mobile.setBackgroundResource(R.drawable.editor);
                     return false;
                 }
+                if (!isValidEmail(emailString.get(i))) {
+                    Toast.makeText(context, "ایمیل صحیح وارد نشده است", Toast.LENGTH_LONG).show();
+                    hold.email.setBackgroundResource(R.drawable.editor);
+                    return false;
+                }
+
 
             }
             return true;}
