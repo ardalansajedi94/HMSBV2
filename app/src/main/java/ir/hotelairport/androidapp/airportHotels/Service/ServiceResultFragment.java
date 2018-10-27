@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.JsonArray;
@@ -20,10 +21,12 @@ import org.greenrobot.eventbus.Subscribe;
 import java.util.ArrayList;
 import java.util.List;
 
+import ir.hotelairport.androidapp.airportHotels.EventBus.Ok;
 import ir.hotelairport.androidapp.airportHotels.EventBus.PassServicesToFragment;
 import ir.hotelairport.androidapp.airportHotels.EventBus.PassServicesToPax;
 import ir.hotelairport.androidapp.airportHotels.EventBus.ReserveButtonClickedServices;
 import ir.hotelairport.androidapp.airportHotels.EventBus.ReserveResultBackEvent;
+import ir.hotelairport.androidapp.airportHotels.PersianDigitConverter;
 import ir.hotelairport.androidapp.airportHotels.PreferenceManager.MyPreferenceManager;
 import ir.hotelairport.androidapp.R;
 import ir.hotelairport.androidapp.airportHotels.adapters.ServiceListAdapter;
@@ -37,12 +40,12 @@ import ir.hotelairport.androidapp.airportHotels.api.model.ServicesResponse;
 public class ServiceResultFragment extends Fragment {
 
     ServicesResponse res;
-
+    TextView name , date;
     RecyclerView recyclerView;
     Button send;
     JsonArray servicesArray = new JsonArray();
-
-
+    String nameS;
+    int year ,month , day;
     @Subscribe
     public void onServiceBack(final PassServicesToFragment services){
 
@@ -82,10 +85,13 @@ public class ServiceResultFragment extends Fragment {
 
     }
 
-    public ServiceResultFragment newInstance(ServicesResponse response) {
+    public ServiceResultFragment newInstance(ServicesResponse response , int year , int month , int day , String name) {
 
         Bundle args = new Bundle();
-
+        this.year= year;
+        this.month = month;
+        this.day=day;
+        this.nameS = name;
         ServiceResultFragment fragment = new ServiceResultFragment();
         fragment.setArguments(args);
         this.res = response;
@@ -106,7 +112,11 @@ public class ServiceResultFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         recyclerView=view.findViewById( R.id.hotel_list);
         send=view.findViewById( R.id.return_btn);
-
+        name = view.findViewById(R.id.name);
+        date = view.findViewById(R.id.date);
+        name.setText(nameS);
+        date.setText(PersianDigitConverter.PerisanNumber(String.valueOf(year)) + "/" + PersianDigitConverter.PerisanNumber(String.valueOf(month))+"/"+PersianDigitConverter.PerisanNumber(String.valueOf(day)));
+        EventBus.getDefault().post(new Ok(true));
         MyPreferenceManager.getInstace(getActivity()).putRefId(res.getRef_id());
         List<Service> actServices = new ArrayList<>();
         for (int i = 0 ; i<res.getServices().size() ; i++){

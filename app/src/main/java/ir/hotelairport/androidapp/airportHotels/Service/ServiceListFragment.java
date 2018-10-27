@@ -49,6 +49,7 @@ public class ServiceListFragment extends Fragment {
     private String hour=null;
     private String min=null;
     private String checkIn=null;
+    int shYear , shMonth,shDay;
     boolean flag = false;
     private ProgressBar progressBar;
     private ConstraintLayout main;
@@ -116,6 +117,7 @@ public class ServiceListFragment extends Fragment {
                 }
                 else {
                     Toast.makeText(getActivity() , "ابتدا تاریخ خود را انتخاب کنید", Toast.LENGTH_LONG).show();
+
                 }
             }
         });
@@ -162,7 +164,9 @@ public class ServiceListFragment extends Fragment {
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-
+                                shYear=year;
+                                shMonth=monthOfYear+1;
+                                shDay=dayOfMonth;
                                 PersianDate jDate = new PersianDate();
                                 jDate.setShYear(year);
                                 jDate.setShMonth(monthOfYear + 1);
@@ -252,7 +256,7 @@ public class ServiceListFragment extends Fragment {
         public void onResponse(ServicesResponse res) {
             MyPreferenceManager.getInstace(getActivity()).putRefId(res.getRef_id());
             ServiceResultFragment serviceResultFragment = new ServiceResultFragment();
-            serviceResultFragment.newInstance( res );
+            serviceResultFragment.newInstance( res ,shYear,shMonth,shDay,"سرویس ها" );
             getFragmentManager().beginTransaction().add( R.id.content_frame , serviceResultFragment ).addToBackStack( null ).commit();
         }
 

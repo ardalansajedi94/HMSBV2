@@ -46,6 +46,7 @@ public class DailySearchFragment extends Fragment {
     private TextView checkOutDate;
     ImageView shortStayLogo ,serviceLogo;
     Button search;
+    int shYear , shMonth,shDay;
     private ProgressBar progressBar;
     private ConstraintLayout main;
     boolean flag=false, dateFlag=false;
@@ -194,14 +195,14 @@ public class DailySearchFragment extends Fragment {
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-
+                                 shYear=year;
+                                 shMonth=monthOfYear+1;
+                                 shDay=dayOfMonth;
                                 PersianDate jDate = new PersianDate();
                                 jDate.setShYear(year);
                                 jDate.setShMonth(monthOfYear + 1);
                                 jDate.setShDay(dayOfMonth);
-
                                 int m = monthOfYear + 1;
-
                                 DecimalFormat formatter = new DecimalFormat("#");
                                 String YearString = formatter.format(Integer.valueOf(year));
                                 String MounthString = formatter.format(Integer.valueOf(m));
@@ -282,7 +283,7 @@ public class DailySearchFragment extends Fragment {
         @Override
         public void onResponse(final AvailabilityRes res) {
             DailyResultFragment dailyResultFragment = new DailyResultFragment();
-            dailyResultFragment.newInstance(res);
+            dailyResultFragment.newInstance(res , shYear ,shMonth,shDay , "اقامت روزانه");
             getFragmentManager().beginTransaction().add(R.id.content_frame , dailyResultFragment).addToBackStack(null).commit();
             EventBus.getDefault().post(new ResultFragmentShow(true));
 

@@ -20,18 +20,35 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:textColor="@color/colorAccent"
+        android:layout_margin="8dp"
+        android:layout_alignParentTop="true"
+        />
 
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/name"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/colorAccent"
+            android:textSize="14sp" />
         <android.support.v7.widget.RecyclerView
             android:id="@+id/hotel_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@id/date"
             android:layout_above="@+id/return_btn"
-            android:layout_alignParentTop="true"
-
              />
-
-
-
         <Button
             android:id="@+id/return_btn"
             android:layout_width="match_parent"

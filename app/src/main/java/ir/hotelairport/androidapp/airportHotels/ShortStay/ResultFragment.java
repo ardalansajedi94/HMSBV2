@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.JsonArray;
@@ -24,6 +25,7 @@ import java.util.ArrayList;
 import ir.hotelairport.androidapp.airportHotels.EventBus.Ok;
 import ir.hotelairport.androidapp.airportHotels.EventBus.ReserveResultBackEvent;
 import ir.hotelairport.androidapp.airportHotels.MainActivity;
+import ir.hotelairport.androidapp.airportHotels.PersianDigitConverter;
 import ir.hotelairport.androidapp.airportHotels.PreferenceManager.MyPreferenceManager;
 import ir.hotelairport.androidapp.airportHotels.adapters.RoomListAdapter;
 import ir.hotelairport.androidapp.airportHotels.api.data.HotelApi;
@@ -38,10 +40,13 @@ public class ResultFragment extends Fragment {
 
     int[] counter ;
     Room[] confirm;
+    int year ,month , day;
     AvailabilityRes response;
     View view;
+    TextView name , date;
     RecyclerView recyclerView;
     Button send;
+    String nameS;
     JsonArray roomList= new JsonArray();
     RelativeLayout main;
     ProgressBar progress;
@@ -52,10 +57,13 @@ public class ResultFragment extends Fragment {
 
     }
 
-    public ResultFragment newInstance(AvailabilityRes response) {
+    public ResultFragment newInstance(AvailabilityRes response , int year , int month , int day , String name) {
 
         Bundle args = new Bundle();
-
+        this.year= year;
+        this.month = month;
+        this.day=day;
+        this.nameS = name;
         ResultFragment fragment = new ResultFragment();
         fragment.setArguments(args);
         this.response = response;
@@ -82,6 +90,10 @@ public class ResultFragment extends Fragment {
         main = view.findViewById(R.id.main);
         progress = view.findViewById(R.id.progress);
         send= view.findViewById(R.id.return_btn);
+        name = view.findViewById(R.id.name);
+        date = view.findViewById(R.id.date);
+        name.setText(nameS);
+        date.setText(PersianDigitConverter.PerisanNumber(String.valueOf(year)) + "/" + PersianDigitConverter.PerisanNumber(String.valueOf(month))+"/"+PersianDigitConverter.PerisanNumber(String.valueOf(day)));
         final LinearLayoutManager layoutManager =new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(roomListAdapter);

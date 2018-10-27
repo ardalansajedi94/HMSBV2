@@ -58,12 +58,12 @@ public class SearchFragment extends Fragment{
     boolean flag=true;
     RadioGroup stayGroup;
     RadioButton radioButton;
-
+    String name;
 
     String date =null , time =  null , Hour , min;
     int hour = 0;
     int mainHour = 0;
-
+    int shYear , shMonth , shDay;
 
     @Override
     public void onStop() {
@@ -114,13 +114,13 @@ public class SearchFragment extends Fragment{
                         hour = mainHour;
                         hour+=3;
 
-
+                        name = "اقامت کوتاه مدت سه ساعته";
                         object.addProperty("checkOut" ,  "3");
                     }else{
                         hour=mainHour;
                         hour+=6;
 
-
+                        name = "اقامت کوتاه مدت شش ساعته";
                         object.addProperty("checkOut" ,  "6");
                     }
                     object.addProperty("api_token" , MyPreferenceManager.getInstace(getActivity()).getToken());
@@ -197,7 +197,9 @@ public class SearchFragment extends Fragment{
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-
+                                shYear = year;
+                                shMonth= monthOfYear+1;
+                                shDay=dayOfMonth;
                                 PersianDate jDate = new PersianDate();
                                 jDate.setShYear(year);
                                 jDate.setShMonth(monthOfYear + 1);
@@ -278,7 +280,7 @@ public class SearchFragment extends Fragment{
         @Override
         public void onResponse(final AvailabilityRes res) {
             ResultFragment resultFragment = new ResultFragment();
-            resultFragment.newInstance(res);
+            resultFragment.newInstance(res , shYear ,shMonth,shDay , name);
             getFragmentManager().beginTransaction().add(R.id.content_frame , resultFragment).addToBackStack(null).commit();
             EventBus.getDefault().post(new ResultFragmentShow(true)  );
 
