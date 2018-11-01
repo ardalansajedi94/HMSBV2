@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="net.hotelairport.androidapp.WelcomeSlidesFragment"
+    tools:context="ir.hotelairport.androidapp.WelcomeSlidesFragment"
     android:background="@color/milky"
     android:clickable="true">
 
@@ -23,7 +23,7 @@
         android:layout_height="match_parent"
 
         android:orientation="vertical"
-        tools:context="net.hotelairport.androidapp.GuestActivity"
+        tools:context="ir.hotelairport.androidapp.GuestActivity"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="25dp">
 

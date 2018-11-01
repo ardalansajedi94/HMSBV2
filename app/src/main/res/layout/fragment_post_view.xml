@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="net.hotelairport.androidapp.PostViewFragment"
+    tools:context="ir.hotelairport.androidapp.PostViewFragment"
     android:background="@color/milky"
     android:clickable="true">
     <LinearLayout

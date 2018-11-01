@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="net.hotelairport.androidapp">
+    package="ir.hotelairport.androidapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" tools:node="remove" />
+    <uses-permission android:name="android.permission.CAMERA" tools:node="remove" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name="net.hotelairport.androidapp.Application"
+        android:name="ir.hotelairport.androidapp.Application"
         android:allowBackup="true"
         android:icon="@drawable/ic_last_logo"
         android:label="@string/app_name"
@@ -33,7 +34,7 @@
             android:name="io.fabric.ApiKey"
             android:value="727f977f010d8fece84d8fd9e9a98254dd1c0be2"
             />
-        <activity android:name="net.hotelairport.androidapp.airportHotels.ComeFromWebActivity"
+        <activity android:name="ir.hotelairport.androidapp.airportHotels.ComeFromWebActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -47,12 +48,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="net.hotelairport.androidapp.AuthActivity"
+            android:name="ir.hotelairport.androidapp.AuthActivity"
             android:screenOrientation="portrait"
             />
 
         <activity
-            android:name="net.hotelairport.androidapp.airportHotels.MainActivity"
+            android:name="ir.hotelairport.androidapp.airportHotels.MainActivity"
             android:screenOrientation="portrait"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustResize"
@@ -60,7 +61,7 @@
 
         </activity>
         <activity
-            android:name="net.hotelairport.androidapp.airportHotels.SplashAct"
+            android:name="ir.hotelairport.androidapp.airportHotels.SplashAct"
             android:screenOrientation="portrait"
             android:launchMode="singleTask"
             >
@@ -72,13 +73,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="net.hotelairport.androidapp.LoggedInActivity"
+            android:name="ir.hotelairport.androidapp.LoggedInActivity"
             android:screenOrientation="portrait"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustResize" >
 
         </activity>
-        <activity android:name="net.hotelairport.androidapp.SplashActivity"
+        <activity android:name="ir.hotelairport.androidapp.SplashActivity"
             android:screenOrientation="portrait"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustResize"
@@ -87,14 +88,14 @@
 
         </activity>
 
-        <activity android:name="net.hotelairport.androidapp.airportHotels.AirportHotelAct"
+        <activity android:name="ir.hotelairport.androidapp.airportHotels.AirportHotelAct"
             android:screenOrientation="portrait"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustResize">
 
         </activity>
 
-        <activity android:name="net.hotelairport.androidapp.airportHotels.WebTest">
+        <activity android:name="ir.hotelairport.androidapp.airportHotels.WebTest">
 
         </activity>
 
@@ -131,7 +132,7 @@
     <uses-sdk
         tools:overrideLibrary="co.ronash.pushe" />
     <permission
-        android:name="iDid.permission.C2D_MESSAGE"
+        android:name="ir.hotelairport.androidapp.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
     <uses-permission
         android:name="iDid.permission.C2D_MESSAGE" />
@@ -140,6 +141,6 @@
 
     <!-- Optional permissions -->
     <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
 
 </manifest>

@@ -32,7 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                tools:context="net.hotelairport.androidapp.RequestTaxiFragment">
+                tools:context="ir.hotelairport.androidapp.RequestTaxiFragment">
 
                 <Button
                     android:id="@+id/time_tv"
@@ -82,7 +82,7 @@
 
             </android.support.constraint.ConstraintLayout>
 
-            <net.hotelairport.androidapp.NonScrollableListView
+            <ir.hotelairport.androidapp.NonScrollableListView
                 android:id="@+id/servicesList"
                 android:divider="@color/transparent"
                 android:dividerHeight="0dp"

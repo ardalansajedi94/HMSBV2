@@ -24,7 +24,7 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:context="net.hotelairport.androidapp.RequestHouseKeepingFragment">
+            tools:context="ir.hotelairport.androidapp.RequestHouseKeepingFragment">
 
             <RelativeLayout
                 android:id="@+id/service_spinner_container"
