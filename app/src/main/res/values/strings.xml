@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">خدمات هتل فرودگاهی تهران</string>
+    <string name="app_name" translatable="false">Hotel Airport</string>
     <string name="welcome_to_hotel">Welcome To Hotel Persian</string>
     <string name="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ut enim quis nulla hendrerit euismod. </string>
     <string name="register">Register</string>

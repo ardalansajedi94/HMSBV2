@@ -8,15 +8,14 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" tools:node="remove" />
     <uses-permission android:name="android.permission.CAMERA" tools:node="remove" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name="ir.hotelairport.androidapp.Application"
         android:allowBackup="true"
-        android:icon="@drawable/ic_last_logo"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/ic_last_logo"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
@@ -95,9 +94,6 @@
 
         </activity>
 
-        <activity android:name="ir.hotelairport.androidapp.airportHotels.WebTest">
-
-        </activity>
 
         <receiver android:name="co.ronash.pushe.receiver.UpdateReceiver" >
             <intent-filter>

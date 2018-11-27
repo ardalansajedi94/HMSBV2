@@ -9,6 +9,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class VoucherController {
+
+
+
     private HotelApi.VoucherCallBack loginCallBack;
 
     public VoucherController(HotelApi.VoucherCallBack voucherCallBack) {

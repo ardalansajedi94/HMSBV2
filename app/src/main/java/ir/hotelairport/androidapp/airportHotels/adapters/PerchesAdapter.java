@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -168,6 +169,7 @@ public class PerchesAdapter extends RecyclerView.Adapter<PerchesAdapter.ViewHold
                         ((MainActivity)context).startActivity(intent);
                     }
                     catch (Exception ex){
+                        Log.d("tag", "doInBackground: " +ex);
                     }
                     return null;
                 }
