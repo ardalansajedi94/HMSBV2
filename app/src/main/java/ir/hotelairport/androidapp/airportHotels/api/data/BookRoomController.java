@@ -1,9 +1,7 @@
 package ir.hotelairport.androidapp.airportHotels.api.data;
 
 
-
 import com.google.gson.JsonObject;
-
 
 import ir.hotelairport.androidapp.airportHotels.api.model.BookResponse;
 import retrofit2.Call;
@@ -20,10 +18,10 @@ public class BookRoomController {
     }
 
 
-    public void start(JsonObject req , String token){
+    public void start(JsonObject req, String token) {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(HotelApi.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
-        HotelApi hotelApi =  retrofit.create(HotelApi.class);
-        Call<BookResponse> call = hotelApi.BookRoom(req , "application/json" ,"application/json" , token);
+        HotelApi hotelApi = retrofit.create(HotelApi.class);
+        Call<BookResponse> call = hotelApi.BookRoom(req, "application/json", "application/json", token);
         call.enqueue(new Callback<BookResponse>() {
             @Override
             public void onResponse(Call<BookResponse> call, Response<BookResponse> response) {
@@ -37,8 +35,7 @@ public class BookRoomController {
 
                 try {
                     bookRoomCallBack.onFailure(t.getCause().getMessage());
-                }
-                catch (NullPointerException e){
+                } catch (NullPointerException e) {
 
                 }
 

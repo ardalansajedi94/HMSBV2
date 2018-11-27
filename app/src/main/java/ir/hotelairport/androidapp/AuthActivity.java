@@ -12,16 +12,15 @@ import ir.hotelairport.androidapp.airportHotels.PreferenceManager.MyPreferenceMa
 public class AuthActivity extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_auth);
-        if (MyPreferenceManager.getInstace( this ).getLoginRes() == null) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_auth);
+        if (MyPreferenceManager.getInstace(this).getLoginRes() == null) {
             SignInFragment signInFragment = new SignInFragment();
-            getFragmentManager().beginTransaction().add( R.id.content_frame, signInFragment ).commit();
-        }
-        else {
-            Intent myIntent = new Intent(this , MainActivity.class);
+            getFragmentManager().beginTransaction().add(R.id.content_frame, signInFragment).commit();
+        } else {
+            Intent myIntent = new Intent(this, MainActivity.class);
             this.startActivity(myIntent);
-            this.finish( );
+            this.finish();
         }
     }
 }

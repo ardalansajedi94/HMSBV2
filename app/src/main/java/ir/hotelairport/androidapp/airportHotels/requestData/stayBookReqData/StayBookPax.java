@@ -45,13 +45,13 @@ public class StayBookPax {
 
         int index = -1;
 
-        for(int i = 0; i < this.services.size(); i++) {
-            if(this.services.get(i).get("serviceId") == serviceId) {
+        for (int i = 0; i < this.services.size(); i++) {
+            if (this.services.get(i).get("serviceId") == serviceId) {
                 index = i;
             }
         }
 
-        if(index != -1) {
+        if (index != -1) {
             this.services.remove(index);
         }
 
@@ -107,15 +107,16 @@ public class StayBookPax {
 
     public boolean validate() {
 
-        if(fullName == null || fullName.equals("")) {
+        if (fullName == null || fullName.equals("")) {
             return false;
-        } else if(nationalCode == null || nationalCode.equals("")) {
+        } else if (nationalCode == null || nationalCode.equals("")) {
             return false;
-        } else if(mobile == null || mobile.equals("")) {
+        } else if (mobile == null || mobile.equals("")) {
             return false;
-        } else if(email == null || mobile.equals("")) {
+        } else if (email == null || mobile.equals("")) {
             return false;
-        } if(services == null) {
+        }
+        if (services == null) {
             return false;
         }
 

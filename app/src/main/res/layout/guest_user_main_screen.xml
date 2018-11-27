@@ -82,13 +82,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-           card_view:layout_constraintGuide_percent="0.65" />
+            card_view:layout_constraintGuide_percent="0.65" />
 
         <android.support.constraint.Guideline
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/guideline6"
-           card_view:layout_constraintGuide_percent="0.78"
+            card_view:layout_constraintGuide_percent="0.78"
             android:orientation="horizontal" />
 
     </android.support.constraint.ConstraintLayout>

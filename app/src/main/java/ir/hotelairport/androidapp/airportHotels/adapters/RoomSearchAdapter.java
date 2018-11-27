@@ -21,12 +21,12 @@ public class RoomSearchAdapter extends BaseAdapter {
     private ArrayList<Integer> adtList = new ArrayList<>();
 //  private ArrayList<Integer> cldList = new ArrayList<>();
 
-    public RoomSearchAdapter(ArrayList<ArrayList<Integer>> occupants){
+    public RoomSearchAdapter(ArrayList<ArrayList<Integer>> occupants) {
 
         this.occupants = occupants;
 
 
-        for(int i=1; i < 3; i++){
+        for (int i = 1; i < 3; i++) {
             adtList.add(i);
         }
 //
@@ -44,7 +44,7 @@ public class RoomSearchAdapter extends BaseAdapter {
     @Override
     public Object getItem(int i) {
 
-        if(this.occupants.size() - 1 > i){
+        if (this.occupants.size() - 1 > i) {
             return this.occupants.get(i);
         }
 
@@ -69,11 +69,11 @@ public class RoomSearchAdapter extends BaseAdapter {
         if (view == null) {
 
             view = LayoutInflater.from(viewGroup.getContext())
-                    .inflate( R.layout.room_occupants, viewGroup, false);
+                    .inflate(R.layout.room_occupants, viewGroup, false);
 
             Spinner adults = view.findViewById(R.id.adult_count);
             adultText = view.findViewById(R.id.textView6);
-          //  Spinner children = view.findViewById(R.idString.child_count);
+            //  Spinner children = view.findViewById(R.idString.child_count);
 
             adults.setAdapter(new ArrayAdapter<>(viewGroup.getContext(),
                     android.R.layout.simple_spinner_item, this.adtList));
@@ -82,9 +82,9 @@ public class RoomSearchAdapter extends BaseAdapter {
 //            children.setAdapter(new ArrayAdapter<>(viewGroup.getContext(),
 //                    android.R.layout.simple_spinner_item, this.cldList));
 
-            adults.setSelection(this.occupants.get(j).get(0)-1);
+            adults.setSelection(this.occupants.get(j).get(0) - 1);
 
-           // children.setSelection(this.occupants.get(j).get(1));
+            // children.setSelection(this.occupants.get(j).get(1));
 
             adults.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
@@ -124,8 +124,7 @@ public class RoomSearchAdapter extends BaseAdapter {
     }
 
 
-
-    public ArrayList<ArrayList<Integer>> getOccupants(){
+    public ArrayList<ArrayList<Integer>> getOccupants() {
         return this.occupants;
     }
 }

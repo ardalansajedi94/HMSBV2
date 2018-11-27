@@ -4,7 +4,6 @@ package ir.hotelairport.androidapp.airportHotels.api.data;
 import java.util.List;
 
 import ir.hotelairport.androidapp.airportHotels.api.model.Voucher;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -19,9 +18,9 @@ public class PurchaseController {
     }
 
 
-    public void start(String auth){
+    public void start(String auth) {
         Retrofit retrofit = new Retrofit.Builder().baseUrl("https://hotelairport.ir/api/v1/").addConverterFactory(GsonConverterFactory.create()).build();
-        HotelApi hotelApi =  retrofit.create(HotelApi.class);
+        HotelApi hotelApi = retrofit.create(HotelApi.class);
         Call<List<Voucher>> call = hotelApi.PurchaseList(auth);
         call.enqueue(new Callback<List<Voucher>>() {
             @Override
@@ -29,7 +28,7 @@ public class PurchaseController {
                 if (response.isSuccessful())
                     purchaseListCallBack.onResponse(response.body());
                 else
-                    purchaseListCallBack.onError( response.message() );
+                    purchaseListCallBack.onError(response.message());
 
             }
 
@@ -38,8 +37,7 @@ public class PurchaseController {
 
                 try {
                     purchaseListCallBack.onFailure(t.getCause().getMessage());
-                }
-                catch (NullPointerException e){
+                } catch (NullPointerException e) {
 
                 }
 

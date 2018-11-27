@@ -11,7 +11,7 @@ import retrofit2.Response;
 public class RetrofitWithRetry {
     public static final int DEFAULT_RETRIES = 3;
 
-    public static <T> void enqueueWithRetry(Call<T> call,  final int retryCount,final Callback<T> callback) {
+    public static <T> void enqueueWithRetry(Call<T> call, final int retryCount, final Callback<T> callback) {
         call.enqueue(new RetryableCallback<T>(call, retryCount) {
 
             @Override

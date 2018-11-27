@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/milky"
@@ -11,7 +10,6 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
 
 
         <TextView
@@ -40,146 +38,146 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView">
-        <android.support.constraint.ConstraintLayout
 
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorPrimary"
-            >
+            <android.support.constraint.ConstraintLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimary">
 
 
-            <TextView
-                android:id="@+id/full_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                android:textSize="10sp"
-                app:layout_constraintBottom_toTopOf="@id/nat_code"
-                app:layout_constraintHorizontal_weight="2"
-                app:layout_constraintLeft_toRightOf="@id/logo"
-                app:layout_constraintRight_toLeftOf="@id/txt1"
-                app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/full_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toTopOf="@id/nat_code"
+                    app:layout_constraintHorizontal_weight="2"
+                    app:layout_constraintLeft_toRightOf="@id/logo"
+                    app:layout_constraintRight_toLeftOf="@id/txt1"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/nat_code"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:gravity="right"
-                android:textSize="10sp"
-                app:layout_constraintBottom_toTopOf="@id/phone"
-                app:layout_constraintEnd_toEndOf="@+id/full_name"
-                app:layout_constraintHorizontal_weight="2"
-                app:layout_constraintLeft_toRightOf="@id/logo"
-                app:layout_constraintRight_toLeftOf="@id/txt2"
-                app:layout_constraintTop_toBottomOf="@+id/full_name" />
+                <TextView
+                    android:id="@+id/nat_code"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="right"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toTopOf="@id/phone"
+                    app:layout_constraintEnd_toEndOf="@+id/full_name"
+                    app:layout_constraintHorizontal_weight="2"
+                    app:layout_constraintLeft_toRightOf="@id/logo"
+                    app:layout_constraintRight_toLeftOf="@id/txt2"
+                    app:layout_constraintTop_toBottomOf="@+id/full_name" />
 
-            <ImageView
-                android:id="@id/logo"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="19dp"
-                android:layout_marginTop="19dp"
-                android:src="@drawable/ic_user_1"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <ImageView
+                    android:id="@id/logo"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginTop="19dp"
+                    android:src="@drawable/ic_user_1"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/phone"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                <TextView
+                    android:id="@+id/phone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
 
-                android:gravity="right"
-                android:textSize="10sp"
-                app:layout_constraintBottom_toTopOf="@id/email"
-                app:layout_constraintEnd_toEndOf="@+id/nat_code"
-                app:layout_constraintHorizontal_chainStyle="spread_inside"
-                app:layout_constraintHorizontal_weight="2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nat_code" />
+                    android:gravity="right"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toTopOf="@id/email"
+                    app:layout_constraintEnd_toEndOf="@+id/nat_code"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintHorizontal_weight="2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nat_code" />
 
-            <TextView
-                android:id="@+id/email"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                <TextView
+                    android:id="@+id/email"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
 
-                android:layout_marginBottom="16dp"
-                android:gravity="right"
-                android:textSize="10sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/phone"
-                app:layout_constraintHorizontal_weight="2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/phone" />
+                    android:layout_marginBottom="16dp"
+                    android:gravity="right"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/phone"
+                    app:layout_constraintHorizontal_weight="2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/phone" />
 
-            <TextView
-                android:id="@+id/txt1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:gravity="center"
-                android:textSize="10sp"
-                android:textStyle="bold"
-                android:text="@string/ah_pass_first_name"
-                android:textColor="@color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_weight="1"
-                app:layout_constraintStart_toEndOf="@+id/full_name"
-                app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/txt1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="center"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:text="@string/ah_pass_first_name"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toEndOf="@+id/full_name"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/txt2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:paddingRight="3dp"
-                android:text="@string/ah_pass_national_code"
-                android:textColor="@color/black"
-                android:textSize="10sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_weight="1"
-                app:layout_constraintTop_toBottomOf="@+id/txt1" />
+                <TextView
+                    android:id="@+id/txt2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:paddingRight="3dp"
+                    android:text="@string/ah_pass_national_code"
+                    android:textColor="@color/black"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintTop_toBottomOf="@+id/txt1" />
 
-            <TextView
-                android:id="@+id/txt3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:paddingRight="3dp"
-                android:text="@string/ah_pass_cell_num"
-                android:textColor="@color/black"
-                android:textSize="10sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_weight="1"
-                app:layout_constraintTop_toBottomOf="@+id/txt2" />
+                <TextView
+                    android:id="@+id/txt3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:paddingRight="3dp"
+                    android:text="@string/ah_pass_cell_num"
+                    android:textColor="@color/black"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintTop_toBottomOf="@+id/txt2" />
 
-            <TextView
-                android:id="@+id/txt4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:paddingRight="3dp"
-                android:text="@string/ah_pass_email"
-                android:textColor="@color/black"
-                android:textSize="10sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_weight="1"
-                app:layout_constraintTop_toBottomOf="@+id/phone" />
-        </android.support.constraint.ConstraintLayout>
+                <TextView
+                    android:id="@+id/txt4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:paddingRight="3dp"
+                    android:text="@string/ah_pass_email"
+                    android:textColor="@color/black"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintTop_toBottomOf="@+id/phone" />
+            </android.support.constraint.ConstraintLayout>
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.RecyclerView
@@ -202,8 +200,8 @@
             app:layout_constraintLeft_toLeftOf="@+id/service_list"
             app:layout_constraintRight_toRightOf="@+id/service_list"
             app:layout_constraintBottom_toBottomOf="@+id/service_list"
-            app:layout_constraintTop_toTopOf="@+id/service_list"
-            />
+            app:layout_constraintTop_toTopOf="@+id/service_list" />
+
         <TextView
             android:id="@+id/total_price"
             android:layout_width="match_parent"
@@ -228,7 +226,7 @@
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/check_txt"
-            app:layout_constraintTop_toTopOf="@id/check_txt"  />
+            app:layout_constraintTop_toTopOf="@id/check_txt" />
 
         <TextView
             android:id="@+id/check_txt"

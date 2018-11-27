@@ -3,20 +3,20 @@ package ir.hotelairport.androidapp.airportHotels.api.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Room{
+public class Room {
 
 
-            int hotel_id,
-                adults,
-                room_id,
-                star;
+    int hotel_id,
+            adults,
+            room_id,
+            star;
 
-            String hotel_title_en,
-                   room_title_fa;
+    String hotel_title_en,
+            room_title_fa;
 
     List<Price> price;
 
-            ArrayList<Service> services = new ArrayList<>();
+    ArrayList<Service> services = new ArrayList<>();
 
     public Room() {
     }
@@ -79,7 +79,7 @@ public class Room{
 
 
     public ArrayList<Service> getServices() {
-        return  services;
+        return services;
     }
 
     public void setServices(ArrayList<Service> services) {

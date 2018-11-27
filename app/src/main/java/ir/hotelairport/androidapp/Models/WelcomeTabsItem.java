@@ -5,13 +5,13 @@ package ir.hotelairport.androidapp.Models;
  */
 
 public class WelcomeTabsItem {
-    private String title, content,image_source;
+    private String title, content, image_source;
 
-    public WelcomeTabsItem()
-    {
+    public WelcomeTabsItem() {
 
     }
-    public WelcomeTabsItem(String dealName, String dealDescription ) {
+
+    public WelcomeTabsItem(String dealName, String dealDescription) {
         this.title = dealName;
         this.content = dealDescription;
     }

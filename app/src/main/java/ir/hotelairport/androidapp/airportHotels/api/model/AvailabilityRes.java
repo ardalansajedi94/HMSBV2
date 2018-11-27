@@ -3,7 +3,6 @@ package ir.hotelairport.androidapp.airportHotels.api.model;
 import java.util.ArrayList;
 
 
-
 public class AvailabilityRes {
 
     String refId;

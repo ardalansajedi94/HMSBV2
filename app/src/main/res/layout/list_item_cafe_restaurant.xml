@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- A CardView that contains a TextView -->
+<?xml version="1.0" encoding="utf-8"?><!-- A CardView that contains a TextView -->
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/tools"
@@ -17,14 +16,35 @@
     android:background="@color/milky"
     android:clickable="true"
     app:ignore="NamespaceTypo">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-    <!--<FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <!--<FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+            <ImageView
+                android:id="@+id/cafe_restaurant_image"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
+                android:padding="10sp"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/cafe_restaurant_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:maxLines="1"
+                android:background="@color/primary_transparent"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+        </FrameLayout>-->
         <ImageView
             android:id="@+id/cafe_restaurant_image"
             android:layout_width="match_parent"
@@ -38,30 +58,11 @@
             android:id="@+id/cafe_restaurant_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
+            android:layout_gravity="start"
             android:maxLines="1"
-            android:background="@color/primary_transparent"
-            android:textAlignment="center"
-            android:textColor="@android:color/white"
-            android:textSize="18sp" />
-    </FrameLayout>-->
-    <ImageView
-        android:id="@+id/cafe_restaurant_image"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:adjustViewBounds="true"
-        android:cropToPadding="true"
-        android:padding="10sp"
-        android:scaleType="centerCrop" />
-    <TextView
-        android:id="@+id/cafe_restaurant_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:maxLines="1"
-        android:textAlignment="textStart"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        android:layout_margin="8sp"/>
+            android:textAlignment="textStart"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:layout_margin="8sp" />
     </LinearLayout>
 </android.support.v7.widget.CardView>

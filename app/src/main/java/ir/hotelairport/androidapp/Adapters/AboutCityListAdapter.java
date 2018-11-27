@@ -17,12 +17,11 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.Locale;
 
-import ir.hotelairport.androidapp.airportHotels.PersianDate;
 import ir.hotelairport.androidapp.Constants;
 import ir.hotelairport.androidapp.Models.BlogContent;
 import ir.hotelairport.androidapp.R;
+import ir.hotelairport.androidapp.airportHotels.PersianDate;
 import ir.hotelairport.androidapp.airportHotels.PersianDigitConverter;
-
 import saman.zamani.persiandate.PersianDateFormat;
 
 /**
@@ -32,13 +31,15 @@ import saman.zamani.persiandate.PersianDateFormat;
 public class AboutCityListAdapter extends BaseAdapter {
     private ArrayList<BlogContent> _data;
     private Context _c;
-    private ImageLoader imageLoader ;
+    private ImageLoader imageLoader;
+
     public AboutCityListAdapter(ArrayList<BlogContent> data, Context c) {
         _data = data;
-        Collections.reverse( _data );
+        Collections.reverse(_data);
 
         _c = c;
     }
+
     public int getCount() {
         // TODO Auto-generated method stub
         return _data.size();
@@ -66,38 +67,33 @@ public class AboutCityListAdapter extends BaseAdapter {
         TextView title_tv = (TextView) v.findViewById(R.id.about_city_card_view_title);
         TextView description_tv = (TextView) v.findViewById(R.id.about_city_card_view_description);
         ImageView image = (ImageView) v.findViewById(R.id.about_city_card_view_image);
-        TextView date_tv = (TextView)v.findViewById(R.id.content_date);
+        TextView date_tv = (TextView) v.findViewById(R.id.content_date);
         SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
         Date date;
         try {
             date = fmt.parse(item.getCreated_at());
             PersianDateFormat pdformater = new PersianDateFormat();
-            PersianDate now=new PersianDate();
+            PersianDate now = new PersianDate();
             saman.zamani.persiandate.PersianDate jdate;
-            jdate =pdformater.parseGrg(item.getCreated_at(),"yyyy-MM-dd HH:mm:ss");
-            date_tv.setText(PersianDigitConverter.PerisanNumber( jdate.getShYear() + "/" + jdate.getShMonth() + "/" + jdate.getShDay() ));
+            jdate = pdformater.parseGrg(item.getCreated_at(), "yyyy-MM-dd HH:mm:ss");
+            date_tv.setText(PersianDigitConverter.PerisanNumber(jdate.getShYear() + "/" + jdate.getShMonth() + "/" + jdate.getShDay()));
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
         title_tv.setText(item.getTitle());
         description_tv.setText(item.getContent());
-        imageLoader= ImageLoader.getInstance();
-        if (item.getImages()!=null)
-        {
-            Log.d("images are there","yes");
-            if (item.getImages().size()>0)
-            {
-                imageLoader.displayImage(Constants.MEDIA_BASE_URL+item.getImages().get(0).getImage_source(),image);
+        imageLoader = ImageLoader.getInstance();
+        if (item.getImages() != null) {
+            Log.d("images are there", "yes");
+            if (item.getImages().size() > 0) {
+                imageLoader.displayImage(Constants.MEDIA_BASE_URL + item.getImages().get(0).getImage_source(), image);
 
-            }
-            else
-            {
+            } else {
                 image.setImageResource(R.drawable.fuch_this_shit);
             }
 
-        }
-        else
+        } else
             image.setImageResource(R.drawable.fuch_this_shit);
         return v;
     }

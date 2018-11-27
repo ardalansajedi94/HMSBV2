@@ -1,13 +1,13 @@
 package ir.hotelairport.androidapp;
 
 
-import android.content.Context;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,6 +40,7 @@ public class AboutCityFragment extends Fragment {
     private DatabaseHandler db;
     ProgressDialog progress;
     int category;
+
     public AboutCityFragment() {
         // Required empty public constructor
     }
@@ -50,11 +51,11 @@ public class AboutCityFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_about_city, container, false);
-        db=new DatabaseHandler(getActivity());
-        this.category=getArguments().getInt("category");
-        user_detail=getActivity().getSharedPreferences(Constants.USER_DETAIL, Context.MODE_PRIVATE);
+        db = new DatabaseHandler(getActivity());
+        this.category = getArguments().getInt("category");
+        user_detail = getActivity().getSharedPreferences(Constants.USER_DETAIL, Context.MODE_PRIVATE);
         aboutCityList = (ListView) view.findViewById(R.id.about_city_list);
-        blogContents=new ArrayList<>();
+        blogContents = new ArrayList<>();
         getAboutCityContent();
         aboutCityList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -73,6 +74,7 @@ public class AboutCityFragment extends Fragment {
         });
         return view;
     }
+
     public static AboutCityFragment newInstance(int category) {
         AboutCityFragment myFragment = new AboutCityFragment();
 
@@ -82,10 +84,10 @@ public class AboutCityFragment extends Fragment {
 
         return myFragment;
     }
-    private void getAboutCityContent()
-    {
+
+    private void getAboutCityContent() {
         progress = new ProgressDialog(getActivity());
-        progress.setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"connecting_to_server"));
+        progress.setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "connecting_to_server"));
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
         progress.setProgress(0);
@@ -95,9 +97,9 @@ public class AboutCityFragment extends Fragment {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         RequestInterface requestInterface = retrofit.create(RequestInterface.class);
-        Call<ServerResponse> response ;
-        response = requestInterface.city_info(category,user_detail.getInt(Constants.LANGUAGE_ID,1));
-        RetrofitWithRetry.enqueueWithRetry(response,3,new Callback<ServerResponse>() {
+        Call<ServerResponse> response;
+        response = requestInterface.city_info(category, user_detail.getInt(Constants.LANGUAGE_ID, 1));
+        RetrofitWithRetry.enqueueWithRetry(response, 3, new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, retrofit2.Response<ServerResponse> response) {
                 progress.dismiss();
@@ -105,25 +107,25 @@ public class AboutCityFragment extends Fragment {
                 switch (response.code()) {
                     case 200:
                         if (resp != null) {
-                            blogContents=resp.getInformations();
-                            aboutCityListAdapter = new AboutCityListAdapter(blogContents,getActivity());
+                            blogContents = resp.getInformations();
+                            aboutCityListAdapter = new AboutCityListAdapter(blogContents, getActivity());
                             aboutCityList.setAdapter(aboutCityListAdapter);
                         }
                         break;
                     default:
                         if (resp != null) {
                             Toast.makeText(getActivity(), resp.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"server_problem"), Toast.LENGTH_SHORT).show();
+                        } else
+                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "server_problem"), Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
+
             @Override
             public void onFailure(Call<ServerResponse> call, Throwable t) {
                 progress.dismiss();
                 Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.d("error:",t.getMessage());
+                Log.d("error:", t.getMessage());
             }
         });
     }

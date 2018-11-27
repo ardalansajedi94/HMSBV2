@@ -32,11 +32,11 @@ public class ServiceBookReq implements Parcelable {
 //    }
 
     private String refId, checkInDate, checkInTime, nationalCode, fullName, ageGroup,
-                    phone, email;
+            phone, email;
 
     private ArrayList<Service> services = new ArrayList<>();
 
-    public ServiceBookReq(String refId){
+    public ServiceBookReq(String refId) {
         this.refId = refId;
         this.ageGroup = "1";
     }
@@ -99,7 +99,7 @@ public class ServiceBookReq implements Parcelable {
 
         ArrayList<Service> servicesFiltered = new ArrayList<>();
 
-        for(Service service: services) {
+        for (Service service : services) {
 //            if(service.getCount() > 0) {
 //                servicesFiltered.add(service);
 //            }
@@ -145,7 +145,7 @@ public class ServiceBookReq implements Parcelable {
         return services;
     }
 
-    public JSONObject getData(){
+    public JSONObject getData() {
         JSONObject jsObj = new JSONObject();
 
 

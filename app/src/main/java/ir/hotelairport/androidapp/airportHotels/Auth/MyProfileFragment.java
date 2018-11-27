@@ -18,29 +18,33 @@ import ir.hotelairport.androidapp.airportHotels.api.model.ProfileResponse;
 
 public class MyProfileFragment extends Fragment {
 
-    TextView name , email , mobile;
+    TextView name, email, mobile;
     ConstraintLayout detail;
     ProgressBar progressBar;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         ProfileController profileController = new ProfileController(callBack);
-        profileController.start(MyPreferenceManager.getInstace(getActivity()).getLoginRes().getToken_type() +" "+ MyPreferenceManager.getInstace(getActivity()).getLoginRes().getAccess_token());
-        return inflater.inflate(R.layout.fragment_my_profile , container , false);
+        profileController.start(MyPreferenceManager.getInstace(getActivity()).getLoginRes().getToken_type() + " " + MyPreferenceManager.getInstace(getActivity()).getLoginRes().getAccess_token());
+        return inflater.inflate(R.layout.fragment_my_profile, container, false);
 
     }
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         findViews(view);
     }
-    public void findViews(View view){
+
+    public void findViews(View view) {
         name = view.findViewById(R.id.name);
-        email= view.findViewById(R.id.email);
+        email = view.findViewById(R.id.email);
         mobile = view.findViewById(R.id.mobile);
         detail = view.findViewById(R.id.detail);
         progressBar = view.findViewById(R.id.progress);
     }
+
     HotelApi.ShowProfile callBack = new HotelApi.ShowProfile() {
         @Override
         public void onResponse(ProfileResponse response) {

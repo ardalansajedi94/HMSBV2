@@ -21,11 +21,13 @@ import ir.hotelairport.androidapp.R;
 public class TimeLineListAdapter extends BaseAdapter {
     private ArrayList<TimeLine> _data;
     private Context _c;
-    private ImageLoader imageLoader ;
+    private ImageLoader imageLoader;
+
     public TimeLineListAdapter(ArrayList<TimeLine> data, Context c) {
         _data = data;
         _c = c;
     }
+
     @Override
     public boolean areAllItemsEnabled() {
         return false;
@@ -35,6 +37,7 @@ public class TimeLineListAdapter extends BaseAdapter {
     public boolean isEnabled(int position) {
         return false;
     }
+
     public int getCount() {
         // TODO Auto-generated method stub
         return _data.size();
@@ -55,14 +58,11 @@ public class TimeLineListAdapter extends BaseAdapter {
         View v = convertView;
         final TimeLine item = _data.get(position);
 
-        if (item.is_response())
-        {
+        if (item.is_response()) {
             LayoutInflater vi = (LayoutInflater) _c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = vi.inflate(R.layout.list_item_time_line_response, null);
 
-        }
-        else
-        {
+        } else {
             LayoutInflater vi = (LayoutInflater) _c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = vi.inflate(R.layout.list_item_time_line, null);
         }

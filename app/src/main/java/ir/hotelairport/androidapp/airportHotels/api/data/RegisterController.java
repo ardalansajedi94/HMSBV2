@@ -1,7 +1,6 @@
 package ir.hotelairport.androidapp.airportHotels.api.data;
 
 
-
 import com.google.gson.JsonObject;
 
 import ir.hotelairport.androidapp.airportHotels.api.model.LoginRes;
@@ -19,17 +18,17 @@ public class RegisterController {
     }
 
 
-    public void start(JsonObject req){
+    public void start(JsonObject req) {
         Retrofit retrofit = new Retrofit.Builder().baseUrl("https://hotelairport.ir/").addConverterFactory(GsonConverterFactory.create()).build();
-        HotelApi hotelApi =  retrofit.create(HotelApi.class);
-        Call<LoginRes> call = hotelApi.Register(req , "application/json" ,"application/json" );
+        HotelApi hotelApi = retrofit.create(HotelApi.class);
+        Call<LoginRes> call = hotelApi.Register(req, "application/json", "application/json");
         call.enqueue(new Callback<LoginRes>() {
             @Override
             public void onResponse(Call<LoginRes> call, Response<LoginRes> response) {
                 if (response.isSuccessful())
                     registerCallback.onResponse(response.body());
                 else
-                    registerCallback.onError( response.message() );
+                    registerCallback.onError(response.message());
 
             }
 
@@ -38,8 +37,7 @@ public class RegisterController {
 
                 try {
                     registerCallback.onFailure(t.getCause().getMessage());
-                }
-                catch (NullPointerException e){
+                } catch (NullPointerException e) {
 
                 }
 

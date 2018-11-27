@@ -35,11 +35,11 @@ import ir.hotelairport.androidapp.airportHotels.PreferenceManager.MyPreferenceMa
 import ir.hotelairport.androidapp.airportHotels.adapters.DailyPassengerDetailAdapter;
 import ir.hotelairport.androidapp.airportHotels.api.data.BookRoomController;
 import ir.hotelairport.androidapp.airportHotels.api.data.HotelApi;
+import ir.hotelairport.androidapp.airportHotels.api.model.BookResponse;
 import ir.hotelairport.androidapp.airportHotels.api.model.PaxReview;
 import ir.hotelairport.androidapp.airportHotels.api.model.RoomList;
 import ir.hotelairport.androidapp.airportHotels.api.model.RoomReview;
 import ir.hotelairport.androidapp.airportHotels.dialogFragments.RulesDialog;
-import ir.hotelairport.androidapp.airportHotels.api.model.BookResponse;
 
 
 public class DailyReserveFragment extends android.support.v4.app.Fragment {
@@ -50,7 +50,8 @@ public class DailyReserveFragment extends android.support.v4.app.Fragment {
     ProgressBar progress;
     CheckBox checkBox;
     TextView rules;
-    boolean flag=false;
+    boolean flag = false;
+
     public DailyReserveFragment() {
         // Required empty public constructor
     }
@@ -58,9 +59,9 @@ public class DailyReserveFragment extends android.support.v4.app.Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        if (flag){
-            Intent intent = new Intent(getActivity() , ComeFromWebActivity.class );
-            getActivity().startActivity( intent );
+        if (flag) {
+            Intent intent = new Intent(getActivity(), ComeFromWebActivity.class);
+            getActivity().startActivity(intent);
             getActivity().finish();
         }
     }
@@ -71,12 +72,12 @@ public class DailyReserveFragment extends android.support.v4.app.Fragment {
     }
 
     public DailyReserveFragment newInstance(RoomList roomList) {
-        this.roomList=roomList;
+        this.roomList = roomList;
         return this;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_reserve, container, false);
     }
 
@@ -84,9 +85,9 @@ public class DailyReserveFragment extends android.support.v4.app.Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = view.findViewById(R.id.passenger);
-        next= view.findViewById(R.id.accept);
+        next = view.findViewById(R.id.accept);
         main = view.findViewById(R.id.main);
-        progress = view.findViewById( R.id.progress);
+        progress = view.findViewById(R.id.progress);
         checkBox = view.findViewById(R.id.checkbox);
         rules = view.findViewById(R.id.check_txt);
         List<List<PaxReview>> paxReviewList = new ArrayList<>();
@@ -116,86 +117,86 @@ public class DailyReserveFragment extends android.support.v4.app.Fragment {
         rules.setMovementMethod(LinkMovementMethod.getInstance());
 
         rules.setText(styledString);
-        for (int i = 0 ; i<roomReviewList.size() ; i++){
+        for (int i = 0; i < roomReviewList.size(); i++) {
             paxReviewList.add(roomReviewList.get(i).getPaxReviews());
         }
-        String [][] poistion = new String[4][2];
-        for ( int i = 0 ; i < paxReviewList.size();i++){
-            for (int j = 0 ; j<paxReviewList.get(i).size() ; j++){
+        String[][] poistion = new String[4][2];
+        for (int i = 0; i < paxReviewList.size(); i++) {
+            for (int j = 0; j < paxReviewList.get(i).size(); j++) {
                 paxReview.add(paxReviewList.get(i).get(j));
-                if(i== 0 &&j==0)
-                    poistion[i][j] ="اتاق اول مسافر اول";
-                else if(i== 0 &&j==1)
-                    poistion[i][j] ="اتاق اول مسافر دوم";
-                else if(i== 1 &&j==0)
-                    poistion[i][j] ="اتاق دوم مسافر اول";
-                else if(i== 1 &&j==1)
-                    poistion[i][j] ="اتاق دوم مسافر دوم";
-                else if(i== 2 &&j==0)
-                    poistion[i][j] ="اتاق سوم مسافر اول";
-                else if(i== 2 &&j==1)
-                    poistion[i][j] ="اتاق سوم مسافر دوم";
-                else if(i== 3 &&j==0)
-                    poistion[i][j] ="اتاق چهارم مسافر اول";
-                else if(i== 3 &&j==1)
-                    poistion[i][j] ="اتاق چهارم مسافر دوم";
+                if (i == 0 && j == 0)
+                    poistion[i][j] = "اتاق اول مسافر اول";
+                else if (i == 0 && j == 1)
+                    poistion[i][j] = "اتاق اول مسافر دوم";
+                else if (i == 1 && j == 0)
+                    poistion[i][j] = "اتاق دوم مسافر اول";
+                else if (i == 1 && j == 1)
+                    poistion[i][j] = "اتاق دوم مسافر دوم";
+                else if (i == 2 && j == 0)
+                    poistion[i][j] = "اتاق سوم مسافر اول";
+                else if (i == 2 && j == 1)
+                    poistion[i][j] = "اتاق سوم مسافر دوم";
+                else if (i == 3 && j == 0)
+                    poistion[i][j] = "اتاق چهارم مسافر اول";
+                else if (i == 3 && j == 1)
+                    poistion[i][j] = "اتاق چهارم مسافر دوم";
             }
 
         }
-        final DailyPassengerDetailAdapter passengerDetailAdapter = new DailyPassengerDetailAdapter(getActivity() , paxReview , poistion);
+        final DailyPassengerDetailAdapter passengerDetailAdapter = new DailyPassengerDetailAdapter(getActivity(), paxReview, poistion);
         recyclerView.setAdapter(passengerDetailAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity() , LinearLayoutManager.VERTICAL ,false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (checkBox.isChecked()) {
-                JsonObject req = new JsonObject();
-                req.addProperty("api_token" , MyPreferenceManager.getInstace(getActivity()).getToken());
-                req.addProperty("ip" , "0");
-                req.addProperty("refId" , MyPreferenceManager.getInstace(getActivity()).getRefId());
-                req.addProperty("reservedId" , MyPreferenceManager.getInstace(getActivity()).getReservedId());
-                JsonArray room = new JsonArray();
-                for (int i = 0 ; i<roomList.getRoomReviews().size() ; i++){
-                    JsonObject roomObj = new JsonObject();
-                    roomObj.addProperty("roomId" , roomList.getRoomReviews().get(i).getRoomId());
-                    roomObj.addProperty("adults" , roomList.getRoomReviews().get(i).getAdults());
-                    roomObj.addProperty("childs" , roomList.getRoomReviews().get(i).getChilds());
-                    JsonArray pax =new JsonArray();
-                    for (int j = 0 ;j<roomList.getRoomReviews().get(i).getPaxReviews().size() ; j++){
-                        JsonObject paxObj = new JsonObject();
-                        paxObj.addProperty("fullName" , roomList.getRoomReviews().get(i).getPaxReviews().get(j).getFullName());
-                        paxObj.addProperty("nationalCode" , roomList.getRoomReviews().get(i).getPaxReviews().get(j).getNationalCode());
-                        paxObj.addProperty("email" , roomList.getRoomReviews().get(i).getPaxReviews().get(j).getEmail());
-                        paxObj.addProperty("mobile" , roomList.getRoomReviews().get(i).getPaxReviews().get(j).getMobile());
-                        paxObj.addProperty("ageGroup" , 1);
-                        if (roomList.getRoomReviews().get(i).getPaxReviews().get(j).isDocType())
-                            paxObj.addProperty("docType" , "i");
-                        else
-                            paxObj.addProperty("docType" , "p");
-                        JsonArray services = new JsonArray();
-                        paxObj.add("services" , services);
-                        pax.add(paxObj);
+                    JsonObject req = new JsonObject();
+                    req.addProperty("api_token", MyPreferenceManager.getInstace(getActivity()).getToken());
+                    req.addProperty("ip", "0");
+                    req.addProperty("refId", MyPreferenceManager.getInstace(getActivity()).getRefId());
+                    req.addProperty("reservedId", MyPreferenceManager.getInstace(getActivity()).getReservedId());
+                    JsonArray room = new JsonArray();
+                    for (int i = 0; i < roomList.getRoomReviews().size(); i++) {
+                        JsonObject roomObj = new JsonObject();
+                        roomObj.addProperty("roomId", roomList.getRoomReviews().get(i).getRoomId());
+                        roomObj.addProperty("adults", roomList.getRoomReviews().get(i).getAdults());
+                        roomObj.addProperty("childs", roomList.getRoomReviews().get(i).getChilds());
+                        JsonArray pax = new JsonArray();
+                        for (int j = 0; j < roomList.getRoomReviews().get(i).getPaxReviews().size(); j++) {
+                            JsonObject paxObj = new JsonObject();
+                            paxObj.addProperty("fullName", roomList.getRoomReviews().get(i).getPaxReviews().get(j).getFullName());
+                            paxObj.addProperty("nationalCode", roomList.getRoomReviews().get(i).getPaxReviews().get(j).getNationalCode());
+                            paxObj.addProperty("email", roomList.getRoomReviews().get(i).getPaxReviews().get(j).getEmail());
+                            paxObj.addProperty("mobile", roomList.getRoomReviews().get(i).getPaxReviews().get(j).getMobile());
+                            paxObj.addProperty("ageGroup", 1);
+                            if (roomList.getRoomReviews().get(i).getPaxReviews().get(j).isDocType())
+                                paxObj.addProperty("docType", "i");
+                            else
+                                paxObj.addProperty("docType", "p");
+                            JsonArray services = new JsonArray();
+                            paxObj.add("services", services);
+                            pax.add(paxObj);
+                        }
+                        roomObj.add("pax", pax);
+                        room.add(roomObj);
                     }
-                    roomObj.add("pax" , pax);
-                    room.add(roomObj);
-                }
-                req.add("room" , room);
+                    req.add("room", room);
 
-                BookRoomController bookRoomController = new BookRoomController(callBack);
-                bookRoomController.start(req, MyPreferenceManager.getInstace(getActivity()).getLoginRes().getToken_type() +" "+ MyPreferenceManager.getInstace(getActivity()).getLoginRes().getAccess_token());
-                progress.setVisibility(View.VISIBLE);
-                recyclerView.setVisibility(View.INVISIBLE);
-                }
-                else {
-                    Toast.makeText(getActivity() , "لطفا ابتدا قوانین را مطالعه کرده و اطلاعات فوق را تایید کنید", Toast.LENGTH_LONG).show();
+                    BookRoomController bookRoomController = new BookRoomController(callBack);
+                    bookRoomController.start(req, MyPreferenceManager.getInstace(getActivity()).getLoginRes().getToken_type() + " " + MyPreferenceManager.getInstace(getActivity()).getLoginRes().getAccess_token());
+                    progress.setVisibility(View.VISIBLE);
+                    recyclerView.setVisibility(View.INVISIBLE);
+                } else {
+                    Toast.makeText(getActivity(), "لطفا ابتدا قوانین را مطالعه کرده و اطلاعات فوق را تایید کنید", Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
+
     HotelApi.BookRoomCallBack callBack = new HotelApi.BookRoomCallBack() {
         @Override
         public void onResponse(BookResponse url) {
-            flag=true;
+            flag = true;
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url.getPaymentLink()));
             browserIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(browserIntent);
@@ -206,9 +207,9 @@ public class DailyReserveFragment extends android.support.v4.app.Fragment {
         public void onFailure(String cause) {
             main.setVisibility(View.VISIBLE);
             progress.setVisibility(View.INVISIBLE);
-            Toast.makeText(getActivity() , "مشکلی رخ داده است کمی بعد تر دوباره امتحان کنید" , Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "مشکلی رخ داده است کمی بعد تر دوباره امتحان کنید", Toast.LENGTH_LONG).show();
         }
     };
 
 
-    }
+}

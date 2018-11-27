@@ -40,7 +40,7 @@ android {
         }
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        manifestPlaceholders = [onesignal_app_id: "296f33d8-71cf-4dce-9f9a-faf8b3ac6772",
+        manifestPlaceholders = [onesignal_app_id               : "296f33d8-71cf-4dce-9f9a-faf8b3ac6772",
                                 // Project number pulled from dashboard, local value is ignored.
                                 onesignal_google_project_number: "REMOTE"]
         resValue "string", "google_maps_key",

@@ -16,7 +16,7 @@
         android:background="@drawable/button_border"
         android:textColor="@color/colorAccent"
         android:textSize="12sp"
-        android:text=" جستجوی مجدد "/>
+        android:text=" جستجوی مجدد " />
 
 
 </android.support.constraint.ConstraintLayout>

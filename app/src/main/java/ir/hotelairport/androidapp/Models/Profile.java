@@ -5,8 +5,8 @@ package ir.hotelairport.androidapp.Models;
  */
 
 public class Profile {
-   private int id,room_no;
-    private String firstname,lastname,profile_image,created_at,national_id;
+    private int id, room_no;
+    private String firstname, lastname, profile_image, created_at, national_id;
 
     public int getRoom_no() {
         return room_no;

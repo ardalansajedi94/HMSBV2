@@ -31,6 +31,7 @@ public class ServicesFragment extends Fragment {
     private ServicesListAdapter servicesListAdapter;
     private DatabaseHandler db;
     SharedPreferences user_detail;
+
     public ServicesFragment() {
         // Required empty public constructor
     }
@@ -40,69 +41,70 @@ public class ServicesFragment extends Fragment {
     public void onResume() {
         super.onResume();
         AppCompatActivity activity = (AppCompatActivity) getActivity();
-        activity.getSupportActionBar().setTitle(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"services"));
+        activity.getSupportActionBar().setTitle(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "services"));
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_services, container, false);
-        db=new DatabaseHandler(getActivity());
-        user_detail=getActivity().getSharedPreferences(Constants.USER_DETAIL, Context.MODE_PRIVATE);
-        servicesList = (GridView)view.findViewById(R.id.services_list);
+        db = new DatabaseHandler(getActivity());
+        user_detail = getActivity().getSharedPreferences(Constants.USER_DETAIL, Context.MODE_PRIVATE);
+        servicesList = (GridView) view.findViewById(R.id.services_list);
         servicesListContent = new ArrayList<>();
-        servicesListContent.add(new BlogContent(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"browse_restaurants"),R.drawable.restaurants));
-        servicesListContent.add(new BlogContent(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"browse_cafes"),R.drawable.coffeshops));
-        servicesListContent.add(new BlogContent(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"table_reserve"),R.drawable.table_reserve));
-        servicesListContent.add(new BlogContent(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"minibar_charge"),R.drawable.minibar_charge));
-        servicesListContent.add(new BlogContent(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"taxi"),R.drawable.request_taxi));
-        servicesListContent.add(new BlogContent(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"house_keeping"),R.drawable.house_keeping));
-        servicesListContent.add(new BlogContent(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"clothes"),R.drawable.clothes));
-        servicesListContent.add(new BlogContent(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"wake_up"),R.drawable.wakeup));
-        servicesListContent.add(new BlogContent(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"stay"),R.drawable.stay));
-        servicesListContent.add(new BlogContent(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"problems"),R.drawable.problems));
-        if (user_detail.getString(Constants.LANGUAGE_LOCALE,"fa").equals("fa")){
-        servicesListContent.add(new BlogContent(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"short_stay"),R.drawable.img_service_with_room));
-        servicesListContent.add(new BlogContent(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"service_only"),R.drawable.img_service_only));}
-        servicesListAdapter = new ServicesListAdapter(servicesListContent,getActivity());
+        servicesListContent.add(new BlogContent(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "browse_restaurants"), R.drawable.restaurants));
+        servicesListContent.add(new BlogContent(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "browse_cafes"), R.drawable.coffeshops));
+        servicesListContent.add(new BlogContent(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "table_reserve"), R.drawable.table_reserve));
+        servicesListContent.add(new BlogContent(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "minibar_charge"), R.drawable.minibar_charge));
+        servicesListContent.add(new BlogContent(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "taxi"), R.drawable.request_taxi));
+        servicesListContent.add(new BlogContent(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "house_keeping"), R.drawable.house_keeping));
+        servicesListContent.add(new BlogContent(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "clothes"), R.drawable.clothes));
+        servicesListContent.add(new BlogContent(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "wake_up"), R.drawable.wakeup));
+        servicesListContent.add(new BlogContent(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "stay"), R.drawable.stay));
+        servicesListContent.add(new BlogContent(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "problems"), R.drawable.problems));
+        if (user_detail.getString(Constants.LANGUAGE_LOCALE, "fa").equals("fa")) {
+            servicesListContent.add(new BlogContent(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "short_stay"), R.drawable.img_service_with_room));
+            servicesListContent.add(new BlogContent(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "service_only"), R.drawable.img_service_only));
+        }
+        servicesListAdapter = new ServicesListAdapter(servicesListContent, getActivity());
         servicesList.setAdapter(servicesListAdapter);
         servicesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Fragment fragment ;
+                Fragment fragment;
                 Bundle bundle;
 
-                switch (i)
-                {
+                switch (i) {
                     case 0:
-                        fragment=new CafeRestaurantsFragment();
+                        fragment = new CafeRestaurantsFragment();
                         bundle = new Bundle();
                         bundle.putInt("type", 4); // 1 : restaurant,2:cafes
                         fragment.setArguments(bundle);
                         break;
                     case 1:
-                        fragment=new CafeRestaurantsFragment();
-                         bundle = new Bundle();
+                        fragment = new CafeRestaurantsFragment();
+                        bundle = new Bundle();
                         bundle.putInt("type", 5); // 1 : restaurant,2:cafes
                         fragment.setArguments(bundle);
                         break;
                     case 2:
-                        fragment=new TableReserveFragment();
+                        fragment = new TableReserveFragment();
                         break;
                     case 3:
-                        fragment=new MinibarChargeFragment();
+                        fragment = new MinibarChargeFragment();
                         break;
 //                    case 4:
 //                        fragment = new RequestTaxiFragment();
 //                        break;
                     case 5:
-                        fragment= new RequestHouseKeepingFragment();
+                        fragment = new RequestHouseKeepingFragment();
                         break;
                     case 6:
-                        fragment=new RequestClothesFragment();
+                        fragment = new RequestClothesFragment();
                         break;
                     case 7:
-                        fragment=new RequestWakeupServiceFragment();
+                        fragment = new RequestWakeupServiceFragment();
                         break;
                     case 8:
                         fragment = new RequestStayFragment();

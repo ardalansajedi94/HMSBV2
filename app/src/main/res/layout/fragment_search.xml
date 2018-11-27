@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -15,7 +14,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:visibility="visible"/>
+        android:visibility="visible" />
+
     <android.support.constraint.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
@@ -103,16 +103,16 @@
             app:layout_constraintTop_toBottomOf="@+id/stay_duration_type" />
 
 
-<TextView
-    android:id="@+id/textView3"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:layout_constraintTop_toBottomOf="@+id/arrival_time"
-    app:layout_constraintRight_toRightOf="parent"
-    android:layout_marginTop="20dp"
-    android:layout_marginRight="20dp"
-    android:text="@string/stay_time"
-    />
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/arrival_time"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/stay_time" />
+
         <RadioGroup
             android:id="@+id/stay_group"
             android:layout_width="wrap_content"

@@ -5,7 +5,7 @@ package ir.hotelairport.androidapp.Models;
  */
 
 public class LanguageKey {
-    private String key,created_at,updated_at;
+    private String key, created_at, updated_at;
     private int id;
 
     public String getKey() {

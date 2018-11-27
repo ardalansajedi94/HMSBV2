@@ -26,9 +26,10 @@ import ir.hotelairport.androidapp.R;
 public class RestaurantMenuListAdapter extends BaseAdapter {
     private ArrayList<RestaurantMenuItem> _data;
     private Context _c;
-    private ImageLoader imageLoader ;
+    private ImageLoader imageLoader;
     private ProgressDialog progress;
     private SharedPreferences user_detail;
+
     public RestaurantMenuListAdapter(ArrayList<RestaurantMenuItem> data, Context c) {
         _data = data;
         _c = c;
@@ -60,20 +61,17 @@ public class RestaurantMenuListAdapter extends BaseAdapter {
         }
         TextView title_tv = (TextView) v.findViewById(R.id.menu_title);
         ImageView image = (ImageView) v.findViewById(R.id.menu_image);
-        TextView material_tv=(TextView)v.findViewById(R.id.menu_material_tv);
-        if (item.getTitle()!=null)
+        TextView material_tv = (TextView) v.findViewById(R.id.menu_material_tv);
+        if (item.getTitle() != null)
             title_tv.setText(item.getTitle());
-        imageLoader= ImageLoader.getInstance();
-        if (item.getMaterial()!=null)
-        {
-            String material[]=item.getMaterial().split(":");
-            material_tv.setText(TextUtils.join(",",material));
+        imageLoader = ImageLoader.getInstance();
+        if (item.getMaterial() != null) {
+            String material[] = item.getMaterial().split(":");
+            material_tv.setText(TextUtils.join(",", material));
         }
-        if (item.getImages()!=null)
-        {
-            if (!item.getImages().isEmpty())
-            {
-                imageLoader.displayImage(Constants.MEDIA_BASE_URL+item.getImages().get(0).getImage_source(),image);
+        if (item.getImages() != null) {
+            if (!item.getImages().isEmpty()) {
+                imageLoader.displayImage(Constants.MEDIA_BASE_URL + item.getImages().get(0).getImage_source(), image);
             }
         }
 

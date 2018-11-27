@@ -1,12 +1,12 @@
 package ir.hotelairport.androidapp.airportHotels;
 
 import android.app.FragmentManager;
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,7 +14,6 @@ import android.view.View;
 import org.greenrobot.eventbus.EventBus;
 
 import ir.hotelairport.androidapp.R;
-
 
 
 public class AirportHotelAct extends AppCompatActivity {
@@ -51,10 +50,7 @@ public class AirportHotelAct extends AppCompatActivity {
     // ROOM BOOKING
 
 
-
-
-
-    private void initMenu(){
+    private void initMenu() {
 
         NavigationView navigationView = findViewById(R.id.navigation_view);
 
@@ -64,8 +60,7 @@ public class AirportHotelAct extends AppCompatActivity {
                 drawerLayout,
                 toolbar,
                 R.string.drawer_open,
-                R.string.drawer_close)
-        {
+                R.string.drawer_close) {
 
             @Override
             public void onDrawerClosed(View v) {
@@ -109,7 +104,6 @@ public class AirportHotelAct extends AppCompatActivity {
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
     }
-
 
 
 }

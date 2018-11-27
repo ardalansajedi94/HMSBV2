@@ -1,7 +1,8 @@
 package ir.hotelairport.androidapp.airportHotels;
+
 public class PersianDigitConverter {
 
-    private static String[] persianNumbers = new String[]{ "۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹" };
+    private static String[] persianNumbers = new String[]{"۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"};
 
     public static String PerisanNumber(String text) {
         if (text.length() == 0) {

@@ -15,11 +15,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="?attr/actionBarSize"
-            android:id="@+id/content_frame"/>
+            android:id="@+id/content_frame" />
+
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,13 +35,14 @@
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"
                 android:orientation="horizontal">
+
                 <android.support.v7.widget.Toolbar
                     android:id="@+id/toolbar"
                     android:layout_weight="4"
                     android:layout_width="0dp"
                     android:layout_height="?attr/actionBarSize"
                     android:background="@color/colorPrimary"
-                    app:popupTheme="@style/AppTheme.PopupOverlay"/>
+                    app:popupTheme="@style/AppTheme.PopupOverlay" />
 
 
                 <ImageView
@@ -52,15 +55,17 @@
 
 
             </LinearLayout>
+
             <View
                 android:id="@+id/toolbar_shadow"
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
                 android:background="@drawable/toolbar_dropshadow" />
+
             <FrameLayout
                 android:id="@+id/back_toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"/>
+                android:layout_height="?attr/actionBarSize" />
         </android.support.design.widget.AppBarLayout>
 
     </android.support.design.widget.CoordinatorLayout>
@@ -73,6 +78,6 @@
         app:menu="@menu/activity_main_drawer"
         android:background="@color/colorAccent"
         app:itemTextColor="@color/colorPrimary"
-        android:theme="@style/NavigationTheme"/>
+        android:theme="@style/NavigationTheme" />
 
 </android.support.v4.widget.DrawerLayout>

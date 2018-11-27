@@ -43,7 +43,7 @@ public class WelcomeSlidesFragment extends Fragment {
     private ViewPager viewPager;
     private WelcomeViewPagerAdapter mAdapter;
     private Handler handler;
-    private TextView login_tv,register_tv;
+    private TextView login_tv, register_tv;
     private ImageView bg_logo;
     private final int delay = 5000;
     private int page = 0;
@@ -51,21 +51,18 @@ public class WelcomeSlidesFragment extends Fragment {
     private SharedPreferences user_detail;
     private DatabaseHandler db;
     FragmentManager fragmentManager;
-    ArrayList<WelcomeTabsItem>slides=new ArrayList<>();
+    ArrayList<WelcomeTabsItem> slides = new ArrayList<>();
     Runnable runnable = new Runnable() {
         public void run() {
-            if (isRTL(Locale.getDefault()))
-            {
-                if (page==0) {
-                    page =mAdapter.getCount();
+            if (isRTL(Locale.getDefault())) {
+                if (page == 0) {
+                    page = mAdapter.getCount();
                 } else {
                     page--;
                 }
                 viewPager.setCurrentItem(page, true);
                 handler.postDelayed(this, delay);
-            }
-            else
-            {
+            } else {
                 if (mAdapter.getCount() == page) {
                     page = 0;
                 } else {
@@ -87,25 +84,24 @@ public class WelcomeSlidesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view=inflater.inflate(R.layout.fragment_welcome_slides, container, false);
-        db=new DatabaseHandler(getActivity());
-        user_detail=getActivity().getSharedPreferences(Constants.USER_DETAIL, Context.MODE_PRIVATE);
+        View view = inflater.inflate(R.layout.fragment_welcome_slides, container, false);
+        db = new DatabaseHandler(getActivity());
+        user_detail = getActivity().getSharedPreferences(Constants.USER_DETAIL, Context.MODE_PRIVATE);
         handler = new Handler();
-        viewPager = (ViewPager)view.findViewById(R.id.welcome_view_pager);
-        mAdapter = new WelcomeViewPagerAdapter(getActivity(),slides);
+        viewPager = (ViewPager) view.findViewById(R.id.welcome_view_pager);
+        mAdapter = new WelcomeViewPagerAdapter(getActivity(), slides);
         viewPager.setAdapter(mAdapter);
         TabLayout tabLayout = (TabLayout) view.findViewById(R.id.welcome_tab_layout);
         tabLayout.setupWithViewPager(viewPager, true);
         getWelcomeSlides();
-        if (isRTL(Locale.getDefault()))
-        {
-            page=mAdapter.getCount();
+        if (isRTL(Locale.getDefault())) {
+            page = mAdapter.getCount();
             tabLayout.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
         }
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                page=position;
+                page = position;
             }
 
             @Override
@@ -118,8 +114,8 @@ public class WelcomeSlidesFragment extends Fragment {
             }
         });
         fragmentManager = getActivity().getSupportFragmentManager();
-        login_tv =(TextView) view.findViewById(R.id.login_tv);
-        register_tv= (TextView)view.findViewById(R.id.register_tv);
+        login_tv = (TextView) view.findViewById(R.id.login_tv);
+        register_tv = (TextView) view.findViewById(R.id.register_tv);
         login_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -148,24 +144,26 @@ public class WelcomeSlidesFragment extends Fragment {
             }
         });
         AppCompatActivity activity = (AppCompatActivity) getActivity();
-        activity.getSupportActionBar().setTitle(db.getHOtelInfoForLang(user_detail.getInt(Constants.LANGUAGE_ID,1)).getHotel_name());
-        bg_logo=(ImageView)view.findViewById(R.id.bg_logo);
+        activity.getSupportActionBar().setTitle(db.getHOtelInfoForLang(user_detail.getInt(Constants.LANGUAGE_ID, 1)).getHotel_name());
+        bg_logo = (ImageView) view.findViewById(R.id.bg_logo);
         return view;
     }
+
     @Override
     public void onResume() {
         super.onResume();
-         handler.postDelayed(runnable, delay);
+        handler.postDelayed(runnable, delay);
     }
+
     @Override
     public void onPause() {
         super.onPause();
-           handler.removeCallbacks(runnable);
+        handler.removeCallbacks(runnable);
     }
-    private void getWelcomeSlides()
-    {
+
+    private void getWelcomeSlides() {
         progress = new ProgressDialog(getActivity());
-        progress.setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"connecting_to_server"));
+        progress.setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "connecting_to_server"));
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
         progress.setProgress(0);
@@ -175,9 +173,9 @@ public class WelcomeSlidesFragment extends Fragment {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         RequestInterface requestInterface = retrofit.create(RequestInterface.class);
-        Call<ServerResponse> response ;
-        response = requestInterface.getWelcomeSlides(user_detail.getInt(Constants.LANGUAGE_ID,1));
-        RetrofitWithRetry.enqueueWithRetry(response,3,new Callback<ServerResponse>() {
+        Call<ServerResponse> response;
+        response = requestInterface.getWelcomeSlides(user_detail.getInt(Constants.LANGUAGE_ID, 1));
+        RetrofitWithRetry.enqueueWithRetry(response, 3, new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, retrofit2.Response<ServerResponse> response) {
                 progress.dismiss();
@@ -189,12 +187,9 @@ public class WelcomeSlidesFragment extends Fragment {
                             mAdapter = new WelcomeViewPagerAdapter(getActivity(), slides);
                             mAdapter.notifyDataSetChanged();
                             viewPager.setAdapter(mAdapter);
-                            if (slides.size() == 0)
-                            {
+                            if (slides.size() == 0) {
                                 bg_logo.setImageAlpha(255);
-                            }
-                            else
-                            {
+                            } else {
                                 bg_logo.setVisibility(View.GONE);
                             }
                         }
@@ -202,16 +197,16 @@ public class WelcomeSlidesFragment extends Fragment {
                     default:
                         if (resp != null) {
                             Toast.makeText(getActivity(), resp.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"server_problem"), Toast.LENGTH_SHORT).show();
+                        } else
+                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "server_problem"), Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
+
             @Override
             public void onFailure(Call<ServerResponse> call, Throwable t) {
                 progress.dismiss();
-                Log.d("error:",t.getMessage());
+                Log.d("error:", t.getMessage());
             }
         });
     }

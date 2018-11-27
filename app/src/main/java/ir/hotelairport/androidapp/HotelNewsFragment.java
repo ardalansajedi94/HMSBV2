@@ -42,6 +42,7 @@ public class HotelNewsFragment extends Fragment {
     ProgressDialog progress;
     private DatabaseHandler db;
     SwipeRefreshLayout swipeRefreshLayout;
+
     public HotelNewsFragment() {
         // Required empty public constructor
     }
@@ -51,12 +52,12 @@ public class HotelNewsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_hotel_news, container, false);
-        db=new DatabaseHandler(getActivity());
-        user_detail=getActivity().getSharedPreferences(Constants.USER_DETAIL, Context.MODE_PRIVATE);
+        View view = inflater.inflate(R.layout.fragment_hotel_news, container, false);
+        db = new DatabaseHandler(getActivity());
+        user_detail = getActivity().getSharedPreferences(Constants.USER_DETAIL, Context.MODE_PRIVATE);
         aboutCityList = (ListView) view.findViewById(R.id.hotel_news_list);
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.activity_main_swipe_refresh_layout);
-        blogContents=new ArrayList<>();
+        blogContents = new ArrayList<>();
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -82,10 +83,10 @@ public class HotelNewsFragment extends Fragment {
         });
         return view;
     }
-    private void getNewsContent()
-    {
+
+    private void getNewsContent() {
         progress = new ProgressDialog(getActivity());
-        progress.setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"connecting_to_server"));
+        progress.setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "connecting_to_server"));
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
         progress.setProgress(0);
@@ -95,39 +96,39 @@ public class HotelNewsFragment extends Fragment {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         RequestInterface requestInterface = retrofit.create(RequestInterface.class);
-        Call<ServerResponse> response ;
-        response = requestInterface.hotel_news(user_detail.getInt(Constants.LANGUAGE_ID,1));
-        RetrofitWithRetry.enqueueWithRetry(response,3,new Callback<ServerResponse>() {
+        Call<ServerResponse> response;
+        response = requestInterface.hotel_news(user_detail.getInt(Constants.LANGUAGE_ID, 1));
+        RetrofitWithRetry.enqueueWithRetry(response, 3, new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, retrofit2.Response<ServerResponse> response) {
-                Log.d("status code",String.valueOf(response.code()));
+                Log.d("status code", String.valueOf(response.code()));
                 progress.dismiss();
                 swipeRefreshLayout.setRefreshing(false);
                 ServerResponse resp = response.body();
                 switch (response.code()) {
                     case 200:
                         if (resp != null) {
-                            blogContents=resp.getNews();
-                            aboutCityListAdapter = new AboutCityListAdapter(blogContents,getActivity());
+                            blogContents = resp.getNews();
+                            aboutCityListAdapter = new AboutCityListAdapter(blogContents, getActivity());
                             aboutCityList.setAdapter(aboutCityListAdapter);
                         }
                         break;
                     default:
                         if (resp != null) {
                             Toast.makeText(getActivity(), resp.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"server_problem"), Toast.LENGTH_SHORT).show();
+                        } else
+                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "server_problem"), Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
+
             @Override
             public void onFailure(Call<ServerResponse> call, Throwable t) {
                 progress.dismiss();
                 Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.d("error:",t.getMessage());
+                Log.d("error:", t.getMessage());
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
     }
-    }
+}

@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/milky">
+
     <ImageView
         android:id="@+id/hotel_airport"
         android:layout_width="75dp"
@@ -12,7 +13,8 @@
         app:layout_constraintRight_toLeftOf="@id/ibis"
         app:layout_constraintLeft_toRightOf="@id/novotel"
         app:layout_constraintBottom_toTopOf="@id/daily"
-        android:src="@drawable/ha_logo"/>
+        android:src="@drawable/ha_logo" />
+
     <ImageView
         android:id="@+id/ibis"
         android:layout_width="75dp"
@@ -20,7 +22,8 @@
         app:layout_constraintTop_toTopOf="@id/hotel_airport"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toRightOf="@id/hotel_airport"
-        android:src="@drawable/i_logo"/>
+        android:src="@drawable/i_logo" />
+
     <ImageView
         android:id="@+id/novotel"
         android:layout_width="75dp"
@@ -28,7 +31,8 @@
         app:layout_constraintTop_toTopOf="@id/hotel_airport"
         app:layout_constraintRight_toLeftOf="@id/hotel_airport"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:src="@drawable/n_logo"/>
+        android:src="@drawable/n_logo" />
+
     <android.support.constraint.ConstraintLayout
         android:id="@+id/daily"
         android:layout_width="120dp"
@@ -36,8 +40,8 @@
         app:layout_constraintTop_toBottomOf="@id/hotel_airport"
         app:layout_constraintLeft_toRightOf="@id/about_hotel"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/short_stay"
-        >
+        app:layout_constraintBottom_toTopOf="@id/short_stay">
+
         <ImageView
             android:id="@+id/logo"
             android:layout_width="75dp"
@@ -45,7 +49,8 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/ic_daily"/>
+            android:src="@drawable/ic_daily" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,8 +58,9 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/logo"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:text="رزرو روزانه"/>
+            android:text="رزرو روزانه" />
     </android.support.constraint.ConstraintLayout>
+
     <android.support.constraint.ConstraintLayout
         android:id="@+id/short_stay"
         android:layout_width="120dp"
@@ -65,6 +71,7 @@
         app:layout_constraintRight_toRightOf="parent"
 
         >
+
         <ImageView
             android:id="@+id/logo1"
             android:layout_width="75dp"
@@ -72,7 +79,8 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/ic_clock"/>
+            android:src="@drawable/ic_clock" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -80,8 +88,9 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/logo1"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:text="رزرو کوتاه مدت"/>
+            android:text="رزرو کوتاه مدت" />
     </android.support.constraint.ConstraintLayout>
+
     <android.support.constraint.ConstraintLayout
         android:id="@+id/service"
         android:layout_width="120dp"
@@ -89,8 +98,8 @@
         app:layout_constraintTop_toBottomOf="@id/short_stay"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/hotel_news"
-        app:layout_constraintRight_toRightOf="parent"
-        >
+        app:layout_constraintRight_toRightOf="parent">
+
         <ImageView
             android:id="@+id/logo2"
             android:layout_width="75dp"
@@ -98,7 +107,8 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/ic_bell"/>
+            android:src="@drawable/ic_bell" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -106,8 +116,9 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/logo2"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:text="رزرو سرویس"/>
+            android:text="رزرو سرویس" />
     </android.support.constraint.ConstraintLayout>
+
     <android.support.constraint.ConstraintLayout
         android:id="@+id/about_hotel"
         android:layout_width="120dp"
@@ -115,8 +126,8 @@
         app:layout_constraintRight_toLeftOf="@id/daily"
         app:layout_constraintTop_toBottomOf="@id/hotel_airport"
         app:layout_constraintBottom_toTopOf="@id/about_city"
-        app:layout_constraintLeft_toLeftOf="parent"
-        >
+        app:layout_constraintLeft_toLeftOf="parent">
+
         <ImageView
             android:id="@+id/logo4"
             android:layout_width="50dp"
@@ -125,7 +136,8 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/ic_about_hotel"/>
+            android:src="@drawable/ic_about_hotel" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -133,8 +145,9 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/logo4"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:text="درباره هتل"/>
+            android:text="درباره هتل" />
     </android.support.constraint.ConstraintLayout>
+
     <android.support.constraint.ConstraintLayout
         android:id="@+id/about_city"
         android:layout_width="120dp"
@@ -142,8 +155,8 @@
         app:layout_constraintTop_toBottomOf="@id/about_hotel"
         app:layout_constraintBottom_toTopOf="@id/hotel_news"
         app:layout_constraintRight_toLeftOf="@id/short_stay"
-        app:layout_constraintLeft_toLeftOf="parent"
-        >
+        app:layout_constraintLeft_toLeftOf="parent">
+
         <ImageView
             android:id="@+id/logo5"
             android:layout_width="50dp"
@@ -152,7 +165,8 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/ic_about_city"/>
+            android:src="@drawable/ic_about_city" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -160,8 +174,9 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/logo5"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:text="راهنما"/>
+            android:text="راهنما" />
     </android.support.constraint.ConstraintLayout>
+
     <android.support.constraint.ConstraintLayout
         android:id="@+id/hotel_news"
         android:layout_width="120dp"
@@ -169,8 +184,8 @@
         app:layout_constraintTop_toBottomOf="@id/about_city"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toLeftOf="@id/service"
-        app:layout_constraintLeft_toLeftOf="parent"
-        >
+        app:layout_constraintLeft_toLeftOf="parent">
+
         <ImageView
             android:id="@+id/logo6"
             android:layout_width="50dp"
@@ -179,7 +194,8 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/ic_news"/>
+            android:src="@drawable/ic_news" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -187,7 +203,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/logo6"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:text="اخبار"/>
+            android:text="اخبار" />
     </android.support.constraint.ConstraintLayout>
 
 

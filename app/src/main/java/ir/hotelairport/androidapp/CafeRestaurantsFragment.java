@@ -39,10 +39,11 @@ public class CafeRestaurantsFragment extends Fragment {
     private int type; //4 : restaurant,5:cafes
     private ProgressDialog progress;
     private SharedPreferences user_detail;
-    private ArrayList<CafeRestaurant>cafeRestaurants;
+    private ArrayList<CafeRestaurant> cafeRestaurants;
     private CafeRestaurantsListAdapter cafeRestaurantsListAdapter;
     private ListView cafeRestaurantsList;
     DatabaseHandler db;
+
     public CafeRestaurantsFragment() {
         // Required empty public constructor
     }
@@ -54,9 +55,9 @@ public class CafeRestaurantsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_cafe_restaurants, container, false);
         AppCompatActivity activity = (AppCompatActivity) getActivity();
-        db=new DatabaseHandler(getActivity());
+        db = new DatabaseHandler(getActivity());
         user_detail = getActivity().getSharedPreferences(Constants.USER_DETAIL, Context.MODE_PRIVATE);
-        cafeRestaurantsList=(ListView)view.findViewById(R.id.cafe_restaurants_list);
+        cafeRestaurantsList = (ListView) view.findViewById(R.id.cafe_restaurants_list);
         Bundle bundle = this.getArguments();
         if (bundle != null) {
             this.type = bundle.getInt("type", 4);
@@ -72,13 +73,13 @@ public class CafeRestaurantsFragment extends Fragment {
                 break;
         }
 
-        cafeRestaurants=new ArrayList<>();
+        cafeRestaurants = new ArrayList<>();
         cafeRestaurantsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Fragment fragment=TabsFragment.newInstance(type,cafeRestaurants.get(position).getId());
-                FragmentManager fragmentManager =getActivity().getSupportFragmentManager();
+                Fragment fragment = TabsFragment.newInstance(type, cafeRestaurants.get(position).getId());
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.content_frame, fragment);
                 fragmentTransaction.addToBackStack(null);
@@ -90,7 +91,7 @@ public class CafeRestaurantsFragment extends Fragment {
 
     private void getRestaurantsList() {
         progress = new ProgressDialog(getActivity());
-        progress.setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"connecting_to_server"));
+        progress.setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "connecting_to_server"));
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
         progress.setProgress(0);
@@ -101,8 +102,8 @@ public class CafeRestaurantsFragment extends Fragment {
                 .build();
         RequestInterface requestInterface = retrofit.create(RequestInterface.class);
         Call<ServerResponse> response;
-        response = requestInterface.get_restaurants(user_detail.getString(Constants.JWT,""),user_detail.getInt(Constants.LANGUAGE_ID, 1));
-        RetrofitWithRetry.enqueueWithRetry(response,3,new Callback<ServerResponse>() {
+        response = requestInterface.get_restaurants(user_detail.getString(Constants.JWT, ""), user_detail.getInt(Constants.LANGUAGE_ID, 1));
+        RetrofitWithRetry.enqueueWithRetry(response, 3, new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, retrofit2.Response<ServerResponse> response) {
                 Log.d("status code", String.valueOf(response.code()));
@@ -120,7 +121,7 @@ public class CafeRestaurantsFragment extends Fragment {
                         if (resp != null) {
                             Toast.makeText(getActivity(), resp.getMessage(), Toast.LENGTH_SHORT).show();
                         } else
-                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"server_problem"), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "server_problem"), Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
@@ -136,7 +137,7 @@ public class CafeRestaurantsFragment extends Fragment {
 
     private void getCafesList() {
         progress = new ProgressDialog(getActivity());
-        progress.setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"connecting_to_server"));
+        progress.setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "connecting_to_server"));
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
         progress.setProgress(0);
@@ -147,8 +148,8 @@ public class CafeRestaurantsFragment extends Fragment {
                 .build();
         RequestInterface requestInterface = retrofit.create(RequestInterface.class);
         Call<ServerResponse> response;
-        response = requestInterface.get_coffeshops(user_detail.getString(Constants.JWT,""),user_detail.getInt(Constants.LANGUAGE_ID, 1));
-        RetrofitWithRetry.enqueueWithRetry(response,3,new Callback<ServerResponse>() {
+        response = requestInterface.get_coffeshops(user_detail.getString(Constants.JWT, ""), user_detail.getInt(Constants.LANGUAGE_ID, 1));
+        RetrofitWithRetry.enqueueWithRetry(response, 3, new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, retrofit2.Response<ServerResponse> response) {
                 Log.d("status code", String.valueOf(response.code()));
@@ -166,7 +167,7 @@ public class CafeRestaurantsFragment extends Fragment {
                         if (resp != null) {
                             Toast.makeText(getActivity(), resp.getMessage(), Toast.LENGTH_SHORT).show();
                         } else
-                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"server_problem"), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "server_problem"), Toast.LENGTH_SHORT).show();
                         break;
                 }
             }

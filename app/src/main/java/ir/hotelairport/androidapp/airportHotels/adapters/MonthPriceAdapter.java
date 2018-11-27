@@ -10,13 +10,14 @@ import android.widget.TextView;
 import java.text.DecimalFormat;
 import java.util.List;
 
-import ir.hotelairport.androidapp.airportHotels.PersianDigitConverter;
 import ir.hotelairport.androidapp.R;
+import ir.hotelairport.androidapp.airportHotels.PersianDigitConverter;
 import ir.hotelairport.androidapp.airportHotels.api.model.Price;
 
-public class MonthPriceAdapter extends RecyclerView.Adapter<MonthPriceAdapter.ViewHolder>{
+public class MonthPriceAdapter extends RecyclerView.Adapter<MonthPriceAdapter.ViewHolder> {
 
     List<Price> prices;
+
     public MonthPriceAdapter(List<Price> prices) {
         this.prices = prices;
     }
@@ -24,18 +25,19 @@ public class MonthPriceAdapter extends RecyclerView.Adapter<MonthPriceAdapter.Vi
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.month_price_adapter , parent , false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.month_price_adapter, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position){
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         DecimalFormat formatter = new DecimalFormat("#,###,###");
-        String yourFormattedString = formatter.format(prices.get( position ).getPriceByMonth() );
-        holder.price.setText( PersianDigitConverter.PerisanNumber( String.valueOf( yourFormattedString ) +" ریال"));
-        holder.month.setText( PersianDigitConverter.PerisanNumber( prices.get( position ).getMonth() ) );
+        String yourFormattedString = formatter.format(prices.get(position).getPriceByMonth());
+        holder.price.setText(PersianDigitConverter.PerisanNumber(String.valueOf(yourFormattedString) + " ریال"));
+        holder.month.setText(PersianDigitConverter.PerisanNumber(prices.get(position).getMonth()));
 
     }
+
     @Override
     public int getItemCount() {
         return prices.size();
@@ -43,13 +45,13 @@ public class MonthPriceAdapter extends RecyclerView.Adapter<MonthPriceAdapter.Vi
 
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView month, price;
+
         ViewHolder(View itemView) {
             super(itemView);
             price = itemView.findViewById(R.id.price);
             month = itemView.findViewById(R.id.month);
         }
     }
-
 
 
 }

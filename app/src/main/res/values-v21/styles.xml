@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="AppTheme" parent="PreferenceFixTheme.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="android:windowContentTransitions">true</item>
@@ -12,7 +13,8 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:typeface">monospace</item>
     </style>
-    <style name="dialogCloseButton" parent="Base.TextAppearance.AppCompat.Button" >
+
+    <style name="dialogCloseButton" parent="Base.TextAppearance.AppCompat.Button">
         <item name="backgroundTint">@android:color/black</item>
     </style>
 

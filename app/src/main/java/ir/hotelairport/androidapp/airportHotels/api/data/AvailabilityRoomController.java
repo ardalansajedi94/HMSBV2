@@ -2,7 +2,6 @@ package ir.hotelairport.androidapp.airportHotels.api.data;
 
 import com.google.gson.JsonObject;
 
-
 import ir.hotelairport.androidapp.airportHotels.api.model.AvailabilityRes;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -17,10 +16,10 @@ public class AvailabilityRoomController {
         this.availabilityRoomCallBack = availabilityRoomCallBack;
     }
 
-    public void start(JsonObject req , String token){
+    public void start(JsonObject req, String token) {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(HotelApi.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
-        HotelApi hotelApi =  retrofit.create(HotelApi.class);
-        Call<AvailabilityRes> call = hotelApi.AvailabilityRoom(req , "application/json" ,"application/json" , token );
+        HotelApi hotelApi = retrofit.create(HotelApi.class);
+        Call<AvailabilityRes> call = hotelApi.AvailabilityRoom(req, "application/json", "application/json", token);
         call.enqueue(new Callback<AvailabilityRes>() {
             @Override
             public void onResponse(Call<AvailabilityRes> call, Response<AvailabilityRes> response) {
@@ -34,8 +33,7 @@ public class AvailabilityRoomController {
 
                 try {
                     availabilityRoomCallBack.onFailure(t.getCause().getMessage());
-                }
-                catch (NullPointerException e){
+                } catch (NullPointerException e) {
 
                 }
 

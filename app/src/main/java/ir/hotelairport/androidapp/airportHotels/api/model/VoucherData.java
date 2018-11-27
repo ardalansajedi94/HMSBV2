@@ -1,8 +1,8 @@
 package ir.hotelairport.androidapp.airportHotels.api.model;
 
 public class VoucherData {
-    String checkIn , checkOut;
-    int type,total_price;
+    String checkIn, checkOut;
+    int type, total_price;
 
     public VoucherData() {
     }

@@ -1,36 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/milky"
     android:layoutDirection="ltr"
-    android:clickable="true"
-    >
+    android:clickable="true">
 
     <ProgressBar
         android:id="@+id/progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
     <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textSize="14sp"
-        android:textColor="@color/colorAccent"
-        android:layout_margin="8dp"
-        android:layout_alignParentTop="true"
-        />
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:textColor="@color/colorAccent"
+            android:layout_margin="8dp"
+            android:layout_alignParentTop="true" />
 
         <TextView
             android:id="@+id/date"
@@ -42,13 +39,14 @@
             android:textStyle="bold"
             android:textColor="@color/colorAccent"
             android:textSize="14sp" />
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/hotel_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/date"
-            android:layout_above="@+id/return_btn"
-             />
+            android:layout_above="@+id/return_btn" />
+
         <Button
             android:id="@+id/return_btn"
             android:layout_width="match_parent"
@@ -60,12 +58,12 @@
             android:textColor="@color/colorAccent" />
 
     </RelativeLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:background="@drawable/dropshadow"
         android:layout_gravity="bottom"
-        android:layout_marginBottom="48dp"
-        />
+        android:layout_marginBottom="48dp" />
 
 </FrameLayout>

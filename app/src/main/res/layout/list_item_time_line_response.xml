@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:clickable="true">
 
@@ -32,6 +31,7 @@
                 android:textColor="@color/black"
                 android:textSize="17sp"
                 android:text="Rahul Agrawal is a good bsasdfasdfaaaaaafasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfaoy but he does not know what he wants." />
+
             <TextView
                 android:id="@+id/time_line_time"
                 android:layout_width="match_parent"
@@ -47,7 +47,6 @@
                 android:textSize="13sp" />
 
         </LinearLayout>
-
 
 
     </FrameLayout>

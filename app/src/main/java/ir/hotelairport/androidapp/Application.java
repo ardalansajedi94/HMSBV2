@@ -49,15 +49,16 @@ public final class Application extends MultiDexApplication {
         // This improves the effectiveness of OneSignal's "best-time" notification scheduling feature.
         // OneSignal.syncHashedEmail(userEmail);
     }
+
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         setLocale();
     }
-    private void setLocale()
-    {
-        SharedPreferences user_detail=getSharedPreferences(Constants.USER_DETAIL, Context.MODE_PRIVATE);
-        String languageToLoad=user_detail.getString(Constants.LANGUAGE_LOCALE,"en");
+
+    private void setLocale() {
+        SharedPreferences user_detail = getSharedPreferences(Constants.USER_DETAIL, Context.MODE_PRIVATE);
+        String languageToLoad = user_detail.getString(Constants.LANGUAGE_LOCALE, "en");
         Locale locale = new Locale(languageToLoad);
         Locale.setDefault(locale);
         Configuration config = new Configuration();

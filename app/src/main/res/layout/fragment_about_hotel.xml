@@ -1,5 +1,4 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/milky"
@@ -18,14 +17,17 @@
         android:scaleType="centerInside"
         android:focusableInTouchMode="true"
         android:src="@drawable/ic_last_logo" />
+
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/activity_main_swipe_refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/about_hotel_list"
-        android:focusable="false"
-        android:divider="@android:color/transparent"/></android.support.v4.widget.SwipeRefreshLayout>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/about_hotel_list"
+            android:focusable="false"
+            android:divider="@android:color/transparent" />
+    </android.support.v4.widget.SwipeRefreshLayout>
 </FrameLayout>

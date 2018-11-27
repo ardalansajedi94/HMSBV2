@@ -34,21 +34,21 @@ public class ServerResponse {
     private BlogContent information;
     private Profile profile;
     private ArrayList<TimeLine> timeLine;
-    private ArrayList<CafeRestaurant>restaurants;
-    private ArrayList<CafeMenuItem>cafe_menu;
-    private ArrayList<RestaurantMenuItem>restaurant_menu;
-    private ArrayList<Invoice>invoices;
+    private ArrayList<CafeRestaurant> restaurants;
+    private ArrayList<CafeMenuItem> cafe_menu;
+    private ArrayList<RestaurantMenuItem> restaurant_menu;
+    private ArrayList<Invoice> invoices;
     private CafeMenuItem cafe_item;
     private RestaurantMenuItem restaurant_item;
     private ArrayList<Basket> your_basket;
-    private ArrayList<Category>categories;
+    private ArrayList<Category> categories;
     private ArrayList<Language> languages;
     private ArrayList<LanguageKey> language_keys;
     private ArrayList<Translation> translations;
     private Position hotel_position;
     private ArrayList<HotelSetting> settings;
-    private ArrayList<WelcomeTabsItem>slides;
-    private ArrayList<Map<String,Service>>services;
+    private ArrayList<WelcomeTabsItem> slides;
+    private ArrayList<Map<String, Service>> services;
     private ArrayList<CafeRestaurant> cafes;
 
     public ArrayList<WelcomeTabsItem> getSlides() {

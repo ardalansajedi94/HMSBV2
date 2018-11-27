@@ -172,7 +172,8 @@
     <string name="barg">خرابی برق</string>
     <string name="gereftegi">گرفتگی راه آب</string>
     <string name="lamp">تعویض لامپ سوخته</string>
-    <string name="shiralat">خرابی شیرآلات</string><string name="sifun">خرابی سیفون
+    <string name="shiralat">خرابی شیرآلات</string>
+    <string name="sifun">خرابی سیفون
 </string>
     <string name="abe_garm_pb">دمای نامناسب آب گرم</string>
     <string name="bathroom">حمام</string>

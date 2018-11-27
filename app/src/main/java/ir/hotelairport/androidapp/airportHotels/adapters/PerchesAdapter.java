@@ -35,11 +35,12 @@ import okhttp3.ResponseBody;
 import saman.zamani.persiandate.PersianDateFormat;
 
 
-public class PerchesAdapter extends RecyclerView.Adapter<PerchesAdapter.ViewHolder>{
+public class PerchesAdapter extends RecyclerView.Adapter<PerchesAdapter.ViewHolder> {
 
     List<Voucher> voucherList;
     Context context;
-    public PerchesAdapter(List<Voucher> voucherList , Context context) {
+
+    public PerchesAdapter(List<Voucher> voucherList, Context context) {
         this.voucherList = voucherList;
         this.context = context;
 
@@ -49,7 +50,7 @@ public class PerchesAdapter extends RecyclerView.Adapter<PerchesAdapter.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.perches_view , parent , false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.perches_view, parent, false);
         return new ViewHolder(view);
     }
 
@@ -57,48 +58,47 @@ public class PerchesAdapter extends RecyclerView.Adapter<PerchesAdapter.ViewHold
     @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
-        if (voucherList.get(position).getData().getType() == 0){
+        if (voucherList.get(position).getData().getType() == 0) {
             holder.title.setText("سرویس");
             try {
                 PersianDateFormat pdformater = new PersianDateFormat();
-                saman.zamani.persiandate.PersianDate jdate ;
-                saman.zamani.persiandate.PersianDate odate ;
+                saman.zamani.persiandate.PersianDate jdate;
+                saman.zamani.persiandate.PersianDate odate;
 
-                jdate =pdformater.parseGrg(voucherList.get(position).getData().getCheckIn(),"yyyy-MM-dd HH:mm:ss");
-                odate =pdformater.parseGrg(voucherList.get(position).getData().getCheckOut(),"yyyy-MM-dd HH:mm:ss");
-                holder.checkIn.setText(PersianDigitConverter.PerisanNumber( jdate.getShYear() + "/" + jdate.getShMonth() + "/" + jdate.getShDay() ));
-                holder.checkOut.setText(PersianDigitConverter.PerisanNumber( odate.getShYear() + "/" + odate.getShMonth() + "/" + odate.getShDay() ));
+                jdate = pdformater.parseGrg(voucherList.get(position).getData().getCheckIn(), "yyyy-MM-dd HH:mm:ss");
+                odate = pdformater.parseGrg(voucherList.get(position).getData().getCheckOut(), "yyyy-MM-dd HH:mm:ss");
+                holder.checkIn.setText(PersianDigitConverter.PerisanNumber(jdate.getShYear() + "/" + jdate.getShMonth() + "/" + jdate.getShDay()));
+                holder.checkOut.setText(PersianDigitConverter.PerisanNumber(odate.getShYear() + "/" + odate.getShMonth() + "/" + odate.getShDay()));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-        } else if (voucherList.get(position).getData().getType() == 1){
+        } else if (voucherList.get(position).getData().getType() == 1) {
             holder.title.setText("کوتاه مدت");
             try {
                 PersianDateFormat pdformater = new PersianDateFormat();
-                saman.zamani.persiandate.PersianDate jdate ;
+                saman.zamani.persiandate.PersianDate jdate;
                 holder.CheckOutText.setText("مدت اقامت");
 
-                jdate =pdformater.parseGrg(voucherList.get(position).getData().getCheckIn(),"yyyy-MM-dd");
+                jdate = pdformater.parseGrg(voucherList.get(position).getData().getCheckIn(), "yyyy-MM-dd");
 
-                holder.checkIn.setText(PersianDigitConverter.PerisanNumber( jdate.getShYear() + "/" + jdate.getShMonth() + "/" + jdate.getShDay() ));
+                holder.checkIn.setText(PersianDigitConverter.PerisanNumber(jdate.getShYear() + "/" + jdate.getShMonth() + "/" + jdate.getShDay()));
                 if (voucherList.get(position).getData().getCheckOut().equals("3"))
-                holder.checkOut.setText(PersianDigitConverter.PerisanNumber( "3" ) + "ساعته");
+                    holder.checkOut.setText(PersianDigitConverter.PerisanNumber("3") + "ساعته");
                 else
-                    holder.checkOut.setText(PersianDigitConverter.PerisanNumber( "6" ) + "ساعته");
+                    holder.checkOut.setText(PersianDigitConverter.PerisanNumber("6") + "ساعته");
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-        }
-        else if (voucherList.get(position).getData().getType() == 2){
+        } else if (voucherList.get(position).getData().getType() == 2) {
             try {
                 PersianDateFormat pdformater = new PersianDateFormat();
-                saman.zamani.persiandate.PersianDate jdate ;
-                saman.zamani.persiandate.PersianDate odate ;
+                saman.zamani.persiandate.PersianDate jdate;
+                saman.zamani.persiandate.PersianDate odate;
 
-                jdate =pdformater.parseGrg(voucherList.get(position).getData().getCheckIn(),"yyyy-MM-dd");
-                odate =pdformater.parseGrg(voucherList.get(position).getData().getCheckOut(),"yyyy-MM-dd");
-                holder.checkIn.setText(PersianDigitConverter.PerisanNumber( jdate.getShYear() + "/" + jdate.getShMonth() + "/" + jdate.getShDay() ));
-                holder.checkOut.setText(PersianDigitConverter.PerisanNumber( odate.getShYear() + "/" + odate.getShMonth() + "/" + odate.getShDay() ));
+                jdate = pdformater.parseGrg(voucherList.get(position).getData().getCheckIn(), "yyyy-MM-dd");
+                odate = pdformater.parseGrg(voucherList.get(position).getData().getCheckOut(), "yyyy-MM-dd");
+                holder.checkIn.setText(PersianDigitConverter.PerisanNumber(jdate.getShYear() + "/" + jdate.getShMonth() + "/" + jdate.getShDay()));
+                holder.checkOut.setText(PersianDigitConverter.PerisanNumber(odate.getShYear() + "/" + odate.getShMonth() + "/" + odate.getShDay()));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -106,28 +106,30 @@ public class PerchesAdapter extends RecyclerView.Adapter<PerchesAdapter.ViewHold
         }
 
         DecimalFormat formatter = new DecimalFormat("#,###,###");
-        String yourFormattedString = formatter.format((int)voucherList.get(position).getData().getTotalPrice());
-        holder.price.setText(PersianDigitConverter.PerisanNumber(yourFormattedString+ " ريال"));
+        String yourFormattedString = formatter.format((int) voucherList.get(position).getData().getTotalPrice());
+        holder.price.setText(PersianDigitConverter.PerisanNumber(yourFormattedString + " ريال"));
 
         holder.voucher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 VoucherController voucherController = new VoucherController(callBack);
 
-                voucherController.start(MyPreferenceManager.getInstace(context).getLoginRes().getToken_type() +" "+ MyPreferenceManager.getInstace(context).getLoginRes().getAccess_token() ,String.valueOf(voucherList.get(holder.getAdapterPosition()).getBook_id()) );
+                voucherController.start(MyPreferenceManager.getInstace(context).getLoginRes().getToken_type() + " " + MyPreferenceManager.getInstace(context).getLoginRes().getAccess_token(), String.valueOf(voucherList.get(holder.getAdapterPosition()).getBook_id()));
 
             }
         });
 
     }
+
     @Override
     public int getItemCount() {
         return voucherList.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView title , checkIn , checkOut , price , CheckOutText;
+        TextView title, checkIn, checkOut, price, CheckOutText;
         Button voucher;
+
         ViewHolder(View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.title);
@@ -148,7 +150,8 @@ public class PerchesAdapter extends RecyclerView.Adapter<PerchesAdapter.ViewHold
                 @Override
                 protected Void doInBackground(Void... voids) {
                     try {
-                        File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS); ;
+                        File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+                        ;
                         File file = new File(path, "voucher.pdf");
                         FileOutputStream fileOutputStream = new FileOutputStream(file);
                         IOUtils.write(responseBody.bytes(), fileOutputStream);
@@ -166,10 +169,9 @@ public class PerchesAdapter extends RecyclerView.Adapter<PerchesAdapter.ViewHold
 
                         intent.setDataAndType(data, type);
 
-                        ((MainActivity)context).startActivity(intent);
-                    }
-                    catch (Exception ex){
-                        Log.d("tag", "doInBackground: " +ex);
+                        ((MainActivity) context).startActivity(intent);
+                    } catch (Exception ex) {
+                        Log.d("tag", "doInBackground: " + ex);
                     }
                     return null;
                 }

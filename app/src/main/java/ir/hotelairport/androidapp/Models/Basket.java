@@ -5,9 +5,10 @@ package ir.hotelairport.androidapp.Models;
  */
 
 public class Basket {
-    int id,guest_id,count,type;
-    String title,unit;
+    int id, guest_id, count, type;
+    String title, unit;
     Image image;
+
     public String getUnit() {
         return unit;
     }

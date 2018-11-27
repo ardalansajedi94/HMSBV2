@@ -43,6 +43,7 @@ public class TimeLineFragment extends Fragment {
     private SwipeRefreshLayout swipeRefreshLayout;
     private DatabaseHandler db;
     ProgressDialog progress;
+
     public TimeLineFragment() {
         // Required empty public constructor
     }
@@ -52,13 +53,13 @@ public class TimeLineFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_time_line, container, false);
-        db=new DatabaseHandler(getActivity());
-        user_detail=getActivity().getSharedPreferences(Constants.USER_DETAIL, Context.MODE_PRIVATE);
+        View view = inflater.inflate(R.layout.fragment_time_line, container, false);
+        db = new DatabaseHandler(getActivity());
+        user_detail = getActivity().getSharedPreferences(Constants.USER_DETAIL, Context.MODE_PRIVATE);
         TimeLineList = (ListView) view.findViewById(R.id.time_line_list);
-        time_line_empty_tv=(TextView)view.findViewById(R.id.time_line_empty_tv);
-        TimeLineContent=new ArrayList<TimeLine>();
-        TimeLineAllContent=new ArrayList<TimeLine>();
+        time_line_empty_tv = (TextView) view.findViewById(R.id.time_line_empty_tv);
+        TimeLineContent = new ArrayList<TimeLine>();
+        TimeLineAllContent = new ArrayList<TimeLine>();
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -75,8 +76,8 @@ public class TimeLineFragment extends Fragment {
 
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                if ((++firstVisibleItem) + visibleItemCount > totalItemCount)     {
-                    for(int i = 0; i < 10  && TimeLineAllContent.size() > 0; i++){
+                if ((++firstVisibleItem) + visibleItemCount > totalItemCount) {
+                    for (int i = 0; i < 10 && TimeLineAllContent.size() > 0; i++) {
                         TimeLineContent.add(TimeLineAllContent.get(0));
                         TimeLineAllContent.remove(0);
                         timeLineListAdapter.notifyDataSetChanged();
@@ -86,12 +87,11 @@ public class TimeLineFragment extends Fragment {
         });
         return view;
     }
-    private void getTimeLine( final boolean is_refreshing)
-    {
-        if (!is_refreshing)
-        {
+
+    private void getTimeLine(final boolean is_refreshing) {
+        if (!is_refreshing) {
             progress = new ProgressDialog(getActivity());
-            progress.setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"connecting_to_server"));
+            progress.setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "connecting_to_server"));
             progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progress.setIndeterminate(true);
             progress.setProgress(0);
@@ -102,33 +102,28 @@ public class TimeLineFragment extends Fragment {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         RequestInterface requestInterface = retrofit.create(RequestInterface.class);
-        Call<ServerResponse> response ;
-        String jwt=user_detail.getString(Constants.JWT,"");
-        response = requestInterface.get_time_line(jwt,user_detail.getInt(Constants.LANGUAGE_ID,1));
-        RetrofitWithRetry.enqueueWithRetry(response,3,new Callback<ServerResponse>() {
+        Call<ServerResponse> response;
+        String jwt = user_detail.getString(Constants.JWT, "");
+        response = requestInterface.get_time_line(jwt, user_detail.getInt(Constants.LANGUAGE_ID, 1));
+        RetrofitWithRetry.enqueueWithRetry(response, 3, new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, retrofit2.Response<ServerResponse> response) {
-                if (!is_refreshing)
-                {
+                if (!is_refreshing) {
                     progress.dismiss();
-                }
-                else
-                {
+                } else {
                     swipeRefreshLayout.setRefreshing(false);
                 }
                 ServerResponse resp = response.body();
                 switch (response.code()) {
                     case 200:
                         if (resp != null) {
-                            TimeLineContent=new ArrayList<TimeLine>();
-                            TimeLineAllContent=new ArrayList<TimeLine>();
-                            ArrayList<TimeLine>serverTimeLine=resp.getTimeLine();
-                            if (serverTimeLine.size()==0)
-                            {
+                            TimeLineContent = new ArrayList<TimeLine>();
+                            TimeLineAllContent = new ArrayList<TimeLine>();
+                            ArrayList<TimeLine> serverTimeLine = resp.getTimeLine();
+                            if (serverTimeLine.size() == 0) {
                                 TimeLineList.setVisibility(View.GONE);
                                 time_line_empty_tv.setVisibility(View.VISIBLE);
-                            }
-                            else {
+                            } else {
                                 TimeLineList.setVisibility(View.VISIBLE);
                                 time_line_empty_tv.setVisibility(View.GONE);
                                 for (int i = 0; i < serverTimeLine.size(); i++) {
@@ -152,7 +147,7 @@ public class TimeLineFragment extends Fragment {
 
 
                                 }
-                                Log.i("first_item",TimeLineContent.get(0).getContent());
+                                Log.i("first_item", TimeLineContent.get(0).getContent());
                                 timeLineListAdapter = new TimeLineListAdapter(TimeLineContent, getActivity());
                                 TimeLineList.setAdapter(timeLineListAdapter);
                                 timeLineListAdapter.notifyDataSetChanged();
@@ -162,24 +157,21 @@ public class TimeLineFragment extends Fragment {
                     default:
                         if (resp != null) {
                             Toast.makeText(getActivity(), resp.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"server_problem"), Toast.LENGTH_SHORT).show();
+                        } else
+                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "server_problem"), Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
+
             @Override
             public void onFailure(Call<ServerResponse> call, Throwable t) {
-                if (!is_refreshing)
-                {
+                if (!is_refreshing) {
                     progress.dismiss();
-                }
-                else
-                {
+                } else {
                     swipeRefreshLayout.setRefreshing(false);
                 }
-                Log.d("error:",t.getMessage());
+                Log.d("error:", t.getMessage());
             }
         });
     }
-    }
+}

@@ -2,7 +2,6 @@ package ir.hotelairport.androidapp.airportHotels.api.data;
 
 import com.google.gson.JsonObject;
 
-
 import ir.hotelairport.androidapp.airportHotels.api.model.ServicesResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -17,10 +16,10 @@ public class ServiceListController {
         this.serviceListCallBack = serviceListCallBack;
     }
 
-    public void start(JsonObject req,String token){
+    public void start(JsonObject req, String token) {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(HotelApi.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
-        HotelApi hotelApi =  retrofit.create(HotelApi.class);
-        Call<ServicesResponse> call = hotelApi.ServiceList(req , "application/json" ,"application/json" ,token);
+        HotelApi hotelApi = retrofit.create(HotelApi.class);
+        Call<ServicesResponse> call = hotelApi.ServiceList(req, "application/json", "application/json", token);
         call.enqueue(new Callback<ServicesResponse>() {
             @Override
             public void onResponse(Call<ServicesResponse> call, Response<ServicesResponse> response) {
@@ -34,8 +33,7 @@ public class ServiceListController {
 
                 try {
                     serviceListCallBack.onFailure(t.getCause().getMessage());
-                }
-                catch (NullPointerException e){
+                } catch (NullPointerException e) {
 
                 }
 

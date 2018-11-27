@@ -28,36 +28,38 @@ import ir.hotelairport.androidapp.airportHotels.api.data.VoucherController;
 import okhttp3.ResponseBody;
 
 public class DonePaymentFragment extends Fragment {
-private static final int MY_PERMISION_REQUEST = 120;
+    private static final int MY_PERMISION_REQUEST = 120;
     Button returnBut;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_done_payment ,container, false);
+        return inflater.inflate(R.layout.fragment_done_payment, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if (ContextCompat.checkSelfPermission(getActivity() , android.Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(getActivity(), new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE},MY_PERMISION_REQUEST);
+        if (ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_PERMISION_REQUEST);
         }
         VoucherController voucherController = new VoucherController(callBack);
 
-        voucherController.start(MyPreferenceManager.getInstace(getActivity()).getLoginRes().getToken_type() +" "+ MyPreferenceManager.getInstace(getActivity()).getLoginRes().getAccess_token() ,String.valueOf(MyPreferenceManager.getInstace(getActivity()).getBookId()) );
-        returnBut= view.findViewById(R.id.return_but);
+        voucherController.start(MyPreferenceManager.getInstace(getActivity()).getLoginRes().getToken_type() + " " + MyPreferenceManager.getInstace(getActivity()).getLoginRes().getAccess_token(), String.valueOf(MyPreferenceManager.getInstace(getActivity()).getBookId()));
+        returnBut = view.findViewById(R.id.return_but);
         returnBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent( getActivity() , MainActivity.class );
-                getActivity().startActivity( intent );
-                intent.putExtra("fragmentNumber",1000);
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                getActivity().startActivity(intent);
+                intent.putExtra("fragmentNumber", 1000);
                 getActivity().finish();
             }
         });
 
     }
+
     HotelApi.VoucherCallBack callBack = new HotelApi.VoucherCallBack() {
         @Override
         public void onResponse(final ResponseBody responseBody) {
@@ -65,7 +67,8 @@ private static final int MY_PERMISION_REQUEST = 120;
                 @Override
                 protected Void doInBackground(Void... voids) {
                     try {
-                        File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS); ;
+                        File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+                        ;
                         File file = new File(path, "voucher.pdf");
                         FileOutputStream fileOutputStream = new FileOutputStream(file);
                         IOUtils.write(responseBody.bytes(), fileOutputStream);
@@ -84,8 +87,7 @@ private static final int MY_PERMISION_REQUEST = 120;
                         intent.setDataAndType(data, type);
 
                         startActivity(intent);
-                    }
-                    catch (Exception ex){
+                    } catch (Exception ex) {
                     }
                     return null;
                 }

@@ -40,20 +40,20 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class LoginFragment extends Fragment  implements OSSubscriptionObserver  {
+public class LoginFragment extends Fragment implements OSSubscriptionObserver {
     private static final int PERMISSIONS_REQUEST_READ_PHONE_STATE = 999;
 
-    TextInputLayout username_til,password_til;
-    TextInputEditText username_et,password_et;
-    private String device_imei,user_name,password;
-    Button login_btn,qr_login_btn;
+    TextInputLayout username_til, password_til;
+    TextInputEditText username_et, password_et;
+    private String device_imei, user_name, password;
+    Button login_btn, qr_login_btn;
     ProgressDialog progress;
     private DatabaseHandler db;
     private SharedPreferences user_detail;
+
     public LoginFragment() {
         // Required empty public constructor
     }
-
 
 
     public void onOSSubscriptionChanged(OSSubscriptionStateChanges stateChanges) {
@@ -72,16 +72,16 @@ public class LoginFragment extends Fragment  implements OSSubscriptionObserver  
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_login, container, false);
-        db=new DatabaseHandler(getActivity());
-        user_detail=getActivity().getSharedPreferences(Constants.USER_DETAIL, Context.MODE_PRIVATE);
+        View view = inflater.inflate(R.layout.fragment_login, container, false);
+        db = new DatabaseHandler(getActivity());
+        user_detail = getActivity().getSharedPreferences(Constants.USER_DETAIL, Context.MODE_PRIVATE);
         OneSignal.addSubscriptionObserver(this);
         username_til = (TextInputLayout) view.findViewById(R.id.user_name_TIL);
         password_til = (TextInputLayout) view.findViewById(R.id.password_TIL);
         username_et = (TextInputEditText) view.findViewById(R.id.user_name_ET);
         password_et = (TextInputEditText) view.findViewById(R.id.password_ET);
-        login_btn=(Button)view.findViewById(R.id.login_btn);
-        qr_login_btn=(Button)view.findViewById(R.id.qr_login_btn);
+        login_btn = (Button) view.findViewById(R.id.login_btn);
+        qr_login_btn = (Button) view.findViewById(R.id.qr_login_btn);
         username_et.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -95,7 +95,7 @@ public class LoginFragment extends Fragment  implements OSSubscriptionObserver  
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (!username_et.getText().toString().trim().isEmpty()&&!password_et.getText().toString().trim().isEmpty())
+                if (!username_et.getText().toString().trim().isEmpty() && !password_et.getText().toString().trim().isEmpty())
                     login_btn.setEnabled(true);
                 else
                     login_btn.setEnabled(false);
@@ -115,7 +115,7 @@ public class LoginFragment extends Fragment  implements OSSubscriptionObserver  
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (!username_et.getText().toString().trim().isEmpty()&&!password_et.getText().toString().trim().isEmpty())
+                if (!username_et.getText().toString().trim().isEmpty() && !password_et.getText().toString().trim().isEmpty())
                     login_btn.setEnabled(true);
                 else
                     login_btn.setEnabled(false);
@@ -125,14 +125,13 @@ public class LoginFragment extends Fragment  implements OSSubscriptionObserver  
             @Override
             public void onClick(View view) {
                 hideKeyboard();
-                user_name=username_et.getText().toString();
-                password=password_et.getText().toString();
-                if (user_name.length()<10)
-                    username_til.setError(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"national_id_error"));
-                else if (password.length()<6)
-                    password_til.setError(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"password_error"));
-                else
-                {
+                user_name = username_et.getText().toString();
+                password = password_et.getText().toString();
+                if (user_name.length() < 10)
+                    username_til.setError(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "national_id_error"));
+                else if (password.length() < 6)
+                    password_til.setError(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "password_error"));
+                else {
                     username_til.setError(null);
                     password_til.setError(null);
                     doLogin();
@@ -145,7 +144,7 @@ public class LoginFragment extends Fragment  implements OSSubscriptionObserver  
         qr_login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("qr_code","clicked");
+                Log.i("qr_code", "clicked");
                 hideKeyboard();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -159,17 +158,16 @@ public class LoginFragment extends Fragment  implements OSSubscriptionObserver  
             view.setRotationY(180);
         }*/
 
-        username_til.setHint(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"national_id"));
-        password_til.setHint(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"password"));
-        login_btn.setText(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"login"));
-        qr_login_btn.setText(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"qr_login"));
-        return  view;
+        username_til.setHint(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "national_id"));
+        password_til.setHint(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "password"));
+        login_btn.setText(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "login"));
+        qr_login_btn.setText(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "qr_login"));
+        return view;
     }
 
-    private void doLogin()
-    {
+    private void doLogin() {
         progress = new ProgressDialog(getActivity());
-        progress.setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"connecting_to_server"));
+        progress.setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "connecting_to_server"));
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
         progress.setProgress(0);
@@ -188,48 +186,49 @@ public class LoginFragment extends Fragment  implements OSSubscriptionObserver  
         status.getPermissionStatus().getEnabled();
         request.setToken(status.getSubscriptionStatus().getUserId());
         Call<ServerResponse> response = requestInterface.login(request);
-        RetrofitWithRetry.enqueueWithRetry(response,3,new Callback<ServerResponse>() {
+        RetrofitWithRetry.enqueueWithRetry(response, 3, new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, retrofit2.Response<ServerResponse> response) {
                 progress.dismiss();
                 ServerResponse resp = response.body();
 
-                    switch (response.code()) {
-                        case 200:
-                            if (resp != null) {
-                                SharedPreferences.Editor editor = user_detail.edit();
-                                editor.putString(Constants.JWT, "Bearer "+resp.getJwt());
-                                editor.putBoolean(Constants.IS_LOGGED_IN, true);
-                                editor.putString(Constants.USER_FIRST_NAME, resp.getProfile().getFirstname());
-                                editor.putString(Constants.USER_LAST_NAME, resp.getProfile().getLastname());
-                                editor.putString(Constants.PROFILE_IMAGE_NAME, resp.getProfile().getProfile_image());
-                                editor.putInt(Constants.ROOM_NO, resp.getProfile().getRoom_no());
-                                editor.apply();
-                                Intent i = new Intent(getActivity(), LoggedInActivity.class);
-                                startActivity(i);
-                                getActivity().finish();
-                            }
-                            break;
-                        case 401:
-                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"user_not_found"), Toast.LENGTH_SHORT).show();
-                            break;
-                        default:
-                            if (resp != null) {
-                                Toast.makeText(getActivity(), resp.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                            else
-                                Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"server_problem"), Toast.LENGTH_SHORT).show();
-                            break;
-                    }
+                switch (response.code()) {
+                    case 200:
+                        if (resp != null) {
+                            SharedPreferences.Editor editor = user_detail.edit();
+                            editor.putString(Constants.JWT, "Bearer " + resp.getJwt());
+                            editor.putBoolean(Constants.IS_LOGGED_IN, true);
+                            editor.putString(Constants.USER_FIRST_NAME, resp.getProfile().getFirstname());
+                            editor.putString(Constants.USER_LAST_NAME, resp.getProfile().getLastname());
+                            editor.putString(Constants.PROFILE_IMAGE_NAME, resp.getProfile().getProfile_image());
+                            editor.putInt(Constants.ROOM_NO, resp.getProfile().getRoom_no());
+                            editor.apply();
+                            Intent i = new Intent(getActivity(), LoggedInActivity.class);
+                            startActivity(i);
+                            getActivity().finish();
+                        }
+                        break;
+                    case 401:
+                        Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "user_not_found"), Toast.LENGTH_SHORT).show();
+                        break;
+                    default:
+                        if (resp != null) {
+                            Toast.makeText(getActivity(), resp.getMessage(), Toast.LENGTH_SHORT).show();
+                        } else
+                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "server_problem"), Toast.LENGTH_SHORT).show();
+                        break;
                 }
+            }
+
             @Override
             public void onFailure(Call<ServerResponse> call, Throwable t) {
                 progress.dismiss();
                 Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.d("error:",t.getMessage());
+                Log.d("error:", t.getMessage());
             }
         });
     }
+
     private void hideKeyboard() {
         View view = getActivity().getCurrentFocus();
         if (view != null) {

@@ -195,13 +195,11 @@ public class LoggedInActivity extends AppCompatActivity {
                         fragmentTransaction.addToBackStack(null);
                         fragmentTransaction.commit();
                     }
-                }
-                else
-                {
+                } else {
                     AlertDialog.Builder builder;
                     builder = new AlertDialog.Builder(LoggedInActivity.this);
                     builder.setTitle(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "need_internet"))
-                                .setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "need_internet_desc"))
+                            .setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "need_internet_desc"))
                             .setNeutralButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     dialog.dismiss();
@@ -303,6 +301,7 @@ public class LoggedInActivity extends AppCompatActivity {
             }
         });
     }
+
     public boolean isInternetAvailable() {
         ConnectivityManager connectivityManager
                 = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);

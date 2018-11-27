@@ -11,7 +11,7 @@ public class GetResult {
         this.res = res;
     }
 
-    AvailabilityRes res ;
+    AvailabilityRes res;
 
     public GetResult(AvailabilityRes res) {
         this.res = res;

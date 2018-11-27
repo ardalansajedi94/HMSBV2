@@ -8,7 +8,7 @@ public class RoomReq {
     private int adults;
     private int children;
 
-    public RoomReq(int adultCount, int childCount){
+    public RoomReq(int adultCount, int childCount) {
 
         this.adults = adultCount;
         this.children = childCount;
