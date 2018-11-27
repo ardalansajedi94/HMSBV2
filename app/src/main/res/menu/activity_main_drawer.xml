@@ -21,8 +21,7 @@
             android:title="درباره هتل" />
         <item
             android:id="@+id/guide"
-            android:title="راهنما"
-            />
+            android:title="راهنما" />
         <item
             android:id="@+id/hotel_news"
             android:title="اخبار" />
@@ -38,7 +37,6 @@
             android:title="خروج" />
 
     </group>
-
 
 
 </menu>

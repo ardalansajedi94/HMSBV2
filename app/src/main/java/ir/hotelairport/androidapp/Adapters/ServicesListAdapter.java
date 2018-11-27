@@ -20,10 +20,12 @@ import ir.hotelairport.androidapp.R;
 public class ServicesListAdapter extends BaseAdapter {
     private ArrayList<BlogContent> _data;
     private Context _c;
+
     public ServicesListAdapter(ArrayList<BlogContent> data, Context c) {
         _data = data;
         _c = c;
     }
+
     public int getCount() {
         // TODO Auto-generated method stub
         return _data.size();

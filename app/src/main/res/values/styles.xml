@@ -11,12 +11,15 @@
         <item name="android:textSize">10sp</item>
 
     </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
 
     </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="NavigationTheme" parent="AppTheme">
@@ -26,12 +29,9 @@
     </style>
 
 
-
-    <style name="dialogCloseButton" parent="Base.TextAppearance.AppCompat.Button" >
+    <style name="dialogCloseButton" parent="Base.TextAppearance.AppCompat.Button">
         <item name="backgroundTint">@android:color/black</item>
     </style>
-
-
 
 
 </resources>

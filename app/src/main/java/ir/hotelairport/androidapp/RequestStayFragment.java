@@ -45,6 +45,7 @@ public class RequestStayFragment extends Fragment {
     ProgressDialog progress;
     private SharedPreferences user_detail;
     DatabaseHandler db;
+
     public RequestStayFragment() {
         // Required empty public constructor
     }
@@ -54,14 +55,14 @@ public class RequestStayFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_request_stay, container, false);
-        db=new DatabaseHandler(getActivity());
-        user_detail=getActivity().getSharedPreferences(Constants.USER_DETAIL, Context.MODE_PRIVATE);
+        View view = inflater.inflate(R.layout.fragment_request_stay, container, false);
+        db = new DatabaseHandler(getActivity());
+        user_detail = getActivity().getSharedPreferences(Constants.USER_DETAIL, Context.MODE_PRIVATE);
         AppCompatActivity activity = (AppCompatActivity) getActivity();
-        activity.getSupportActionBar().setTitle(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"stay"));
-        service_spinner=(Spinner)view.findViewById(R.id.service_spinner);
-        explanation_et =(EditText)view.findViewById(R.id.note_et);
-        send_btn = (Button)view.findViewById(R.id.send_req_btn);
+        activity.getSupportActionBar().setTitle(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "stay"));
+        service_spinner = (Spinner) view.findViewById(R.id.service_spinner);
+        explanation_et = (EditText) view.findViewById(R.id.note_et);
+        send_btn = (Button) view.findViewById(R.id.send_req_btn);
         List<String> services = new ArrayList<String>();
         services_keys = new ArrayList<String>();
         services.add(getResources().getString(R.string.extend_stay));
@@ -74,7 +75,7 @@ public class RequestStayFragment extends Fragment {
         service_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                selected_service=services_keys.get(i);
+                selected_service = services_keys.get(i);
             }
 
             @Override
@@ -85,18 +86,18 @@ public class RequestStayFragment extends Fragment {
         send_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendRequest(selected_service,explanation_et.getText().toString());
+                sendRequest(selected_service, explanation_et.getText().toString());
             }
         });
         return view;
     }
-    private void sendRequest(String service,String note)
-    {
+
+    private void sendRequest(String service, String note) {
         if (note.trim().equals(""))
-            note="\u00A0";
-        note =note.replaceAll("[\n\r]", "");
+            note = "\u00A0";
+        note = note.replaceAll("[\n\r]", "");
         progress = new ProgressDialog(getActivity());
-        progress.setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"connecting_to_server"));
+        progress.setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "connecting_to_server"));
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
         progress.setProgress(0);
@@ -109,37 +110,37 @@ public class RequestStayFragment extends Fragment {
         ServerRequest request = new ServerRequest();
         request.setRequest_type(service);
         request.setExplanation(note);
-        Call<ServerResponse> response = requestInterface.send_stay_request(user_detail.getString(Constants.JWT,""),request);
-        RetrofitWithRetry.enqueueWithRetry(response,3,new Callback<ServerResponse>(){
+        Call<ServerResponse> response = requestInterface.send_stay_request(user_detail.getString(Constants.JWT, ""), request);
+        RetrofitWithRetry.enqueueWithRetry(response, 3, new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, retrofit2.Response<ServerResponse> response) {
                 progress.dismiss();
                 ServerResponse resp = response.body();
-                Log.d("response",String.valueOf(response.code()));
+                Log.d("response", String.valueOf(response.code()));
                 switch (response.code()) {
                     case 200:
                         if (resp != null) {
-                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"send_success"), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "send_success"), Toast.LENGTH_SHORT).show();
                             getActivity().onBackPressed();
                         }
                         break;
                     case 401:
-                        Toast.makeText(getActivity(),db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"not_allowed_user"), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "not_allowed_user"), Toast.LENGTH_SHORT).show();
                         break;
                     default:
                         if (resp != null) {
                             Toast.makeText(getActivity(), resp.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"server_problem"), Toast.LENGTH_SHORT).show();
+                        } else
+                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "server_problem"), Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
+
             @Override
             public void onFailure(Call<ServerResponse> call, Throwable t) {
                 progress.dismiss();
                 Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.d("error:",t.getMessage());
+                Log.d("error:", t.getMessage());
             }
         });
 

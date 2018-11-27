@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layoutDirection="ltr"
-    >
+    android:layoutDirection="ltr">
+
     <android.support.v7.widget.CardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -15,9 +15,11 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:cardElevation="8dp">
+
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
                 android:id="@+id/title"
                 android:layout_width="100dp"
@@ -30,7 +32,7 @@
                 android:background="@color/colorAccent"
                 android:textStyle="bold"
                 android:textSize="12sp"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white" />
 
             <TextView
                 android:id="@+id/check_in"
@@ -43,7 +45,8 @@
                 android:textStyle="bold"
                 app:layout_constraintRight_toLeftOf="@id/title"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="19dp"/>
+                android:layout_marginTop="19dp" />
+
             <TextView
                 android:id="@+id/check_out"
                 android:layout_width="wrap_content"
@@ -55,7 +58,8 @@
                 android:textColor="@color/black"
                 app:layout_constraintRight_toLeftOf="@+id/check_in"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="19dp"/>
+                android:layout_marginTop="19dp" />
+
             <TextView
                 android:id="@+id/price"
                 android:layout_width="wrap_content"
@@ -67,7 +71,7 @@
                 android:textColor="@color/black"
                 app:layout_constraintRight_toLeftOf="@+id/check_out"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="19dp"/>
+                android:layout_marginTop="19dp" />
 
             <TextView
                 android:id="@+id/check_in_text"
@@ -79,6 +83,7 @@
                 android:textSize="10sp"
                 app:layout_constraintRight_toRightOf="@id/check_in"
                 app:layout_constraintTop_toBottomOf="@+id/check_in" />
+
             <TextView
                 android:id="@+id/check_out_text"
                 android:layout_width="wrap_content"
@@ -88,7 +93,8 @@
                 app:layout_constraintRight_toRightOf="@id/check_out"
                 app:layout_constraintTop_toBottomOf="@+id/check_out"
                 android:textSize="10sp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black" />
+
             <TextView
                 android:id="@+id/price_text"
                 android:layout_width="wrap_content"
@@ -98,7 +104,7 @@
                 app:layout_constraintRight_toRightOf="@id/price"
                 app:layout_constraintTop_toBottomOf="@+id/price"
                 android:textSize="10sp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black" />
 
             <Button
                 android:id="@+id/voucher"

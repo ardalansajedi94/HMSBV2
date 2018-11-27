@@ -1,7 +1,7 @@
 package ir.hotelairport.androidapp.airportHotels.DailyStay;
 
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,9 +19,9 @@ import com.google.gson.JsonObject;
 
 import org.greenrobot.eventbus.EventBus;
 
-
 import java.util.ArrayList;
 
+import ir.hotelairport.androidapp.R;
 import ir.hotelairport.androidapp.airportHotels.EventBus.DailyReserveResultBackEvent;
 import ir.hotelairport.androidapp.airportHotels.EventBus.Ok;
 import ir.hotelairport.androidapp.airportHotels.MainActivity;
@@ -31,38 +31,37 @@ import ir.hotelairport.androidapp.airportHotels.adapters.DailyRoomListAdapter;
 import ir.hotelairport.androidapp.airportHotels.api.data.HotelApi;
 import ir.hotelairport.androidapp.airportHotels.api.data.ReserveRoomController;
 import ir.hotelairport.androidapp.airportHotels.api.model.AvailabilityRes;
-import ir.hotelairport.androidapp.R;
 import ir.hotelairport.androidapp.airportHotels.api.model.ReserveRes;
 import ir.hotelairport.androidapp.airportHotels.api.model.Room;
 
 
 public class DailyResultFragment extends Fragment {
 
-    int[] counter ;
+    int[] counter;
     Room[] confirm;
     AvailabilityRes response;
     View view;
-    int year ,month , day;
+    int year, month, day;
     String nameS;
     RecyclerView recyclerView;
     Button send;
-    JsonArray roomList= new JsonArray();
+    JsonArray roomList = new JsonArray();
     RelativeLayout main;
-    TextView name , date;
+    TextView name, date;
     ProgressBar progress;
-    ArrayList<Room> roomConfirmation = new ArrayList<>(  );
-    ArrayList<Integer> roomCount = new ArrayList<>(  );
+    ArrayList<Room> roomConfirmation = new ArrayList<>();
+    ArrayList<Integer> roomCount = new ArrayList<>();
 
     public DailyResultFragment() {
 
     }
 
-    public DailyResultFragment newInstance(AvailabilityRes response, int year , int month , int day , String name) {
+    public DailyResultFragment newInstance(AvailabilityRes response, int year, int month, int day, String name) {
 
         Bundle args = new Bundle();
-        this.year= year;
+        this.year = year;
         this.month = month;
-        this.day=day;
+        this.day = day;
         this.nameS = name;
         DailyResultFragment fragment = new DailyResultFragment();
         fragment.setArguments(args);
@@ -71,11 +70,10 @@ public class DailyResultFragment extends Fragment {
     }
 
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_result , container,false);
+        return inflater.inflate(R.layout.fragment_result, container, false);
     }
 
 
@@ -83,7 +81,7 @@ public class DailyResultFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         EventBus.getDefault().post(new Ok(true));
-        final DailyRoomListAdapter roomListAdapter = new DailyRoomListAdapter(response.getRooms() , getActivity() , getRooms);
+        final DailyRoomListAdapter roomListAdapter = new DailyRoomListAdapter(response.getRooms(), getActivity(), getRooms);
         confirm = new Room[response.getRooms().size()];
         counter = new int[response.getRooms().size()];
         recyclerView = view.findViewById(R.id.hotel_list);
@@ -92,9 +90,9 @@ public class DailyResultFragment extends Fragment {
         name = view.findViewById(R.id.name);
         date = view.findViewById(R.id.date);
         name.setText(nameS);
-        date.setText(PersianDigitConverter.PerisanNumber(String.valueOf(year)) + "/" + PersianDigitConverter.PerisanNumber(String.valueOf(month))+"/"+PersianDigitConverter.PerisanNumber(String.valueOf(day)));
-        send= view.findViewById(R.id.return_btn);
-        final LinearLayoutManager layoutManager =new LinearLayoutManager(getActivity());
+        date.setText(PersianDigitConverter.PerisanNumber(String.valueOf(year)) + "/" + PersianDigitConverter.PerisanNumber(String.valueOf(month)) + "/" + PersianDigitConverter.PerisanNumber(String.valueOf(day)));
+        send = view.findViewById(R.id.return_btn);
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(roomListAdapter);
 
@@ -102,16 +100,16 @@ public class DailyResultFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                for (int i = 0 ; i<counter.length ; i++){
-                    if(confirm[i]!=null){
+                for (int i = 0; i < counter.length; i++) {
+                    if (confirm[i] != null) {
                         JsonObject object = new JsonObject();
-                        object.addProperty( "roomId" , confirm[i].getRoom_id() );
-                        object.addProperty( "count" , counter[i] );
-                        roomList.add( object );
-                        roomCount.add( counter[i] );
-                        for (int j = 0 ; j<counter[i];j++)
-                            roomConfirmation.add( confirm[i] );
-                        roomCount.add( counter[i] );
+                        object.addProperty("roomId", confirm[i].getRoom_id());
+                        object.addProperty("count", counter[i]);
+                        roomList.add(object);
+                        roomCount.add(counter[i]);
+                        for (int j = 0; j < counter[i]; j++)
+                            roomConfirmation.add(confirm[i]);
+                        roomCount.add(counter[i]);
                     }
                 }
 
@@ -124,12 +122,11 @@ public class DailyResultFragment extends Fragment {
                     object.addProperty("api_token", MyPreferenceManager.getInstace(getActivity()).getToken());
                     object.add("rooms", roomList);
                     object.addProperty("ip", "0");
-                    MyPreferenceManager.getInstace( getActivity() ).putRoom( roomConfirmation );
+                    MyPreferenceManager.getInstace(getActivity()).putRoom(roomConfirmation);
                     ReserveRoomController reserveRoomController = new ReserveRoomController(callBack);
-                    reserveRoomController.start(object,MyPreferenceManager.getInstace(getActivity()).getLoginRes().getToken_type() +" "+ MyPreferenceManager.getInstace(getActivity()).getLoginRes().getAccess_token());
-                }
-                else {
-                    Toast.makeText(getActivity() , "حداقل یک اتاق باید انتخاب شود", Toast.LENGTH_LONG).show();
+                    reserveRoomController.start(object, MyPreferenceManager.getInstace(getActivity()).getLoginRes().getToken_type() + " " + MyPreferenceManager.getInstace(getActivity()).getLoginRes().getAccess_token());
+                } else {
+                    Toast.makeText(getActivity(), "حداقل یک اتاق باید انتخاب شود", Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -141,7 +138,7 @@ public class DailyResultFragment extends Fragment {
         @Override
         public void onResponse(ReserveRes res) {
             MyPreferenceManager.getInstace(getActivity()).putReservedId(res.getReservedId());
-            ((MainActivity)getActivity()).onDailyResuktBackEvent( new DailyReserveResultBackEvent(true) );
+            ((MainActivity) getActivity()).onDailyResuktBackEvent(new DailyReserveResultBackEvent(true));
 
         }
 
@@ -151,11 +148,11 @@ public class DailyResultFragment extends Fragment {
         }
     };
 
-    DailyRoomListAdapter.getRooms getRooms= new DailyRoomListAdapter.getRooms() {
+    DailyRoomListAdapter.getRooms getRooms = new DailyRoomListAdapter.getRooms() {
         @Override
-        public void getRooms(int[] count, Room[] confirmRoom , int position) {
-                counter[position] = count [position];
-                confirm[position] = confirmRoom [position];
+        public void getRooms(int[] count, Room[] confirmRoom, int position) {
+            counter[position] = count[position];
+            confirm[position] = confirmRoom[position];
 
         }
     };

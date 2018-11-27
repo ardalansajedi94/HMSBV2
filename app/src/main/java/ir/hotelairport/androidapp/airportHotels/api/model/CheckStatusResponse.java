@@ -1,7 +1,7 @@
 package ir.hotelairport.androidapp.airportHotels.api.model;
 
 public class CheckStatusResponse {
-    int errorCode , bookId;
+    int errorCode, bookId;
     String refId;
 
     public CheckStatusResponse() {

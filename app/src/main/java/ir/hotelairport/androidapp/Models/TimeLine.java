@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 
 public class TimeLine {
-    private String content,date;
+    private String content, date;
     private boolean is_response;
     private ArrayList<TimeLine> responses;
 

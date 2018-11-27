@@ -7,20 +7,20 @@ import java.util.ArrayList;
  */
 
 public class BlogContent {
-    private int id,internalImage;
-    private String title,content,created_at;
+    private int id, internalImage;
+    private String title, content, created_at;
     private ArrayList<Image> images;
     private Category category;
 
-    public BlogContent(String title)
-    {
-        this.title= title;
+    public BlogContent(String title) {
+        this.title = title;
     }
-    public BlogContent(String title,int InternalImage)
-    {
-        this.title= title;
-        this.internalImage=InternalImage;
+
+    public BlogContent(String title, int InternalImage) {
+        this.title = title;
+        this.internalImage = InternalImage;
     }
+
     public int getInternalImage() {
         return internalImage;
     }

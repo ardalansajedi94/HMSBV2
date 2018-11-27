@@ -19,56 +19,73 @@ public class MyPreferenceManager {
     private static MyPreferenceManager instance = null;
     private static SharedPreferences sharedPreferences = null;
     private static SharedPreferences.Editor editor = null;
-    public static MyPreferenceManager getInstace(Context context){
-        if (instance ==null){
-            instance= new MyPreferenceManager(context);
+
+    public static MyPreferenceManager getInstace(Context context) {
+        if (instance == null) {
+            instance = new MyPreferenceManager(context);
         }
         return instance;
     }
-    private MyPreferenceManager(Context context){
+
+    private MyPreferenceManager(Context context) {
         sharedPreferences = context.getSharedPreferences("My_preference", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
     }
-    public String getToken(){
-        return sharedPreferences.getString("token" , null);
+
+    public String getToken() {
+        return sharedPreferences.getString("token", null);
     }
-    public void putToken(String token){
-        editor.putString("token" , token);
+
+    public void putToken(String token) {
+        editor.putString("token", token);
         editor.apply();
     }
-    public int getBookId(){
-        return sharedPreferences.getInt("BookId" , 0);
+
+    public int getBookId() {
+        return sharedPreferences.getInt("BookId", 0);
     }
-    public void putBookId(int bookId){
-        editor.putInt("BookId" , bookId);
+
+    public void putBookId(int bookId) {
+        editor.putInt("BookId", bookId);
         editor.apply();
     }
-    public String getCheckIn(){
-        return sharedPreferences.getString("checkIn" , null);
+
+    public String getCheckIn() {
+        return sharedPreferences.getString("checkIn", null);
     }
-    public void putCheckIn(String checkIn){
-        editor.putString("checkIn" , checkIn);
+
+    public void putCheckIn(String checkIn) {
+        editor.putString("checkIn", checkIn);
         editor.apply();
     }
-    public int getPosition(){return sharedPreferences.getInt("position" , 0);}
-    public void putPosition(int position){
-        editor.putInt("position" ,position);
+
+    public int getPosition() {
+        return sharedPreferences.getInt("position", 0);
+    }
+
+    public void putPosition(int position) {
+        editor.putInt("position", position);
         editor.apply();
     }
-    public String getRefId(){
-        return sharedPreferences.getString("refId" , null);
+
+    public String getRefId() {
+        return sharedPreferences.getString("refId", null);
     }
-    public void putRefId(String refId){
-        editor.putString("refId" , refId);
+
+    public void putRefId(String refId) {
+        editor.putString("refId", refId);
         editor.apply();
     }
-    public ArrayList<Room> getRoom(){
+
+    public ArrayList<Room> getRoom() {
         Gson gson = new Gson();
         String json = sharedPreferences.getString("room", null);
-        Type type = new TypeToken<ArrayList<Room>>() {}.getType();
+        Type type = new TypeToken<ArrayList<Room>>() {
+        }.getType();
         return gson.fromJson(json, type);
     }
-    public void putRoom(ArrayList<Room> room){
+
+    public void putRoom(ArrayList<Room> room) {
         Gson gson = new Gson();
         String json = gson.toJson(room);
         editor.putString("room", json);
@@ -76,23 +93,25 @@ public class MyPreferenceManager {
     }
 
 
-    public int getReservedId(){
-        return sharedPreferences.getInt("reservedId" , 0);
+    public int getReservedId() {
+        return sharedPreferences.getInt("reservedId", 0);
     }
-    public void putReservedId(int reservedId){
-        editor.putInt("reservedId" , reservedId);
+
+    public void putReservedId(int reservedId) {
+        editor.putInt("reservedId", reservedId);
         editor.apply();
     }
 
-    public LoginRes getLoginRes(){
-        String loginRes = sharedPreferences.getString("LoginRes" , null);
+    public LoginRes getLoginRes() {
+        String loginRes = sharedPreferences.getString("LoginRes", null);
         Gson gson = new Gson();
-        return gson.fromJson(loginRes , LoginRes.class);
+        return gson.fromJson(loginRes, LoginRes.class);
     }
-    public void putLoginRes(LoginRes loginRes){
+
+    public void putLoginRes(LoginRes loginRes) {
         Gson gson = new Gson();
-        String loginResStr = gson.toJson(loginRes , LoginRes.class);
-        editor.putString("LoginRes" ,loginResStr);
+        String loginResStr = gson.toJson(loginRes, LoginRes.class);
+        editor.putString("LoginRes", loginResStr);
         editor.apply();
     }
 

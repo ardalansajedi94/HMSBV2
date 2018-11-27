@@ -1,7 +1,7 @@
 package ir.hotelairport.androidapp.airportHotels.api.model;
 
 public class ProfileResponse {
-    String firstName , lastName ,email , mobile_number;
+    String firstName, lastName, email, mobile_number;
 
     public ProfileResponse() {
     }

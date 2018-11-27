@@ -18,17 +18,18 @@ import ir.hotelairport.androidapp.R;
 import ir.hotelairport.androidapp.airportHotels.api.model.PaxReview;
 
 
-public class DailyPassengerDetailAdapter extends RecyclerView.Adapter<DailyPassengerDetailAdapter.ViewHolder>{
+public class DailyPassengerDetailAdapter extends RecyclerView.Adapter<DailyPassengerDetailAdapter.ViewHolder> {
 
     private Context context;
     private int index = 0;
-    String [][] pos;
+    String[][] pos;
     List<PaxReview> paxReviews;
-    List<String> paxId= new ArrayList<>();
+    List<String> paxId = new ArrayList<>();
 
 
     private View view;
-    public DailyPassengerDetailAdapter(Context context , List<PaxReview> paxReview , String[][] pos ) {
+
+    public DailyPassengerDetailAdapter(Context context, List<PaxReview> paxReview, String[][] pos) {
         this.context = context;
         this.paxReviews = paxReview;
         this.pos = pos;
@@ -38,7 +39,7 @@ public class DailyPassengerDetailAdapter extends RecyclerView.Adapter<DailyPasse
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.daily_passenger_review , parent , false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.daily_passenger_review, parent, false);
         return new ViewHolder(view);
 
     }
@@ -47,26 +48,20 @@ public class DailyPassengerDetailAdapter extends RecyclerView.Adapter<DailyPasse
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
 
-
-
-
-
-
         holder.name.setText(paxReviews.get(position).getFullName());
         holder.id.setText(paxReviews.get(position).getNationalCode());
         holder.email.setText(paxReviews.get(position).getEmail());
         holder.mobile.setText(paxReviews.get(position).getMobile());
-        for (int i = 0 ; i<pos.length ; i++){
-            for (int j=0 ; j < pos[i].length ; j++){
-                if (pos[i][j]!=null)
-                paxId.add(pos[i][j]);
+        for (int i = 0; i < pos.length; i++) {
+            for (int j = 0; j < pos[i].length; j++) {
+                if (pos[i][j] != null)
+                    paxId.add(pos[i][j]);
             }
         }
         holder.paxId.setText(paxId.get(position));
-        if (paxReviews.get(position).isDocType()){
+        if (paxReviews.get(position).isDocType()) {
             holder.natId.setText("کد ملی");
-        }
-        else {
+        } else {
             holder.natId.setText("شماره پاسپورت");
         }
 
@@ -89,11 +84,12 @@ public class DailyPassengerDetailAdapter extends RecyclerView.Adapter<DailyPasse
         RecyclerView recyclerView;
         RadioGroup docType;
         RadioButton radioButton;
-        ImageView  right;
+        ImageView right;
+
         ViewHolder(View itemView) {
             super(itemView);
             view = itemView;
-            name = itemView.findViewById( R.id.edit_name);
+            name = itemView.findViewById(R.id.edit_name);
             id = itemView.findViewById(R.id.edit_nat_code);
             mobile = itemView.findViewById(R.id.edit_cell_num);
             email = itemView.findViewById(R.id.edit_email);

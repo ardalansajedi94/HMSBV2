@@ -1,7 +1,6 @@
 package ir.hotelairport.androidapp.airportHotels.api.data;
 
 
-
 import ir.hotelairport.androidapp.airportHotels.api.model.ProfileResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -17,17 +16,17 @@ public class ProfileController {
     }
 
 
-    public void start(String token){
+    public void start(String token) {
         Retrofit retrofit = new Retrofit.Builder().baseUrl("https://hotelairport.ir/api/v1/").addConverterFactory(GsonConverterFactory.create()).build();
-        HotelApi hotelApi =  retrofit.create(HotelApi.class);
-        Call<ProfileResponse> call = hotelApi.ShowProfile( "application/json" ,"application/json" , token);
+        HotelApi hotelApi = retrofit.create(HotelApi.class);
+        Call<ProfileResponse> call = hotelApi.ShowProfile("application/json", "application/json", token);
         call.enqueue(new Callback<ProfileResponse>() {
             @Override
             public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
                 if (response.isSuccessful())
                     showProfile.onResponse(response.body());
                 else
-                    showProfile.onError( response.message() );
+                    showProfile.onError(response.message());
 
             }
 
@@ -36,8 +35,7 @@ public class ProfileController {
 
                 try {
                     showProfile.onFailure(t.getCause().getMessage());
-                }
-                catch (NullPointerException e){
+                } catch (NullPointerException e) {
 
                 }
 

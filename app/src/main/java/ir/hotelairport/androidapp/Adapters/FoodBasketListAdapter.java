@@ -44,11 +44,12 @@ public class FoodBasketListAdapter extends BaseAdapter {
     private RequestInterface requestInterface;
     private DatabaseHandler db;
     private Call<ServerResponse> response;
-    TextView plus_tv,minus_tv,count_tv;
+    TextView plus_tv, minus_tv, count_tv;
+
     public FoodBasketListAdapter(ArrayList<Basket> data, Context c) {
         _data = data;
         _c = c;
-        db=new DatabaseHandler(_c);
+        db = new DatabaseHandler(_c);
         progress = new ProgressDialog(_c);
         progress.setMessage(_c.getResources().getString(R.string.connecting_to_server));
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -80,38 +81,32 @@ public class FoodBasketListAdapter extends BaseAdapter {
         // TODO Auto-generated method stub
         View v = convertView;
         final Basket item = _data.get(position);
-        user_detail=_c.getSharedPreferences(Constants.USER_DETAIL, Context.MODE_PRIVATE);
+        user_detail = _c.getSharedPreferences(Constants.USER_DETAIL, Context.MODE_PRIVATE);
         if (v == null) {
             LayoutInflater vi = (LayoutInflater) _c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = vi.inflate(R.layout.new_list_item_basket, null);
         }
-        count_tv=(TextView)v.findViewById(R.id.count_tv);
-        minus_tv=(TextView)v.findViewById(R.id.minus_tv);
-        plus_tv=(TextView)v.findViewById(R.id.plus_tv);
-        TextView menu_title= (TextView)v.findViewById(R.id.menu_title);
+        count_tv = (TextView) v.findViewById(R.id.count_tv);
+        minus_tv = (TextView) v.findViewById(R.id.minus_tv);
+        plus_tv = (TextView) v.findViewById(R.id.plus_tv);
+        TextView menu_title = (TextView) v.findViewById(R.id.menu_title);
         menu_title.setText(item.getTitle());
         count_tv.setText(String.valueOf(item.getCount()));
         minus_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (item.getCount()>1)
-                {
-                    _data.get(position).setCount(_data.get(position).getCount()-1);
-                    edit_item(position,item.getCount()-1);
-                }
-                else
-                {
-                     AlertDialog.Builder builder = new AlertDialog.Builder(_c);
+                if (item.getCount() > 1) {
+                    _data.get(position).setCount(_data.get(position).getCount() - 1);
+                    edit_item(position, item.getCount() - 1);
+                } else {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(_c);
                     builder.setMessage(_c.getString(R.string.delete_basket_item_confirm)).setPositiveButton(_c.getString(R.string.yes), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            if (_data.size()==1)
-                            {
-                                remove_item(position,true);
-                            }
-                            else
-                            {
-                                remove_item(position,false);
+                            if (_data.size() == 1) {
+                                remove_item(position, true);
+                            } else {
+                                remove_item(position, false);
                             }
                         }
                     })
@@ -128,21 +123,21 @@ public class FoodBasketListAdapter extends BaseAdapter {
         plus_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                _data.get(position).setCount(_data.get(position).getCount()+1);
-                edit_item(position,item.getCount()+1);
+                _data.get(position).setCount(_data.get(position).getCount() + 1);
+                edit_item(position, item.getCount() + 1);
             }
         });
 
         return v;
     }
-    private void edit_item(int position,int count)
-    {
+
+    private void edit_item(int position, int count) {
         progress.show();
-        ServerRequest request=new ServerRequest();
+        ServerRequest request = new ServerRequest();
         request.setCount(count);
         request.set_method("PUT");
-        response = requestInterface.dynamic_post_request(user_detail.getString(Constants.JWT,""),"guest/basket/"+String.valueOf(_data.get(position).getId()),request);
-        RetrofitWithRetry.enqueueWithRetry(response,3,new Callback<ServerResponse>() {
+        response = requestInterface.dynamic_post_request(user_detail.getString(Constants.JWT, ""), "guest/basket/" + String.valueOf(_data.get(position).getId()), request);
+        RetrofitWithRetry.enqueueWithRetry(response, 3, new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, retrofit2.Response<ServerResponse> response) {
                 progress.dismiss();
@@ -150,35 +145,35 @@ public class FoodBasketListAdapter extends BaseAdapter {
                 switch (response.code()) {
                     case 200:
                         if (resp != null) {
-                            Toast.makeText(_c,_c.getResources().getString(R.string.order_updated),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(_c, _c.getResources().getString(R.string.order_updated), Toast.LENGTH_SHORT).show();
                             notifyDataSetChanged();
                         }
                         break;
                     default:
                         if (resp != null) {
                             Toast.makeText(_c, resp.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                            Toast.makeText(_c, db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"server_problem"), Toast.LENGTH_SHORT).show();
+                        } else
+                            Toast.makeText(_c, db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "server_problem"), Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
+
             @Override
             public void onFailure(Call<ServerResponse> call, Throwable t) {
                 progress.dismiss();
-                Log.d("error:",t.getMessage());
+                Log.d("error:", t.getMessage());
             }
         });
     }
-    private void remove_item(final int position, final boolean last_item)
-    {
+
+    private void remove_item(final int position, final boolean last_item) {
 
 
         progress.show();
-        ServerRequest request=new ServerRequest();
+        ServerRequest request = new ServerRequest();
         request.set_method("DELETE");
-        response = requestInterface.dynamic_post_request(user_detail.getString(Constants.JWT,""),"guest/basket/"+String.valueOf(_data.get(position).getId()),request);
-        RetrofitWithRetry.enqueueWithRetry(response,3,new Callback<ServerResponse>() {
+        response = requestInterface.dynamic_post_request(user_detail.getString(Constants.JWT, ""), "guest/basket/" + String.valueOf(_data.get(position).getId()), request);
+        RetrofitWithRetry.enqueueWithRetry(response, 3, new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, retrofit2.Response<ServerResponse> response) {
                 progress.dismiss();
@@ -188,28 +183,27 @@ public class FoodBasketListAdapter extends BaseAdapter {
                         if (resp != null) {
                             _data.remove(position);
                             notifyDataSetChanged();
-                            if (last_item)
-                            {
-                                FragmentManager fm = ((LoggedInActivity)_c).getSupportFragmentManager();
-                                foodBasketFragment current_fragment = (foodBasketFragment)fm.findFragmentByTag("CURRENT_FRAGMENT");
+                            if (last_item) {
+                                FragmentManager fm = ((LoggedInActivity) _c).getSupportFragmentManager();
+                                foodBasketFragment current_fragment = (foodBasketFragment) fm.findFragmentByTag("CURRENT_FRAGMENT");
                                 current_fragment.getBasket(false);
                             }
-                            Toast.makeText(_c,_c.getResources().getString(R.string.order_updated),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(_c, _c.getResources().getString(R.string.order_updated), Toast.LENGTH_SHORT).show();
                         }
                         break;
                     default:
                         if (resp != null) {
                             Toast.makeText(_c, resp.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                            Toast.makeText(_c, db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"server_problem"), Toast.LENGTH_SHORT).show();
+                        } else
+                            Toast.makeText(_c, db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "server_problem"), Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
+
             @Override
             public void onFailure(Call<ServerResponse> call, Throwable t) {
                 progress.dismiss();
-                Log.d("error:",t.getMessage());
+                Log.d("error:", t.getMessage());
             }
         });
     }

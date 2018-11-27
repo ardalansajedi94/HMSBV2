@@ -6,7 +6,7 @@ package ir.hotelairport.androidapp.Models;
 
 public class Invoice {
     int has_response;
-    String response,created_at,file_source;
+    String response, created_at, file_source;
 
     public int getHas_response() {
         return has_response;

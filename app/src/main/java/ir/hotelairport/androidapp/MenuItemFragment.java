@@ -53,13 +53,14 @@ public class MenuItemFragment extends Fragment implements BaseSliderView.OnSlide
     private CafeMenuItem cafeMenuItem;
     private RestaurantMenuItem restaurantMenuItem;
     private ProgressDialog progress;
-    private TextView foodTitleTV, foodContentTV, foodMaterialTV,foodUnitTV,MaterialTitleTV;
+    private TextView foodTitleTV, foodContentTV, foodMaterialTV, foodUnitTV, MaterialTitleTV;
     private Spinner foodCountSP;
     private int type; //1 for restaurant and 2 for cafe
     int id;
     private SharedPreferences user_detail;
     Button order_btn;
     DatabaseHandler db;
+
     public MenuItemFragment() {
         // Required empty public constructor
     }
@@ -69,28 +70,28 @@ public class MenuItemFragment extends Fragment implements BaseSliderView.OnSlide
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_menu_item, container, false);
+        View view = inflater.inflate(R.layout.fragment_menu_item, container, false);
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         activity.getSupportActionBar().setTitle(R.string.order);
-        db=new DatabaseHandler(getActivity());
+        db = new DatabaseHandler(getActivity());
         user_detail = getActivity().getSharedPreferences(Constants.USER_DETAIL, Context.MODE_PRIVATE);
-        sliderLayout = (SliderLayout)view.findViewById(R.id.slider);
-        foodTitleTV =(TextView)view.findViewById(R.id.FoodNameTV);
-        foodContentTV =(TextView)view.findViewById(R.id.FoodContent);
-        foodMaterialTV =(TextView)view.findViewById(R.id.FoodMaterial);
-        foodUnitTV =(TextView)view.findViewById(R.id.food_unit);
-        MaterialTitleTV =(TextView)view.findViewById(R.id.materialTitleTv);
-        foodCountSP=(Spinner) view.findViewById(R.id.food_count);
-        order_btn=(Button) view.findViewById(R.id.add_to_basket_btn);
+        sliderLayout = (SliderLayout) view.findViewById(R.id.slider);
+        foodTitleTV = (TextView) view.findViewById(R.id.FoodNameTV);
+        foodContentTV = (TextView) view.findViewById(R.id.FoodContent);
+        foodMaterialTV = (TextView) view.findViewById(R.id.FoodMaterial);
+        foodUnitTV = (TextView) view.findViewById(R.id.food_unit);
+        MaterialTitleTV = (TextView) view.findViewById(R.id.materialTitleTv);
+        foodCountSP = (Spinner) view.findViewById(R.id.food_count);
+        order_btn = (Button) view.findViewById(R.id.add_to_basket_btn);
         foodContentTV.setMovementMethod(new ScrollingMovementMethod());
         foodMaterialTV.setMovementMethod(new ScrollingMovementMethod());
         final Bundle bundle = this.getArguments();
         if (bundle != null) {
-            this.type = bundle.getInt("type",1);
-            this.id = bundle.getInt("id",1);
+            this.type = bundle.getInt("type", 1);
+            this.id = bundle.getInt("id", 1);
         }
         List<Integer> counts = new ArrayList<Integer>();
-        for (int i=1;i<=10;i++)
+        for (int i = 1; i <= 10; i++)
             counts.add(i);
         ArrayAdapter<Integer> dataAdapter = new ArrayAdapter<Integer>(getActivity(), android.R.layout.simple_spinner_item, counts);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -100,25 +101,24 @@ public class MenuItemFragment extends Fragment implements BaseSliderView.OnSlide
             @Override
             public void onClick(View v) {
                 Integer count_no;
-                count_no=Integer.parseInt(foodCountSP.getSelectedItem().toString());
-                switch (type)
-                {
+                count_no = Integer.parseInt(foodCountSP.getSelectedItem().toString());
+                switch (type) {
                     case 1:
-                        add_to_basket(restaurantMenuItem.getId(),count_no,type);
+                        add_to_basket(restaurantMenuItem.getId(), count_no, type);
                         break;
                     case 2:
-                        add_to_basket(cafeMenuItem.getId(),count_no,type);
+                        add_to_basket(cafeMenuItem.getId(), count_no, type);
                         break;
                 }
             }
         });
-        MaterialTitleTV.setText(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"material"));
+        MaterialTitleTV.setText(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "material"));
         return view;
     }
-    private void add_to_basket(int item_id,int count,int type)
-    {
+
+    private void add_to_basket(int item_id, int count, int type) {
         progress = new ProgressDialog(getActivity());
-        progress.setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"connecting_to_server"));
+        progress.setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "connecting_to_server"));
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
         progress.setProgress(0);
@@ -129,12 +129,12 @@ public class MenuItemFragment extends Fragment implements BaseSliderView.OnSlide
                 .build();
         RequestInterface requestInterface = retrofit.create(RequestInterface.class);
         Call<ServerResponse> response;
-        ServerRequest request=new ServerRequest();
+        ServerRequest request = new ServerRequest();
         request.setFood_id(item_id);
         request.setType(type);
         request.setCount(count);
-        response = requestInterface.order(user_detail.getString(Constants.JWT,""),request);
-        RetrofitWithRetry.enqueueWithRetry(response,3,new Callback<ServerResponse>() {
+        response = requestInterface.order(user_detail.getString(Constants.JWT, ""), request);
+        RetrofitWithRetry.enqueueWithRetry(response, 3, new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, retrofit2.Response<ServerResponse> response) {
                 progress.dismiss();
@@ -142,31 +142,31 @@ public class MenuItemFragment extends Fragment implements BaseSliderView.OnSlide
                 switch (response.code()) {
                     case 200:
                         if (resp != null) {
-                            Toast.makeText(getActivity(),db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"order_success"),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "order_success"), Toast.LENGTH_SHORT).show();
                             getActivity().getSupportFragmentManager().popBackStack();
                         }
                         break;
                     default:
                         if (resp != null) {
                             Toast.makeText(getActivity(), resp.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"server_problem"), Toast.LENGTH_SHORT).show();
+                        } else
+                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "server_problem"), Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
+
             @Override
             public void onFailure(Call<ServerResponse> call, Throwable t) {
                 progress.dismiss();
                 Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.d("error:",t.getMessage());
+                Log.d("error:", t.getMessage());
             }
         });
     }
-    private void getItem()
-    {
+
+    private void getItem() {
         progress = new ProgressDialog(getActivity());
-        progress.setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"connecting_to_server"));
+        progress.setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "connecting_to_server"));
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
         progress.setProgress(0);
@@ -177,16 +177,13 @@ public class MenuItemFragment extends Fragment implements BaseSliderView.OnSlide
                 .build();
         RequestInterface requestInterface = retrofit.create(RequestInterface.class);
         Call<ServerResponse> response;
-        if (this.type ==1)
-        {
-            response = requestInterface.dynamic_url_with_jwt(user_detail.getString(Constants.JWT,""),"restaurants/menu/"+String.valueOf(id));
-        }
-        else
-        {
-            response = requestInterface.dynamic_url_with_jwt(user_detail.getString(Constants.JWT,""),"coffeeShops/menu/"+String.valueOf(id));
+        if (this.type == 1) {
+            response = requestInterface.dynamic_url_with_jwt(user_detail.getString(Constants.JWT, ""), "restaurants/menu/" + String.valueOf(id));
+        } else {
+            response = requestInterface.dynamic_url_with_jwt(user_detail.getString(Constants.JWT, ""), "coffeeShops/menu/" + String.valueOf(id));
         }
 
-        RetrofitWithRetry.enqueueWithRetry(response,3,new Callback<ServerResponse>(){
+        RetrofitWithRetry.enqueueWithRetry(response, 3, new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, retrofit2.Response<ServerResponse> response) {
                 progress.dismiss();
@@ -199,67 +196,52 @@ public class MenuItemFragment extends Fragment implements BaseSliderView.OnSlide
                             sliderLayout.setCustomAnimation(new DescriptionAnimation());
                             sliderLayout.stopAutoCycle();
                             sliderLayout.addOnPageChangeListener(MenuItemFragment.this);
-                            if (type==1)
-                            {
-                                restaurantMenuItem=resp.getRestaurant_item();
+                            if (type == 1) {
+                                restaurantMenuItem = resp.getRestaurant_item();
                                 foodTitleTV.setText(restaurantMenuItem.getTitle());
-                                if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.N)
-                                {
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                                     foodContentTV.setText(Html.fromHtml(restaurantMenuItem.getContent(), Html.FROM_HTML_MODE_COMPACT));
-                                }
-
-                                else
-                                {
+                                } else {
                                     foodContentTV.setText(Html.fromHtml(restaurantMenuItem.getContent()));
                                 }
-                                String material[]=restaurantMenuItem.getMaterial().split(":");
-                                foodMaterialTV.setText(TextUtils.join(",",material));
+                                String material[] = restaurantMenuItem.getMaterial().split(":");
+                                foodMaterialTV.setText(TextUtils.join(",", material));
                                 foodUnitTV.setText(restaurantMenuItem.getUnit());
-                                if (restaurantMenuItem.getImages()!=null)
-                                {
-                                    Log.i("images size",String.valueOf(restaurantMenuItem.getImages().size()));
-                                    for (int i=0;i<restaurantMenuItem.getImages().size();i++)
-                                    {
-                                        DefaultSliderView sliderView= new DefaultSliderView(getActivity());
-                                        sliderView.image(Constants.MEDIA_BASE_URL+restaurantMenuItem.getImages().get(i).getImage_source());
+                                if (restaurantMenuItem.getImages() != null) {
+                                    Log.i("images size", String.valueOf(restaurantMenuItem.getImages().size()));
+                                    for (int i = 0; i < restaurantMenuItem.getImages().size(); i++) {
+                                        DefaultSliderView sliderView = new DefaultSliderView(getActivity());
+                                        sliderView.image(Constants.MEDIA_BASE_URL + restaurantMenuItem.getImages().get(i).getImage_source());
                                         sliderView.setScaleType(BaseSliderView.ScaleType.Fit);
                                         sliderLayout.addSlider(sliderView);
                                     }
 
-                                    if (restaurantMenuItem.getImages().size()==1) {
+                                    if (restaurantMenuItem.getImages().size() == 1) {
                                         sliderLayout.setIndicatorVisibility(PagerIndicator.IndicatorVisibility.Invisible);
                                     }
                                 }
-                            }
-                            else
-                            {
-                                cafeMenuItem=resp.getCafe_item();
-                                cafeMenuItem=resp.getCafe_item();
+                            } else {
+                                cafeMenuItem = resp.getCafe_item();
+                                cafeMenuItem = resp.getCafe_item();
                                 foodTitleTV.setText(cafeMenuItem.getTitle());
-                                if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.N)
-                                {
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                                     foodContentTV.setText(Html.fromHtml(cafeMenuItem.getContent(), Html.FROM_HTML_MODE_COMPACT));
-                                }
-
-                                else
-                                {
+                                } else {
                                     foodContentTV.setText(Html.fromHtml(cafeMenuItem.getContent()));
 
                                 }
-                                String material[]=cafeMenuItem.getMaterial().split(":");
-                                foodMaterialTV.setText(TextUtils.join(",",material));
+                                String material[] = cafeMenuItem.getMaterial().split(":");
+                                foodMaterialTV.setText(TextUtils.join(",", material));
                                 foodUnitTV.setText(cafeMenuItem.getUnit());
-                                if (cafeMenuItem.getImages()!=null)
-                                {
-                                    for (int i=0;i<cafeMenuItem.getImages().size();i++)
-                                    {
-                                        DefaultSliderView sliderView= new DefaultSliderView(getActivity());
-                                        sliderView.image(Constants.MEDIA_BASE_URL+cafeMenuItem.getImages().get(i).getImage_source());
+                                if (cafeMenuItem.getImages() != null) {
+                                    for (int i = 0; i < cafeMenuItem.getImages().size(); i++) {
+                                        DefaultSliderView sliderView = new DefaultSliderView(getActivity());
+                                        sliderView.image(Constants.MEDIA_BASE_URL + cafeMenuItem.getImages().get(i).getImage_source());
                                         sliderView.setScaleType(BaseSliderView.ScaleType.CenterInside);
                                         sliderLayout.addSlider(sliderView);
                                     }
-                                    Log.d("images size",String.valueOf(cafeMenuItem.getImages().size()));
-                                    if (cafeMenuItem.getImages().size()==1)
+                                    Log.d("images size", String.valueOf(cafeMenuItem.getImages().size()));
+                                    if (cafeMenuItem.getImages().size() == 1)
                                         sliderLayout.setIndicatorVisibility(PagerIndicator.IndicatorVisibility.Invisible);
                                 }
                             }
@@ -269,20 +251,21 @@ public class MenuItemFragment extends Fragment implements BaseSliderView.OnSlide
                     default:
                         if (resp != null) {
                             Toast.makeText(getActivity(), resp.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"server_problem"), Toast.LENGTH_SHORT).show();
+                        } else
+                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "server_problem"), Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
+
             @Override
             public void onFailure(Call<ServerResponse> call, Throwable t) {
                 progress.dismiss();
                 Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.d("error:",t.getMessage());
+                Log.d("error:", t.getMessage());
             }
         });
     }
+
     @Override
     public void onStop() {
         // To prevent a memory leak on rotation, make sure to call stopAutoCycle() on the slider before activity or fragment is destroyed
@@ -292,11 +275,12 @@ public class MenuItemFragment extends Fragment implements BaseSliderView.OnSlide
 
     @Override
     public void onSliderClick(BaseSliderView slider) {
-       // Toast.makeText(getActivity(),"clicked",Toast.LENGTH_SHORT).show();
+        // Toast.makeText(getActivity(),"clicked",Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+    }
 
     @Override
     public void onPageSelected(int position) {
@@ -304,6 +288,7 @@ public class MenuItemFragment extends Fragment implements BaseSliderView.OnSlide
     }
 
     @Override
-    public void onPageScrollStateChanged(int state) {}
+    public void onPageScrollStateChanged(int state) {
+    }
 
 }

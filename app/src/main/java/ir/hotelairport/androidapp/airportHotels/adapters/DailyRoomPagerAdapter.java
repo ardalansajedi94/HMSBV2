@@ -11,21 +11,21 @@ import ir.hotelairport.androidapp.airportHotels.PreferenceManager.MyPreferenceMa
 
 public class DailyRoomPagerAdapter extends FragmentStatePagerAdapter {
     Context context;
-    int size=0;
-    public DailyRoomPagerAdapter(FragmentManager fm , Context context ) {
+    int size = 0;
+
+    public DailyRoomPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
         this.context = context;
 
-        size = MyPreferenceManager.getInstace( context ).getRoom().size();
+        size = MyPreferenceManager.getInstace(context).getRoom().size();
     }
 
     @Override
     public Fragment getItem(int position) {
 
-        if (position< size){
+        if (position < size) {
             return new DailyStayBookRoomFragment().newInstance(position);
-        }
-        else {
+        } else {
             return null;
         }
     }

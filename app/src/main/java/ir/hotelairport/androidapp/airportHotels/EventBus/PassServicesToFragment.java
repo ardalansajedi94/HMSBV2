@@ -8,7 +8,7 @@ public class PassServicesToFragment {
     List<Service> serviceList;
     List<Integer> count;
 
-    public PassServicesToFragment( List<Service> serviceList, List<Integer> count) {
+    public PassServicesToFragment(List<Service> serviceList, List<Integer> count) {
 
         this.serviceList = serviceList;
         this.count = count;

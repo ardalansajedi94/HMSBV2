@@ -40,7 +40,7 @@ public class MenuFragment extends Fragment {
 
     private GridView menuGrid;
     private int type; //4 : restaurant,5:cafes
-    private int id,category;
+    private int id, category;
     private ProgressDialog progress;
     private SharedPreferences user_detail;
     private ArrayList<RestaurantMenuItem> restaurantMenuItems;
@@ -48,18 +48,19 @@ public class MenuFragment extends Fragment {
     private CafeMenuListAdapter cafeMenuListAdapter;
     private RestaurantMenuListAdapter restaurantMenuListAdapter;
     DatabaseHandler db;
+
     public MenuFragment() {
         // Required empty public constructor
     }
 
 
-    public static MenuFragment newInstance(int type,int id,int category) {
+    public static MenuFragment newInstance(int type, int id, int category) {
         MenuFragment myFragment = new MenuFragment();
 
         Bundle args = new Bundle();
         args.putInt("type", type);
         args.putInt("id", id);
-        args.putInt("category",category);
+        args.putInt("category", category);
         myFragment.setArguments(args);
 
         return myFragment;
@@ -69,10 +70,10 @@ public class MenuFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_menu, container, false);
-        db=new DatabaseHandler(getActivity());
+        View view = inflater.inflate(R.layout.fragment_menu, container, false);
+        db = new DatabaseHandler(getActivity());
         user_detail = getActivity().getSharedPreferences(Constants.USER_DETAIL, Context.MODE_PRIVATE);
-        menuGrid=(GridView) view.findViewById(R.id.menu_grid);
+        menuGrid = (GridView) view.findViewById(R.id.menu_grid);
         Bundle bundle = this.getArguments();
         if (bundle != null) {
             this.type = bundle.getInt("type", 4);
@@ -85,19 +86,16 @@ public class MenuFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Fragment fragment = new MenuItemFragment();
                 Bundle bundle = new Bundle();
-                if (type==4)
-                {
+                if (type == 4) {
                     bundle.putInt("id", restaurantMenuItems.get(position).getId());
 
-                }
-                else
-                {
+                } else {
                     bundle.putInt("id", cafeMenuItems.get(position).getId());
 
                 }
-                bundle.putInt("type", type-3); //
+                bundle.putInt("type", type - 3); //
                 fragment.setArguments(bundle);
-                FragmentManager fragmentManager =getActivity().getSupportFragmentManager();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.content_frame, fragment);
                 fragmentTransaction.addToBackStack(null);
@@ -108,10 +106,10 @@ public class MenuFragment extends Fragment {
         activity.getSupportActionBar().setTitle(R.string.menu);
         return view;
     }
-    private void getMenu()
-    {
+
+    private void getMenu() {
         progress = new ProgressDialog(getActivity());
-        progress.setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"connecting_to_server"));
+        progress.setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "connecting_to_server"));
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
         progress.setProgress(0);
@@ -122,15 +120,12 @@ public class MenuFragment extends Fragment {
                 .build();
         RequestInterface requestInterface = retrofit.create(RequestInterface.class);
         Call<ServerResponse> response;
-        if (type ==4)
-        {
-            response = requestInterface.dynamic_url_with_jwt(user_detail.getString(Constants.JWT,""),"restaurants/"+String.valueOf(id)+"/menu?cat_id="+String.valueOf(category));
+        if (type == 4) {
+            response = requestInterface.dynamic_url_with_jwt(user_detail.getString(Constants.JWT, ""), "restaurants/" + String.valueOf(id) + "/menu?cat_id=" + String.valueOf(category));
+        } else {
+            response = requestInterface.dynamic_url_with_jwt(user_detail.getString(Constants.JWT, ""), "coffeeShops/" + String.valueOf(id) + "/menu?cat_id=" + String.valueOf(category));
         }
-        else
-        {
-            response = requestInterface.dynamic_url_with_jwt(user_detail.getString(Constants.JWT,""),"coffeeShops/"+String.valueOf(id)+"/menu?cat_id="+String.valueOf(category));
-        }
-        RetrofitWithRetry.enqueueWithRetry(response,3,new Callback<ServerResponse>() {
+        RetrofitWithRetry.enqueueWithRetry(response, 3, new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, retrofit2.Response<ServerResponse> response) {
                 progress.dismiss();
@@ -140,14 +135,11 @@ public class MenuFragment extends Fragment {
                         if (resp != null) {
 
 
-                            if (type==4)
-                            {
+                            if (type == 4) {
                                 restaurantMenuItems = resp.getRestaurant_menu();
-                                restaurantMenuListAdapter=new RestaurantMenuListAdapter(restaurantMenuItems,getActivity());
+                                restaurantMenuListAdapter = new RestaurantMenuListAdapter(restaurantMenuItems, getActivity());
                                 menuGrid.setAdapter(restaurantMenuListAdapter);
-                            }
-                            else
-                            {
+                            } else {
                                 cafeMenuItems = resp.getCafe_menu();
                                 cafeMenuListAdapter = new CafeMenuListAdapter(cafeMenuItems, getActivity());
                                 menuGrid.setAdapter(cafeMenuListAdapter);
@@ -158,18 +150,18 @@ public class MenuFragment extends Fragment {
                     default:
                         if (resp != null) {
                             Toast.makeText(getActivity(), resp.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"server_problem"), Toast.LENGTH_SHORT).show();
+                        } else
+                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "server_problem"), Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
+
             @Override
             public void onFailure(Call<ServerResponse> call, Throwable t) {
                 progress.dismiss();
                 Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.d("error:",t.getMessage());
+                Log.d("error:", t.getMessage());
             }
         });
     }
-    }
+}

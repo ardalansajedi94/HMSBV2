@@ -30,7 +30,7 @@ public class ReserveReq implements Parcelable {
     private String ip;
     private ArrayList<Map<String, String>> rooms;
 
-    public ReserveReq(String refId){
+    public ReserveReq(String refId) {
         this.ip = "0";
         this.refId = refId;
     }
@@ -94,7 +94,6 @@ public class ReserveReq implements Parcelable {
 
         data.put("refId", this.refId);
         data.put("ip", this.ip);
-
 
 
         JSONArray rm = new JSONArray(this.rooms);

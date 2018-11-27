@@ -5,7 +5,7 @@ package ir.hotelairport.androidapp.Models;
  */
 
 public class Position {
-    double lat,lng;
+    double lat, lng;
 
     public double getLat() {
         return lat;

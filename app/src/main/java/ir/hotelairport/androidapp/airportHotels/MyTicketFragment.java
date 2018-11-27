@@ -24,10 +24,11 @@ public class MyTicketFragment extends Fragment {
 
     RecyclerView perchesList;
     Button returnBtn;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_my_ticket ,container,false);
+        return inflater.inflate(R.layout.fragment_my_ticket, container, false);
     }
 
     @Override
@@ -36,21 +37,22 @@ public class MyTicketFragment extends Fragment {
         perchesList = view.findViewById(R.id.purch_list);
         returnBtn = view.findViewById(R.id.return_btn);
         PurchaseController purchaseController = new PurchaseController(callBack);
-        purchaseController.start(MyPreferenceManager.getInstace(getActivity()).getLoginRes().getToken_type() +" "+ MyPreferenceManager.getInstace(getActivity()).getLoginRes().getAccess_token());
+        purchaseController.start(MyPreferenceManager.getInstace(getActivity()).getLoginRes().getToken_type() + " " + MyPreferenceManager.getInstace(getActivity()).getLoginRes().getAccess_token());
         returnBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).onBackPressed();
+                ((MainActivity) getActivity()).onBackPressed();
             }
         });
 
     }
+
     HotelApi.PurchaseListCallBack callBack = new HotelApi.PurchaseListCallBack() {
         @Override
         public void onResponse(List<Voucher> voucherList) {
             Collections.reverse(voucherList);
-            PerchesAdapter adapter = new PerchesAdapter(voucherList , getActivity());
-            perchesList.setLayoutManager( new LinearLayoutManager(getActivity()));
+            PerchesAdapter adapter = new PerchesAdapter(voucherList, getActivity());
+            perchesList.setLayoutManager(new LinearLayoutManager(getActivity()));
             perchesList.setAdapter(adapter);
         }
 

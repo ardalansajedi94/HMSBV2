@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <ImageView
         android:id="@+id/back"
         android:layout_width="wrap_content"
@@ -11,7 +12,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginLeft="8dp"
-        android:src="@drawable/ic_back"/>
+        android:src="@drawable/ic_back" />
+
     <ImageView
         android:id="@+id/nav"
         android:layout_width="wrap_content"
@@ -20,7 +22,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginRight="8dp"
-        android:src="@drawable/ic_title"/>
+        android:src="@drawable/ic_title" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,6 +31,6 @@
         android:layout_marginRight="6dp"
         app:layout_constraintRight_toLeftOf="@id/nav"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

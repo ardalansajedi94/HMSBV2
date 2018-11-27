@@ -5,10 +5,10 @@ package ir.hotelairport.androidapp.Server;
  */
 
 public class ServerRequest {
-    private String username,password,address,date,time,car,explanation,service,type,request_type,problems,title,content,place;
-    private String firstname,lastname,national_id,phone,mobile,email,job,zip_code,_method,token,device_id,qr,api_token;
-    private int count,food_id,item_type,device_type,notf_on,place_id,place_type;
-    private double lat,lng;
+    private String username, password, address, date, time, car, explanation, service, type, request_type, problems, title, content, place;
+    private String firstname, lastname, national_id, phone, mobile, email, job, zip_code, _method, token, device_id, qr, api_token;
+    private int count, food_id, item_type, device_type, notf_on, place_id, place_type;
+    private double lat, lng;
 
     public void setPlace_id(int place_id) {
         this.place_id = place_id;

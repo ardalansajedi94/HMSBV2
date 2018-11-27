@@ -16,7 +16,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-
 import com.astuetz.PagerSlidingTabStrip;
 
 import java.util.ArrayList;
@@ -50,6 +49,7 @@ public class TabsFragment extends Fragment {
     private Call<ServerResponse> response;
     private DatabaseHandler db;
     private int id;
+
     public TabsFragment() {
         // Required empty public constructor
     }
@@ -63,7 +63,8 @@ public class TabsFragment extends Fragment {
 
         return myFragment;
     }
-    public static TabsFragment newInstance(int type,int id) {
+
+    public static TabsFragment newInstance(int type, int id) {
         TabsFragment myFragment = new TabsFragment();
 
         Bundle args = new Bundle();
@@ -79,15 +80,15 @@ public class TabsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_tabs, container, false);
-        db=new DatabaseHandler(getActivity());
+        db = new DatabaseHandler(getActivity());
         user_detail = getActivity().getSharedPreferences(Constants.USER_DETAIL, Context.MODE_PRIVATE);
         this.type = getArguments().getInt("type");
         if (getArguments().containsKey("id"))
-            this.id=getArguments().getInt("id");
+            this.id = getArguments().getInt("id");
         else
-            this.id=0;
+            this.id = 0;
         progress = new ProgressDialog(getActivity());
-        progress.setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"connecting_to_server"));
+        progress.setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "connecting_to_server"));
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
         progress.setProgress(0);
@@ -99,8 +100,7 @@ public class TabsFragment extends Fragment {
         requestInterface = retrofit.create(RequestInterface.class);
         viewPager = (ViewPager) view.findViewById(R.id.viewpager);
         tabLayout = (PagerSlidingTabStrip) view.findViewById(R.id.tabs);
-        if (isRTL(Locale.getDefault()))
-        {
+        if (isRTL(Locale.getDefault())) {
             tabLayout.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
             tabLayout.getTabsContainer().setGravity(Gravity.RIGHT);
         }
@@ -130,28 +130,25 @@ public class TabsFragment extends Fragment {
                                 if (resp != null) {
                                     ArrayList<Category> categories = resp.getCategories();
                                     if (categories.size() > 0) {
-                                        if (isRTL(Locale.getDefault()))
-                                        {
+                                        if (isRTL(Locale.getDefault())) {
                                             switch (type) {
                                                 case 1:
-                                                    for (int i = categories.size()-1; i >=0; i--) {
+                                                    for (int i = categories.size() - 1; i >= 0; i--) {
                                                         adapter.addFragment(AboutCityFragment.newInstance(categories.get(i).getId()), categories.get(i).getName());
                                                     }
                                                     break;
                                                 case 2:
-                                                    for (int i = categories.size()-1; i >=0; i--) {
+                                                    for (int i = categories.size() - 1; i >= 0; i--) {
                                                         adapter.addFragment(AboutHotelFragment.newInstance(categories.get(i).getId()), categories.get(i).getName());
                                                     }
                                                     break;
                                                 case 3:
-                                                    for (int i = categories.size()-1; i >=0; i--) {
+                                                    for (int i = categories.size() - 1; i >= 0; i--) {
                                                         adapter.addFragment(HelpFragment.newInstance(categories.get(i).getId()), categories.get(i).getName());
                                                     }
                                                     break;
                                             }
-                                        }
-                                        else
-                                        {
+                                        } else {
                                             switch (type) {
                                                 case 1:
                                                     for (int i = 0; i < categories.size(); i++) {
@@ -182,7 +179,7 @@ public class TabsFragment extends Fragment {
                                 if (resp != null) {
                                     Toast.makeText(getActivity(), resp.getMessage(), Toast.LENGTH_SHORT).show();
                                 } else
-                                    Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"server_problem"), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "server_problem"), Toast.LENGTH_SHORT).show();
                                 break;
                         }
 
@@ -197,7 +194,7 @@ public class TabsFragment extends Fragment {
                 });
                 break;
             case 4:
-                response = requestInterface.dynamic_url_with_jwt(user_detail.getString(Constants.JWT,""),"restaurants/"+String.valueOf(id)+"/services"+"?lang_id="+String.valueOf(user_detail.getInt(Constants.LANGUAGE_ID,1)));
+                response = requestInterface.dynamic_url_with_jwt(user_detail.getString(Constants.JWT, ""), "restaurants/" + String.valueOf(id) + "/services" + "?lang_id=" + String.valueOf(user_detail.getInt(Constants.LANGUAGE_ID, 1)));
                 RetrofitWithRetry.enqueueWithRetry(response, 3, new Callback<ServerResponse>() {
                     @Override
                     public void onResponse(Call<ServerResponse> call, retrofit2.Response<ServerResponse> response) {
@@ -208,16 +205,13 @@ public class TabsFragment extends Fragment {
                                 if (resp != null) {
                                     ArrayList<Category> categories = resp.getCategories();
                                     if (categories.size() > 0) {
-                                        if (isRTL(Locale.getDefault()))
-                                        {
-                                            for (int i = categories.size()-1; i >=0; i--) {
-                                                adapter.addFragment(MenuFragment.newInstance(type,id,categories.get(i).getId()), categories.get(i).getName());
+                                        if (isRTL(Locale.getDefault())) {
+                                            for (int i = categories.size() - 1; i >= 0; i--) {
+                                                adapter.addFragment(MenuFragment.newInstance(type, id, categories.get(i).getId()), categories.get(i).getName());
                                             }
-                                        }
-                                        else
-                                        {
+                                        } else {
                                             for (int i = 0; i < categories.size(); i++) {
-                                                adapter.addFragment(MenuFragment.newInstance(type,id,categories.get(i).getId()), categories.get(i).getName());
+                                                adapter.addFragment(MenuFragment.newInstance(type, id, categories.get(i).getId()), categories.get(i).getName());
                                             }
                                         }
 
@@ -232,7 +226,7 @@ public class TabsFragment extends Fragment {
                                 if (resp != null) {
                                     Toast.makeText(getActivity(), resp.getMessage(), Toast.LENGTH_SHORT).show();
                                 } else
-                                    Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"server_problem"), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "server_problem"), Toast.LENGTH_SHORT).show();
                                 break;
                         }
 
@@ -247,7 +241,7 @@ public class TabsFragment extends Fragment {
 
                 break;
             case 5:
-                response =requestInterface.dynamic_url_with_jwt(user_detail.getString(Constants.JWT,""),"coffeeShops/"+String.valueOf(id)+"/services"+"?lang_id="+String.valueOf(user_detail.getInt(Constants.LANGUAGE_ID,1)));
+                response = requestInterface.dynamic_url_with_jwt(user_detail.getString(Constants.JWT, ""), "coffeeShops/" + String.valueOf(id) + "/services" + "?lang_id=" + String.valueOf(user_detail.getInt(Constants.LANGUAGE_ID, 1)));
                 RetrofitWithRetry.enqueueWithRetry(response, 3, new Callback<ServerResponse>() {
                     @Override
                     public void onResponse(Call<ServerResponse> call, retrofit2.Response<ServerResponse> response) {
@@ -258,16 +252,13 @@ public class TabsFragment extends Fragment {
                                 if (resp != null) {
                                     ArrayList<Category> categories = resp.getCategories();
                                     if (categories.size() > 0) {
-                                        if (isRTL(Locale.getDefault()))
-                                        {
-                                            for (int i = categories.size()-1; i >=0; i--) {
-                                                adapter.addFragment(MenuFragment.newInstance(type,id,categories.get(i).getId()), categories.get(i).getName());
+                                        if (isRTL(Locale.getDefault())) {
+                                            for (int i = categories.size() - 1; i >= 0; i--) {
+                                                adapter.addFragment(MenuFragment.newInstance(type, id, categories.get(i).getId()), categories.get(i).getName());
                                             }
-                                        }
-                                        else
-                                        {
+                                        } else {
                                             for (int i = 0; i < categories.size(); i++) {
-                                                adapter.addFragment(MenuFragment.newInstance(type,id,categories.get(i).getId()), categories.get(i).getName());
+                                                adapter.addFragment(MenuFragment.newInstance(type, id, categories.get(i).getId()), categories.get(i).getName());
                                             }
                                         }
 
@@ -282,7 +273,7 @@ public class TabsFragment extends Fragment {
                                 if (resp != null) {
                                     Toast.makeText(getActivity(), resp.getMessage(), Toast.LENGTH_SHORT).show();
                                 } else
-                                    Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"server_problem"), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "server_problem"), Toast.LENGTH_SHORT).show();
                                 break;
                         }
 

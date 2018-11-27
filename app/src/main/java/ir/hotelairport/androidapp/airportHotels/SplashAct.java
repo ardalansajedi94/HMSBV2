@@ -10,10 +10,11 @@ import ir.hotelairport.androidapp.R;
 
 public class SplashAct extends AppCompatActivity {
     private Handler mWaitHandler = new Handler();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate( savedInstanceState );
-        setContentView( R.layout.splash_activity );
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.splash_activity);
 
         mWaitHandler.postDelayed(new Runnable() {
 
@@ -46,6 +47,5 @@ public class SplashAct extends AppCompatActivity {
     }
 
 
-
-    }
+}
 

@@ -3,6 +3,8 @@
     <color name="colorPrimary">#f3f3f3</color>
     <color name="colorPrimaryDark">#c0c0c0</color>
     <color name="colorAccent">#2d9fd6</color>
+
+
     <color name="light">#fff</color>
     <color name="milky">#fff</color>
     <color name="mdtp_accent_color">#2d9fd6</color>
@@ -13,7 +15,6 @@
     <color name="primary_transparent">#b41976d2</color>
 
     <color name="colorPrimaryLight">#01aeb2</color>
-
 
 
     <color name="primary_text">#ffffff</color>
@@ -27,7 +28,6 @@
     <color name="blue">#00f</color>
     <color name="red">#f00</color>
     <color name="primaryTextColor">#ffffff</color>
-
 
 
     <color name="white">#fff</color>
@@ -57,8 +57,6 @@
     <color name="cancel_page">#ef5350</color>
     <color name="cancel_page_light">#ff867c</color>
     <color name="cancel_page_dark">#b61827</color>
-
-
 
 
 </resources>

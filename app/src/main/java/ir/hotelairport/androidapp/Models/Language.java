@@ -6,7 +6,7 @@ package ir.hotelairport.androidapp.Models;
 
 public class Language {
     private int id;
-    private  String name,created_at,locale;
+    private String name, created_at, locale;
 
     public String getLocale() {
         return locale;

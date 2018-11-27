@@ -45,6 +45,7 @@ public class AboutHotelFragment extends Fragment {
 
 
     int category;
+
     public AboutHotelFragment() {
         // Required empty public constructor
     }
@@ -54,14 +55,14 @@ public class AboutHotelFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_about_hotel, container, false);
-        db=new DatabaseHandler(getActivity());
-        this.category=getArguments().getInt("category");
-        user_detail=getActivity().getSharedPreferences(Constants.USER_DETAIL, Context.MODE_PRIVATE);
+        View view = inflater.inflate(R.layout.fragment_about_hotel, container, false);
+        db = new DatabaseHandler(getActivity());
+        this.category = getArguments().getInt("category");
+        user_detail = getActivity().getSharedPreferences(Constants.USER_DETAIL, Context.MODE_PRIVATE);
         aboutHotelList = (ListView) view.findViewById(R.id.about_hotel_list);
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.activity_main_swipe_refresh_layout);
 
-        blogContents=new ArrayList<>();
+        blogContents = new ArrayList<>();
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -87,6 +88,7 @@ public class AboutHotelFragment extends Fragment {
         });
         return view;
     }
+
     public static AboutHotelFragment newInstance(int category) {
         AboutHotelFragment myFragment = new AboutHotelFragment();
 
@@ -96,10 +98,10 @@ public class AboutHotelFragment extends Fragment {
 
         return myFragment;
     }
-    private void getAboutHotelContent()
-    {
+
+    private void getAboutHotelContent() {
         progress = new ProgressDialog(getActivity());
-        progress.setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"connecting_to_server"));
+        progress.setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "connecting_to_server"));
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
         progress.setProgress(0);
@@ -110,8 +112,8 @@ public class AboutHotelFragment extends Fragment {
                 .build();
         RequestInterface requestInterface = retrofit.create(RequestInterface.class);
         Call<ServerResponse> response;
-        response  = requestInterface.hotel_info(category,user_detail.getInt(Constants.LANGUAGE_ID,1));
-        RetrofitWithRetry.enqueueWithRetry(response,3,new Callback<ServerResponse>() {
+        response = requestInterface.hotel_info(category, user_detail.getInt(Constants.LANGUAGE_ID, 1));
+        RetrofitWithRetry.enqueueWithRetry(response, 3, new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, retrofit2.Response<ServerResponse> response) {
                 progress.dismiss();
@@ -120,9 +122,9 @@ public class AboutHotelFragment extends Fragment {
                 switch (response.code()) {
                     case 200:
                         if (resp != null) {
-                            blogContents=resp.getInformations();
+                            blogContents = resp.getInformations();
 
-                            aboutHotelListAdapter = new AboutCityListAdapter(blogContents,getActivity());
+                            aboutHotelListAdapter = new AboutCityListAdapter(blogContents, getActivity());
                             aboutHotelList.setAdapter(aboutHotelListAdapter);
 
                         }
@@ -130,17 +132,17 @@ public class AboutHotelFragment extends Fragment {
                     default:
                         if (resp != null) {
                             Toast.makeText(getActivity(), resp.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"server_problem"), Toast.LENGTH_SHORT).show();
+                        } else
+                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "server_problem"), Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
+
             @Override
             public void onFailure(Call<ServerResponse> call, Throwable t) {
                 progress.dismiss();
                 Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.d("error:",t.getMessage());
+                Log.d("error:", t.getMessage());
                 swipeRefreshLayout.setRefreshing(false);
             }
         });

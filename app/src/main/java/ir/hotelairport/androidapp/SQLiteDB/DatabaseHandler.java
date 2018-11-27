@@ -52,8 +52,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        this.context=context;
-        user_detail=context.getSharedPreferences(Constants.USER_DETAIL, Context.MODE_PRIVATE);
+        this.context = context;
+        user_detail = context.getSharedPreferences(Constants.USER_DETAIL, Context.MODE_PRIVATE);
     }
 
     // Creating Tables
@@ -151,8 +151,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return LanguageL;
     }
 
-    public void addToSettingsTable(HotelSetting setting)
-    {
+    public void addToSettingsTable(HotelSetting setting) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -163,11 +162,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.insert(SETTINGS_TABLE, null, values);
         db.close(); // Closing database connection
     }
+
     public HotelSetting getHOtelInfoForLang(int lang_id) {
-        HotelSetting hotelSetting= new HotelSetting();
+        HotelSetting hotelSetting = new HotelSetting();
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(SETTINGS_TABLE, new String[]{KEY_ID,
-                        KEY_LANGUAGE_ID,KEY_NAME, KEY_LOGO}, KEY_LANGUAGE_ID + "=?",
+                        KEY_LANGUAGE_ID, KEY_NAME, KEY_LOGO}, KEY_LANGUAGE_ID + "=?",
                 new String[]{String.valueOf(lang_id)}, null, null, null, null);
         if (cursor != null) {
             if (cursor.getCount() != 0) {
@@ -182,8 +182,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return hotelSetting;
 
     }
-    public void addToPositionTable(Position position)
-    {
+
+    public void addToPositionTable(Position position) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -193,8 +193,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.insert(Position_TABLE, null, values);
         db.close(); // Closing database connection
     }
-    public Position getHotelPosition()
-    {
+
+    public Position getHotelPosition() {
         ArrayList<Position> positionArrayList = new ArrayList<Position>();
         // Select All Query
         String selectQuery = "SELECT  * FROM " + Position_TABLE + " ORDER BY " + KEY_ID + " ASC";
@@ -217,6 +217,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
         return positionArrayList.get(0);
     }
+
     public void addToLanguageKeys(int id, String title) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -230,7 +231,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public String getTranslationForLanguage(int lang_id, String key) {
         if (user_detail.getInt(Constants.APP_SERVER_INIT, 0) == 0) {
-         return   getFromLocalStringResource(key);
+            return getFromLocalStringResource(key);
         } else {
             int language_key_id;
             SQLiteDatabase db = this.getReadableDatabase();
@@ -249,7 +250,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                         if (cursor2.getCount() != 0) {
                             cursor2.moveToFirst();
                             if (cursor2.getString(3) != null) {
-                                String translation=cursor2.getString(3);
+                                String translation = cursor2.getString(3);
                                 db.close();
                                 cursor2.close();
                                 cursor.close();
@@ -258,7 +259,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                                 db.close();
                                 cursor2.close();
                                 cursor.close();
-                                if (lang_id!=2)
+                                if (lang_id != 2)
                                     return getTranslationForLanguage(2, key);
                                 else
                                     return getFromLocalStringResource(key);
@@ -267,7 +268,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                             db.close();
                             cursor2.close();
                             cursor.close();
-                            if (lang_id!=2)
+                            if (lang_id != 2)
                                 return getTranslationForLanguage(2, key);
                             else
                                 return getFromLocalStringResource(key);
@@ -276,7 +277,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     } else {
                         db.close();
                         cursor.close();
-                        if (lang_id!=2)
+                        if (lang_id != 2)
                             return getTranslationForLanguage(2, key);
                         else
                             return getFromLocalStringResource(key);
@@ -295,12 +296,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     }
 
-    private String getFromLocalStringResource(String key)
-    {
+    private String getFromLocalStringResource(String key) {
         String packageName = context.getPackageName();
         int resId = context.getResources().getIdentifier(key, "string", packageName);
         return context.getResources().getString(resId);
     }
+
     public void addNewTranslation(Translation translation) {
         SQLiteDatabase db = this.getWritableDatabase();
 

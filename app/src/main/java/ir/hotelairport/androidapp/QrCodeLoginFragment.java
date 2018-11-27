@@ -42,8 +42,9 @@ import static android.content.ContentValues.TAG;
 public class QrCodeLoginFragment extends Fragment implements BarcodeRetriever {
     BarcodeCapture barcodeCapture;
     TextView qr_guide;
-    private DatabaseHandler db;
     SharedPreferences user_detail;
+    private DatabaseHandler db;
+
     public QrCodeLoginFragment() {
         // Required empty public constructor
     }
@@ -53,17 +54,16 @@ public class QrCodeLoginFragment extends Fragment implements BarcodeRetriever {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_qr_code_login, container, false);
-        user_detail=getActivity().getSharedPreferences(Constants.USER_DETAIL, Context.MODE_PRIVATE);
-        db=new DatabaseHandler(getActivity());
+        user_detail = getActivity().getSharedPreferences(Constants.USER_DETAIL, Context.MODE_PRIVATE);
+        db = new DatabaseHandler(getActivity());
         barcodeCapture = (BarcodeCapture) getChildFragmentManager().findFragmentById(R.id.barcode);
         barcodeCapture.setRetrieval(this);
-        qr_guide=(TextView)view.findViewById(R.id.qr_guide_text);
-        qr_guide.setText(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"qr_guide"));
+        qr_guide = (TextView) view.findViewById(R.id.qr_guide_text);
+        qr_guide.setText(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "qr_guide"));
 
         return view;
 
     }
-
 
 
     public void onRetrieved(final Barcode barcode) {
@@ -101,13 +101,14 @@ public class QrCodeLoginFragment extends Fragment implements BarcodeRetriever {
     public void onPermissionRequestDenied() {
 
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         barcodeCapture.stopScanning();
     }
-    private void LoginWithQr(String qr)
-    {
+
+    private void LoginWithQr(String qr) {
         barcodeCapture.stopScanning();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)
@@ -122,7 +123,7 @@ public class QrCodeLoginFragment extends Fragment implements BarcodeRetriever {
         status.getPermissionStatus().getEnabled();
         request.setToken(status.getSubscriptionStatus().getUserId());
         Call<ServerResponse> response = requestInterface.qrLogin(request);
-        RetrofitWithRetry.enqueueWithRetry(response,3,new Callback<ServerResponse>() {
+        RetrofitWithRetry.enqueueWithRetry(response, 3, new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, retrofit2.Response<ServerResponse> response) {
 
@@ -134,7 +135,7 @@ public class QrCodeLoginFragment extends Fragment implements BarcodeRetriever {
                     case 200:
                         if (resp != null) {
                             SharedPreferences.Editor editor = user_detail.edit();
-                            editor.putString(Constants.JWT, "Bearer "+resp.getJwt());
+                            editor.putString(Constants.JWT, "Bearer " + resp.getJwt());
                             editor.putBoolean(Constants.IS_LOGGED_IN, true);
                             editor.putString(Constants.USER_FIRST_NAME, resp.getProfile().getFirstname());
                             editor.putString(Constants.USER_LAST_NAME, resp.getProfile().getLastname());
@@ -148,7 +149,7 @@ public class QrCodeLoginFragment extends Fragment implements BarcodeRetriever {
                         break;
                     case 401:
                         barcodeCapture.refresh();
-                        Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"qr_code_not_valid"), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "qr_code_not_valid"), Toast.LENGTH_SHORT).show();
                         break;
                     default:
                         barcodeCapture.refresh();
@@ -158,11 +159,12 @@ public class QrCodeLoginFragment extends Fragment implements BarcodeRetriever {
                         break;
                 }
             }
+
             @Override
             public void onFailure(Call<ServerResponse> call, Throwable t) {
                 barcodeCapture.refresh();
 
-                Log.d("error:",t.getMessage());
+                Log.d("error:", t.getMessage());
             }
         });
     }

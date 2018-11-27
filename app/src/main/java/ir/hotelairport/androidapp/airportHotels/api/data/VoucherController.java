@@ -11,7 +11,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class VoucherController {
 
 
-
     private HotelApi.VoucherCallBack loginCallBack;
 
     public VoucherController(HotelApi.VoucherCallBack voucherCallBack) {
@@ -19,17 +18,17 @@ public class VoucherController {
     }
 
 
-    public void start(String auth , String bookId){
+    public void start(String auth, String bookId) {
         Retrofit retrofit = new Retrofit.Builder().baseUrl("https://hotelairport.ir/voucher/").addConverterFactory(GsonConverterFactory.create()).build();
-        HotelApi hotelApi =  retrofit.create(HotelApi.class);
-        Call<ResponseBody> call = hotelApi.Voucher(auth , bookId);
+        HotelApi hotelApi = retrofit.create(HotelApi.class);
+        Call<ResponseBody> call = hotelApi.Voucher(auth, bookId);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful())
                     loginCallBack.onResponse(response.body());
                 else
-                    loginCallBack.onError( response.message() );
+                    loginCallBack.onError(response.message());
 
             }
 
@@ -38,8 +37,7 @@ public class VoucherController {
 
                 try {
                     loginCallBack.onFailure(t.getCause().getMessage());
-                }
-                catch (NullPointerException e){
+                } catch (NullPointerException e) {
 
                 }
 

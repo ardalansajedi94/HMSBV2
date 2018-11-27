@@ -2,13 +2,13 @@ package ir.hotelairport.androidapp.airportHotels.api.model;
 
 public class Service {
 
-        String title_fa;
-        int start_access,
+    String title_fa;
+    int start_access,
             end_access;
-        double priceByDiscount;
-        double price;
-        int service_id;
-        int hotel_id;
+    double priceByDiscount;
+    double price;
+    int service_id;
+    int hotel_id;
 
     public double getPrice() {
         return price;

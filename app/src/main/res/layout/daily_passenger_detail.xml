@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/milky"
@@ -12,11 +10,12 @@
         android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:visibility="gone"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:visibility="gone"
-        android:layout_margin="12dp">
+        app:layout_constraintTop_toTopOf="parent">
+
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -40,53 +39,53 @@
 
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
+
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="16dp"
-        app:layout_constraintTop_toBottomOf="@id/card"
-        >
+        app:layout_constraintTop_toBottomOf="@id/card">
+
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:layout_marginEnd="4dp"
             android:layout_marginStart="4dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="4dp"
             android:background="@drawable/back_border">
 
             <TextView
                 android:id="@+id/passenger"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="14dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="8dp"
-                android:textSize="14dp"
-                android:textColor="@color/colorAccent"
-                />
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/national"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="32dp"
                 android:text="ملیت"
                 android:textSize="14sp"
-                android:layout_marginRight="32dp"
-                app:layout_constraintTop_toBottomOf="@id/passenger"
                 app:layout_constraintRight_toRightOf="parent"
-                android:layout_marginTop="16dp"
-                />
+                app:layout_constraintTop_toBottomOf="@id/passenger" />
 
             <Button
                 android:id="@+id/iran"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="16dp"
                 android:background="@drawable/animation_button_accent"
                 android:text="ایرانی"
-                style="@style/Base.Widget.AppCompat.Button.Borderless"
                 android:textColor="@color/white"
                 app:layout_constraintLeft_toRightOf="@id/foreign"
                 app:layout_constraintRight_toLeftOf="@id/national"
@@ -94,6 +93,7 @@
 
             <Button
                 android:id="@+id/foreign"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="24dp"
@@ -101,7 +101,6 @@
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/animation_button"
                 android:text="خارجی"
-                style="@style/Base.Widget.AppCompat.Button.Borderless"
                 android:textColor="#bbb"
                 app:layout_constraintEnd_toStartOf="@+id/iran"
                 app:layout_constraintStart_toStartOf="parent"
@@ -116,9 +115,9 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="24dp"
                 android:background="@drawable/animation_editor"
+                android:hint="@string/persian_name"
                 android:paddingRight="8dp"
                 android:textSize="12sp"
-                android:hint="@string/persian_name"
                 app:layout_constraintBottom_toTopOf="@id/edit_nat_code"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_chainStyle="spread_inside"
@@ -150,12 +149,12 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="24dp"
                 android:background="@drawable/editor"
-                android:textSize="12sp"
-                android:paddingRight="8dp"
-                android:nextFocusDown="@id/edit_cell_num"
                 android:hint="@string/ah_pass_national_code_hint"
                 android:inputType="number"
+                android:nextFocusDown="@id/edit_cell_num"
+                android:paddingRight="8dp"
                 android:textDirection="rtl"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toTopOf="@id/edit_cell_num"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_weight="2"
@@ -170,12 +169,12 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="24dp"
                 android:background="@drawable/editor"
-                android:paddingRight="8dp"
-                android:textSize="12sp"
-                android:nextFocusDown="@id/edit_email"
-                android:textDirection="rtl"
                 android:hint="@string/ah_pass_cell_num_hint"
                 android:inputType="number"
+                android:nextFocusDown="@id/edit_email"
+                android:paddingRight="8dp"
+                android:textDirection="rtl"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toTopOf="@id/edit_email"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_weight="2"

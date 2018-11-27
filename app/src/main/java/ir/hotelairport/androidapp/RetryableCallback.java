@@ -10,7 +10,7 @@ import retrofit2.Response;
  * Created by Mohammad on 10/4/2017.
  */
 
-public class  RetryableCallback<T> implements Callback<T> {
+public class RetryableCallback<T> implements Callback<T> {
 
     private int totalRetries = 3;
     private static final String TAG = RetryableCallback.class.getSimpleName();
@@ -31,7 +31,7 @@ public class  RetryableCallback<T> implements Callback<T> {
             } else
                 onFinalResponse(call, response);
         else
-            onFinalResponse(call,response);
+            onFinalResponse(call, response);
     }
 
     @Override

@@ -23,7 +23,8 @@ import ir.hotelairport.androidapp.R;
 public class CafeRestaurantsListAdapter extends BaseAdapter {
     private ArrayList<CafeRestaurant> _data;
     private Context _c;
-    private ImageLoader imageLoader ;
+    private ImageLoader imageLoader;
+
     public CafeRestaurantsListAdapter(ArrayList<CafeRestaurant> data, Context c) {
         _data = data;
         _c = c;
@@ -55,16 +56,12 @@ public class CafeRestaurantsListAdapter extends BaseAdapter {
         TextView title_tv = (TextView) v.findViewById(R.id.cafe_restaurant_title);
         ImageView image = (ImageView) v.findViewById(R.id.cafe_restaurant_image);
         title_tv.setText(item.getName());
-        imageLoader= ImageLoader.getInstance();
-        if (item.getImages()!=null)
-        {
-            if (!item.getImages().isEmpty())
-            {
-                imageLoader.displayImage(Constants.MEDIA_BASE_URL+item.getImages().get(0).getImage_source(),image);
-            }
-            else
-            {
-                imageLoader.displayImage("http://portal.samplehotel.ir/assets/guests/images/restaurant.jpg",image);
+        imageLoader = ImageLoader.getInstance();
+        if (item.getImages() != null) {
+            if (!item.getImages().isEmpty()) {
+                imageLoader.displayImage(Constants.MEDIA_BASE_URL + item.getImages().get(0).getImage_source(), image);
+            } else {
+                imageLoader.displayImage("http://portal.samplehotel.ir/assets/guests/images/restaurant.jpg", image);
 
             }
         }

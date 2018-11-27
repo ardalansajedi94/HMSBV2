@@ -5,8 +5,8 @@ package ir.hotelairport.androidapp.Models;
  */
 
 public class Translation {
-    private int key_id,language_id,id;
-    private String translation,created_at;
+    private int key_id, language_id, id;
+    private String translation, created_at;
 
     public int getId() {
         return id;

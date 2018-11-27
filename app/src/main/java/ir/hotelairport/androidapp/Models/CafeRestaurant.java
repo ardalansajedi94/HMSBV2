@@ -7,9 +7,9 @@ import java.util.ArrayList;
  */
 
 public class CafeRestaurant {
-    private int id,language_id;
-    private ArrayList<Image>images;
-    private String name,content,created_at,updated_at;
+    private int id, language_id;
+    private ArrayList<Image> images;
+    private String name, content, created_at, updated_at;
 
     public int getId() {
         return id;

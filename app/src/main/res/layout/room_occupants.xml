@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/milky"
@@ -19,7 +17,7 @@
         android:textColor="@color/milky"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/adult_count"/>
+        app:layout_constraintStart_toEndOf="@id/adult_count" />
 
     <Spinner
         android:id="@+id/adult_count"
@@ -29,19 +27,19 @@
         android:textColor="@color/milky"
         app:layout_constraintEnd_toStartOf="@+id/textView6"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <!--<TextView-->
-        <!--android:id="@+id/textView10"-->
-        <!--android:layout_width="80dp"-->
-        <!--android:layout_height="32dp"-->
-        <!--android:layout_marginEnd="16dp"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:gravity="center"-->
-        <!--android:text="@string/ah_child"-->
-        <!--android:textColor="@color/hotel_black"-->
-        <!--app:layout_constraintEnd_toStartOf="@+id/adult_count"-->
-        <!--app:layout_constraintTop_toTopOf="parent" />-->
+    <!--android:id="@+id/textView10"-->
+    <!--android:layout_width="80dp"-->
+    <!--android:layout_height="32dp"-->
+    <!--android:layout_marginEnd="16dp"-->
+    <!--android:layout_marginTop="8dp"-->
+    <!--android:gravity="center"-->
+    <!--android:text="@string/ah_child"-->
+    <!--android:textColor="@color/hotel_black"-->
+    <!--app:layout_constraintEnd_toStartOf="@+id/adult_count"-->
+    <!--app:layout_constraintTop_toTopOf="parent" />-->
 
     <!--<Spinner-->
     <!--android:id="@+id/child_count"-->

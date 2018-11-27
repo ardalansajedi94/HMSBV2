@@ -24,7 +24,6 @@ public class NextResultBackEvent {
     }
 
 
-
     public JsonObject getRoom() {
         return room;
     }

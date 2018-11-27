@@ -1,8 +1,8 @@
 package ir.hotelairport.androidapp.airportHotels.Service;
 
 import android.app.Activity;
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.Html;
@@ -32,6 +32,7 @@ import ir.hotelairport.androidapp.airportHotels.api.model.BookServiceReq;
 public class ServicePaxFragment extends Fragment {
     private EditText fullName, natCode, phone, email;
     Button accept;
+
     @Override
     public void onStart() {
         super.onStart();
@@ -45,14 +46,14 @@ public class ServicePaxFragment extends Fragment {
     }
 
     @Subscribe
-    public void getServices(final PassServicesToPax services){
+    public void getServices(final PassServicesToPax services) {
 
         accept.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
                 hideKeyboard(getActivity());
-                if(isValidation()){
+                if (isValidation()) {
                     BookServiceReq serviceReq = new BookServiceReq();
                     serviceReq.setNatCode(natCode.getText().toString());
                     serviceReq.setFullName(fullName.getText().toString());
@@ -60,28 +61,30 @@ public class ServicePaxFragment extends Fragment {
                     serviceReq.setEmail(email.getText().toString());
                     serviceReq.setServices(services.getServiceList());
                     ServiceBookConfirmFragment serviceBookConfirmFragment = new ServiceBookConfirmFragment();
-                    serviceBookConfirmFragment.newInstance(serviceReq , services.getCount());
-                    getFragmentManager().beginTransaction().replace(R.id.content_frame , serviceBookConfirmFragment).commit();
+                    serviceBookConfirmFragment.newInstance(serviceReq, services.getCount());
+                    getFragmentManager().beginTransaction().replace(R.id.content_frame, serviceBookConfirmFragment).commit();
 
                 }
             }
         });
 
     }
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         View view = inflater.inflate(R.layout.fragment_service_pax, container, false);
         return view;
     }
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         fullName = view.findViewById(R.id.edit_name);
-        natCode  = view.findViewById(R.id.edit_nat_code);
-        phone    = view.findViewById(R.id.edit_cell_num);
-        email    = view.findViewById(R.id.edit_email);
-        accept= view.findViewById(R.id.accept);
+        natCode = view.findViewById(R.id.edit_nat_code);
+        phone = view.findViewById(R.id.edit_cell_num);
+        email = view.findViewById(R.id.edit_email);
+        accept = view.findViewById(R.id.accept);
 
         fullName.addTextChangedListener(new TextWatcher() {
             @Override
@@ -148,52 +151,55 @@ public class ServicePaxFragment extends Fragment {
             }
         });
     }
+
     public boolean isValidation() {
 
 
-            if (fullName.getText().toString().equals("") ) {
-                Toast.makeText(getActivity(), "نام نمی تواند خالی باشد", Toast.LENGTH_LONG).show();
-                fullName.setBackgroundResource(R.drawable.editor);
-                return false;
-            }
-                if (natCode.getText().toString().equals("") ) {
-                    Toast.makeText(getActivity(), "کد ملی نمی تواند خالی باشد", Toast.LENGTH_LONG).show();
-                    natCode.setBackgroundResource(R.drawable.editor);
-                    return false;
-                }
-                if (!isValidNatId(natCode.getText().toString())) {
-                    Toast.makeText(getActivity(), "کد ملی صحیح وارد نشده است", Toast.LENGTH_LONG).show();
-                    natCode.setBackgroundResource(R.drawable.editor);
-                    return false;
-                }
-        if (!mobileValidation(phone.getText().toString())){
+        if (fullName.getText().toString().equals("")) {
+            Toast.makeText(getActivity(), "نام نمی تواند خالی باشد", Toast.LENGTH_LONG).show();
+            fullName.setBackgroundResource(R.drawable.editor);
+            return false;
+        }
+        if (natCode.getText().toString().equals("")) {
+            Toast.makeText(getActivity(), "کد ملی نمی تواند خالی باشد", Toast.LENGTH_LONG).show();
+            natCode.setBackgroundResource(R.drawable.editor);
+            return false;
+        }
+        if (!isValidNatId(natCode.getText().toString())) {
+            Toast.makeText(getActivity(), "کد ملی صحیح وارد نشده است", Toast.LENGTH_LONG).show();
+            natCode.setBackgroundResource(R.drawable.editor);
+            return false;
+        }
+        if (!mobileValidation(phone.getText().toString())) {
             Toast.makeText(getActivity(), "موبایل صحیح وارد نشده است", Toast.LENGTH_LONG).show();
             phone.setBackgroundResource(R.drawable.editor);
             return false;
         }
-            if (!isValidEmail(email.getText().toString())) {
-                Toast.makeText(getActivity(), "ایمیل صحیح وارد نشده است", Toast.LENGTH_LONG).show();
-                email.setBackgroundResource(R.drawable.editor);
-                return false;
-            }
+        if (!isValidEmail(email.getText().toString())) {
+            Toast.makeText(getActivity(), "ایمیل صحیح وارد نشده است", Toast.LENGTH_LONG).show();
+            email.setBackgroundResource(R.drawable.editor);
+            return false;
+        }
 
 
-
-        return true;}
+        return true;
+    }
 
 
     public static boolean textPersian(String s) {
         for (int i = 0; i < Character.codePointCount(s, 0, s.length()); i++) {
             int c = s.codePointAt(i);
-            if (c >= 0x0600 && c <=0x06FF || c== 0xFB8A || c==0x067E || c==0x0686 || c==0x06AF)
+            if (c >= 0x0600 && c <= 0x06FF || c == 0xFB8A || c == 0x067E || c == 0x0686 || c == 0x06AF)
                 return true;
         }
-        return false;}
+        return false;
+    }
 
     private static boolean isValidEmail(String email) {
         return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
-    private boolean isValidNatId(String natId){
+
+    private boolean isValidNatId(String natId) {
         if (natId.equals("0000000000"))
             return false;
         else if (natId.equals("1111111111"))
@@ -220,15 +226,14 @@ public class ServicePaxFragment extends Fragment {
             return false;
         else if (natId.equals("9999999999"))
             return false;
-        else if (natId.length()!=10){
+        else if (natId.length() != 10) {
             return false;
 
-        }
-        else
+        } else
             return true;
     }
 
-    public boolean mobileValidation(String mobile){
+    public boolean mobileValidation(String mobile) {
 
         Pattern pattern = Pattern.compile("^[0][9][1][0-9]{8,8}$");
         Pattern pattern1 = Pattern.compile("^[0][9][0][0-9]{8,8}$");
@@ -243,24 +248,19 @@ public class ServicePaxFragment extends Fragment {
 
         if (matcher.matches()) {
             return true;
-        }
-        else if (matcher1.matches()){
+        } else if (matcher1.matches()) {
             return true;
-        }
-        else if (matcher2.matches()){
+        } else if (matcher2.matches()) {
             return true;
-        }
-        else if (matcher3.matches()){
+        } else if (matcher3.matches()) {
             return true;
-        }
-        else if (matcher4.matches()){
+        } else if (matcher4.matches()) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
+
     public static void hideKeyboard(Activity activity) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
         //Find the currently focused view, so we can grab the correct window token from it.
@@ -273,15 +273,13 @@ public class ServicePaxFragment extends Fragment {
     }
 
 
-    public void showTextViewsAsMandatory ( TextView... tvs )
-    {
+    public void showTextViewsAsMandatory(TextView... tvs) {
 
 
-        for ( TextView tv : tvs )
-        {
-            String text = tv.getText ().toString ();
+        for (TextView tv : tvs) {
+            String text = tv.getText().toString();
 
-            tv.setText ( Html.fromHtml ( text + "<font color=\"#ff0000\">" + " * " + "</font>" ) );
+            tv.setText(Html.fromHtml(text + "<font color=\"#ff0000\">" + " * " + "</font>"));
         }
     }
 }

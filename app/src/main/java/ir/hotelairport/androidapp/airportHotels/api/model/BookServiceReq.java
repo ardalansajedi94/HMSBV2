@@ -3,7 +3,7 @@ package ir.hotelairport.androidapp.airportHotels.api.model;
 import java.util.List;
 
 public class BookServiceReq {
-    String fullName , natCode , email , mobile;
+    String fullName, natCode, email, mobile;
     List<Service> services;
     List<Integer> count;
 

@@ -15,6 +15,7 @@
         android:cropToPadding="false"
         android:scaleType="centerInside"
         android:src="@drawable/ibis_bg" />
+
     <GridView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

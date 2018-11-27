@@ -33,7 +33,7 @@ import ir.hotelairport.androidapp.SQLiteDB.DatabaseHandler;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ServiceOnlyFragment extends Fragment  implements
+public class ServiceOnlyFragment extends Fragment implements
         TimePickerDialog.OnTimeSetListener,
         DatePickerDialog.OnDateSetListener {
 
@@ -48,17 +48,19 @@ public class ServiceOnlyFragment extends Fragment  implements
     private ArrayList<Service> services;
     private ServiceOnlyListAdapter serviceOnlyListAdapter;
     private static final String TIMEPICKER = "TimePickerDialog", DATEPICKER = "DatePickerDialog";
+
     @Override
     public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
-        String time =  hourOfDay + ":" + minute;
+        String time = hourOfDay + ":" + minute;
         time_tv.setText(time);
     }
 
     @Override
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-        String date= year+"/"+(monthOfYear+1)+"/"+dayOfMonth;
+        String date = year + "/" + (monthOfYear + 1) + "/" + dayOfMonth;
         date_tv.setText(date);
     }
+
     public ServiceOnlyFragment() {
         // Required empty public constructor
     }
@@ -71,9 +73,9 @@ public class ServiceOnlyFragment extends Fragment  implements
         View view = inflater.inflate(R.layout.fragment_service_only, container, false);
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         activity.getSupportActionBar().setTitle("خدمات دیگر");
-        db=new DatabaseHandler(getActivity());
-        user_detail=getActivity().getSharedPreferences(Constants.USER_DETAIL, Context.MODE_PRIVATE);
-        policyTv =(TextView) view.findViewById(R.id.policyTv);
+        db = new DatabaseHandler(getActivity());
+        user_detail = getActivity().getSharedPreferences(Constants.USER_DETAIL, Context.MODE_PRIVATE);
+        policyTv = (TextView) view.findViewById(R.id.policyTv);
         servicesList = view.findViewById(R.id.servicesList);
         byeBtn = view.findViewById(R.id.send_req_btn);
         date_tv = (Button) view.findViewById(R.id.date_tv);
@@ -109,15 +111,14 @@ public class ServiceOnlyFragment extends Fragment  implements
             @Override
             public void onChanged() {
                 super.onChanged();
-              showInvoicePrice();
+                showInvoicePrice();
             }
         });
         time_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if (user_detail.getInt(Constants.LANGUAGE_ID,0)==1)
-                {
+                if (user_detail.getInt(Constants.LANGUAGE_ID, 0) == 1) {
 
                     PersianCalendar now = new PersianCalendar();
                     TimePickerDialog tpd = TimePickerDialog.newInstance(
@@ -141,7 +142,7 @@ public class ServiceOnlyFragment extends Fragment  implements
             @Override
             public void onClick(View view) {
 
-                if (user_detail.getInt(Constants.LANGUAGE_ID,1)==1) {
+                if (user_detail.getInt(Constants.LANGUAGE_ID, 1) == 1) {
                     PersianCalendar now = new PersianCalendar();
                     DatePickerDialog dpd = DatePickerDialog.newInstance(
                             ServiceOnlyFragment.this,
@@ -163,19 +164,20 @@ public class ServiceOnlyFragment extends Fragment  implements
                 modalGuideFragment.show(fm, "fragment_guide");
             }
         });
-        return  view;
+        return view;
     }
 
-    private void showInvoicePrice(){
+    private void showInvoicePrice() {
         int price = 0;
-        for (int i=0; i<services.size();i++){
-            price = price+(services.get(i).getCount()*services.get(i).getPrice_with_discount());
+        for (int i = 0; i < services.size(); i++) {
+            price = price + (services.get(i).getCount() * services.get(i).getPrice_with_discount());
         }
-        byeBtn.setText("خرید("+String.valueOf(price)+")");
+        byeBtn.setText("خرید(" + String.valueOf(price) + ")");
     }
-    private void getServices(){
+
+    private void getServices() {
         services = new ArrayList<>();
-        Service service= new Service();
+        Service service = new Service();
         service.setName("استخر");
         service.setCode(100);
         service.setCount(0);
@@ -183,7 +185,7 @@ public class ServiceOnlyFragment extends Fragment  implements
         service.setPrice_with_discount(90000);
         service.setDesc("توضیحات مربوط به استخر");
         services.add(service);
-        service= new Service();
+        service = new Service();
         service.setName("تست");
         service.setCode(101);
         service.setCount(0);
@@ -191,7 +193,7 @@ public class ServiceOnlyFragment extends Fragment  implements
         service.setPrice_with_discount(10000);
         service.setDesc("توضیحات مربوط به تست");
         services.add(service);
-        serviceOnlyListAdapter = new ServiceOnlyListAdapter(services,getActivity());
+        serviceOnlyListAdapter = new ServiceOnlyListAdapter(services, getActivity());
         servicesList.setAdapter(serviceOnlyListAdapter);
         /*
         progress = new ProgressDialog(getActivity());

@@ -25,37 +25,37 @@ import org.greenrobot.eventbus.Subscribe;
 
 import java.text.DecimalFormat;
 
-import ir.hotelairport.androidapp.airportHotels.PersianDate;
-;
+import ir.hotelairport.androidapp.R;
 import ir.hotelairport.androidapp.airportHotels.EventBus.Ok;
 import ir.hotelairport.androidapp.airportHotels.EventBus.ResultFragmentShow;
+import ir.hotelairport.androidapp.airportHotels.PersianDate;
 import ir.hotelairport.androidapp.airportHotels.PersianDigitConverter;
-
 import ir.hotelairport.androidapp.airportHotels.PreferenceManager.MyPreferenceManager;
-import ir.hotelairport.androidapp.R;
 import ir.hotelairport.androidapp.airportHotels.Service.ServiceListFragment;
 import ir.hotelairport.androidapp.airportHotels.ShortStay.SearchFragment;
 import ir.hotelairport.androidapp.airportHotels.api.data.AvailabilityRoomController;
 import ir.hotelairport.androidapp.airportHotels.api.data.HotelApi;
 import ir.hotelairport.androidapp.airportHotels.api.model.AvailabilityRes;
 
+;
+
 public class DailySearchFragment extends Fragment {
     private ConstraintLayout arrivalDate;
     private TextView dateText;
     private ConstraintLayout arrivalCheckOut;
     private TextView checkOutDate;
-    ImageView shortStayLogo ,serviceLogo;
+    ImageView shortStayLogo, serviceLogo;
     Button search;
-    int shYear , shMonth,shDay;
+    int shYear, shMonth, shDay;
     private ProgressBar progressBar;
     private ConstraintLayout main;
-    boolean flag=false, dateFlag=false;
+    boolean flag = false, dateFlag = false;
     RadioGroup stayGroup;
     RadioButton radioButton;
 
 
-    String date =null , cDate =  null  ;
-    int Iday = 0 , Imounth= 0 , Iyear= 0;
+    String date = null, cDate = null;
+    int Iday = 0, Imounth = 0, Iyear = 0;
 
 
     @Override
@@ -69,80 +69,79 @@ public class DailySearchFragment extends Fragment {
         super.onStart();
         EventBus.getDefault().register(this);
     }
+
     @Subscribe
-    public void onNextPageShown(Ok ok){
-        progressBar.setVisibility( View.GONE );
-        main.setVisibility( View.VISIBLE );
+    public void onNextPageShown(Ok ok) {
+        progressBar.setVisibility(View.GONE);
+        main.setVisibility(View.VISIBLE);
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_daily_search , container ,false);
+        return inflater.inflate(R.layout.fragment_daily_search, container, false);
     }
-
 
 
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         findViews(view);
-        shortStayLogo= view.findViewById( R.id.short_reserve );
-        serviceLogo= view.findViewById( R.id.service_reserve );
-        progressBar = view.findViewById( R.id.progress );
-        main= view.findViewById( R.id.main );
+        shortStayLogo = view.findViewById(R.id.short_reserve);
+        serviceLogo = view.findViewById(R.id.service_reserve);
+        progressBar = view.findViewById(R.id.progress);
+        main = view.findViewById(R.id.main);
 
 
-        shortStayLogo.setOnClickListener( new View.OnClickListener() {
+        shortStayLogo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SearchFragment searchFragment = new SearchFragment();
-                getFragmentManager().beginTransaction().replace( R.id.content_frame ,searchFragment ).commit();
+                getFragmentManager().beginTransaction().replace(R.id.content_frame, searchFragment).commit();
             }
-        } );
-        serviceLogo.setOnClickListener( new View.OnClickListener() {
+        });
+        serviceLogo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ServiceListFragment serviceListFragment = new ServiceListFragment();
-                getFragmentManager().beginTransaction().replace( R.id.content_frame ,serviceListFragment ).commit();
+                getFragmentManager().beginTransaction().replace(R.id.content_frame, serviceListFragment).commit();
             }
-        } );
+        });
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (date == null){
-                    Toast.makeText(getActivity() , "تاریخ ورود را انتخاب کنید" , Toast.LENGTH_LONG).show();
-                }else if (cDate == null ){
-                    Toast.makeText(getActivity() , "تاریخ خروج را انتخاب کنید" , Toast.LENGTH_LONG).show();
-                }
-                else {
+                if (date == null) {
+                    Toast.makeText(getActivity(), "تاریخ ورود را انتخاب کنید", Toast.LENGTH_LONG).show();
+                } else if (cDate == null) {
+                    Toast.makeText(getActivity(), "تاریخ خروج را انتخاب کنید", Toast.LENGTH_LONG).show();
+                } else {
 
                     JsonObject object = new JsonObject();
-                    object.addProperty("checkIn" , date);
-                    object.addProperty("checkOut" , cDate);
-                    object.addProperty("api_token" , MyPreferenceManager.getInstace(getActivity()).getToken());
+                    object.addProperty("checkIn", date);
+                    object.addProperty("checkOut", cDate);
+                    object.addProperty("api_token", MyPreferenceManager.getInstace(getActivity()).getToken());
                     JsonObject obj = new JsonObject();
                     obj.addProperty("adults", "1");
                     obj.addProperty("childs", "0");
                     JsonArray rooms;
-                    rooms=new JsonArray();
+                    rooms = new JsonArray();
                     rooms.add(obj);
-                    object.add("rooms" , rooms);
-                    dateFlag=false;
+                    object.add("rooms", rooms);
+                    dateFlag = false;
                     AvailabilityRoomController availabilityRoomController = new AvailabilityRoomController(callBack);
-                    availabilityRoomController.start(object,MyPreferenceManager.getInstace(getActivity()).getLoginRes().getToken_type() +" "+ MyPreferenceManager.getInstace(getActivity()).getLoginRes().getAccess_token());
-                    main.setVisibility( View.GONE );
-                    progressBar.setVisibility( View.VISIBLE );
+                    availabilityRoomController.start(object, MyPreferenceManager.getInstace(getActivity()).getLoginRes().getToken_type() + " " + MyPreferenceManager.getInstace(getActivity()).getLoginRes().getAccess_token());
+                    main.setVisibility(View.GONE);
+                    progressBar.setVisibility(View.VISIBLE);
                 }
             }
         });
-        serviceLogo.setOnClickListener( new View.OnClickListener() {
+        serviceLogo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ServiceListFragment serviceListFragment = new ServiceListFragment();
-                getFragmentManager().beginTransaction().replace( R.id.content_frame ,serviceListFragment ).commit();
+                getFragmentManager().beginTransaction().replace(R.id.content_frame, serviceListFragment).commit();
             }
-        } );
+        });
 
 
         arrivalDate.setOnClickListener(new View.OnClickListener() {
@@ -159,35 +158,30 @@ public class DailySearchFragment extends Fragment {
             public void onClick(View view) {
                 if (dateFlag) {
                     final DatePickerDialog arrivalDatePickerCheckOut = getArrivalDatePickerCheckOut();
-                    arrivalDatePickerCheckOut.show( getFragmentManager(), "dpd" );
-                }
-                else
-                    Toast.makeText(getActivity() , "ابتدا تاریخ ورود را انتخاب کنید" , Toast.LENGTH_LONG).show();
+                    arrivalDatePickerCheckOut.show(getFragmentManager(), "dpd");
+                } else
+                    Toast.makeText(getActivity(), "ابتدا تاریخ ورود را انتخاب کنید", Toast.LENGTH_LONG).show();
             }
         });
 
 
-
     }
 
-    public void findViews(View view){
+    public void findViews(View view) {
         arrivalDate = view.findViewById(R.id.date_btn);
         dateText = view.findViewById(R.id.date_text);
-        checkOutDate= view.findViewById(R.id.time_txt);
+        checkOutDate = view.findViewById(R.id.time_txt);
         arrivalCheckOut = view.findViewById(R.id.time_btn);
         search = view.findViewById(R.id.search_btn);
         stayGroup = view.findViewById(R.id.time_group);
 
 
-
     }
 
 
-
-    public DatePickerDialog getArrivalDatePicker(){
+    public DatePickerDialog getArrivalDatePicker() {
 
         PersianCalendar now = new PersianCalendar();
-
 
 
         DatePickerDialog dpd =
@@ -195,9 +189,9 @@ public class DailySearchFragment extends Fragment {
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-                                 shYear=year;
-                                 shMonth=monthOfYear+1;
-                                 shDay=dayOfMonth;
+                                shYear = year;
+                                shMonth = monthOfYear + 1;
+                                shDay = dayOfMonth;
                                 PersianDate jDate = new PersianDate();
                                 jDate.setShYear(year);
                                 jDate.setShMonth(monthOfYear + 1);
@@ -207,13 +201,13 @@ public class DailySearchFragment extends Fragment {
                                 String YearString = formatter.format(Integer.valueOf(year));
                                 String MounthString = formatter.format(Integer.valueOf(m));
                                 String DayString = formatter.format(Integer.valueOf(dayOfMonth));
-                                dateText.setText( PersianDigitConverter.PerisanNumber(YearString+ "/"+MounthString+ "/"+ DayString));
-                                date=jDate.getGrgYear() + "-" + jDate.getGrgMonth() + "-" + jDate.getGrgDay();
-                                Iday=dayOfMonth;
+                                dateText.setText(PersianDigitConverter.PerisanNumber(YearString + "/" + MounthString + "/" + DayString));
+                                date = jDate.getGrgYear() + "-" + jDate.getGrgMonth() + "-" + jDate.getGrgDay();
+                                Iday = dayOfMonth;
                                 Imounth = monthOfYear;
-                                Iyear=year;
-                                flag=true;
-                                dateFlag=true;
+                                Iyear = year;
+                                flag = true;
+                                dateFlag = true;
                             }
                         },
                         now.getPersianYear(),
@@ -226,12 +220,12 @@ public class DailySearchFragment extends Fragment {
         return dpd;
     }
 
-    public DatePickerDialog getArrivalDatePickerCheckOut(){
+    public DatePickerDialog getArrivalDatePickerCheckOut() {
 
         PersianCalendar now = new PersianCalendar();
 
         if (flag) {
-            flag=false;
+            flag = false;
             Iday++;
             if (Imounth < 7 && Iday == 32) {
                 Iday = 1;
@@ -263,15 +257,15 @@ public class DailySearchFragment extends Fragment {
                                 String YearString = formatter.format(Integer.valueOf(year));
                                 String MounthString = formatter.format(Integer.valueOf(m));
                                 String DayString = formatter.format(Integer.valueOf(dayOfMonth));
-                                checkOutDate.setText( PersianDigitConverter.PerisanNumber(YearString+ "/"+MounthString+ "/"+ DayString));
-                                cDate=jDate.getGrgYear() + "-" + jDate.getGrgMonth() + "-" + jDate.getGrgDay();
+                                checkOutDate.setText(PersianDigitConverter.PerisanNumber(YearString + "/" + MounthString + "/" + DayString));
+                                cDate = jDate.getGrgYear() + "-" + jDate.getGrgMonth() + "-" + jDate.getGrgDay();
                             }
                         },
                         Iyear,
                         Imounth,
                         Iday);
 
-        now.setPersianDate( Iyear,Imounth,Iday );
+        now.setPersianDate(Iyear, Imounth, Iday);
 
         dpd.setMinDate(now);
 
@@ -283,17 +277,17 @@ public class DailySearchFragment extends Fragment {
         @Override
         public void onResponse(final AvailabilityRes res) {
             DailyResultFragment dailyResultFragment = new DailyResultFragment();
-            dailyResultFragment.newInstance(res , shYear ,shMonth,shDay , "اقامت روزانه");
-            getFragmentManager().beginTransaction().add(R.id.content_frame , dailyResultFragment).addToBackStack(null).commit();
+            dailyResultFragment.newInstance(res, shYear, shMonth, shDay, "اقامت روزانه");
+            getFragmentManager().beginTransaction().add(R.id.content_frame, dailyResultFragment).addToBackStack(null).commit();
             EventBus.getDefault().post(new ResultFragmentShow(true));
 
         }
 
         @Override
         public void onFailure(String cause) {
-            Toast.makeText(getActivity() , "از اتصال اینترنت خود اطمینان حاصل کنید" , Toast.LENGTH_LONG).show();
-            progressBar.setVisibility( View.GONE );
-            main.setVisibility( View.VISIBLE );
+            Toast.makeText(getActivity(), "از اتصال اینترنت خود اطمینان حاصل کنید", Toast.LENGTH_LONG).show();
+            progressBar.setVisibility(View.GONE);
+            main.setVisibility(View.VISIBLE);
         }
     };
 

@@ -1,15 +1,16 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="ir.hotelairport.androidapp.PostViewFragment"
     android:background="@color/milky"
     android:clickable="true">
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <com.daimajia.slider.library.SliderLayout
             android:id="@+id/slider"
             android:layout_width="match_parent"
@@ -25,7 +26,7 @@
             android:layout_gravity="center"
             android:textColor="@color/black"
             android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/PostViewContent"

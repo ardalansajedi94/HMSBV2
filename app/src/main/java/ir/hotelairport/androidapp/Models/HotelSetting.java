@@ -5,8 +5,8 @@ package ir.hotelairport.androidapp.Models;
  */
 
 public class HotelSetting {
-   private int language_id;
-    private String hotel_name,hotel_logo;
+    private int language_id;
+    private String hotel_name, hotel_logo;
 
     public int getLanguage_id() {
         return language_id;

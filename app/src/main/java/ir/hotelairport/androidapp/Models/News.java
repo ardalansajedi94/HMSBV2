@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 public class News {
     private int id;
-   private String title,content;
-    private ArrayList<Image>images;
+    private String title, content;
+    private ArrayList<Image> images;
 
     public ArrayList<Image> getImages() {
         return images;

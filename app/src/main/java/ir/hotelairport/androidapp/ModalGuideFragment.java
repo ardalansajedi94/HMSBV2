@@ -1,8 +1,8 @@
 package ir.hotelairport.androidapp;
 
 
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.util.DisplayMetrics;
@@ -19,11 +19,12 @@ import android.widget.TextView;
 public class ModalGuideFragment extends DialogFragment {
 
 
-    private String title,content;
+    private String title, content;
     TextView titleTv;
     TextView contentTv;
-    Button closeBtn ;
+    Button closeBtn;
     TextView moreInfoTitle;
+
     public ModalGuideFragment() {
         // Required empty public constructor
     }
@@ -33,19 +34,18 @@ public class ModalGuideFragment extends DialogFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         title = getArguments().getString("title");
-        content=getArguments().getString("content");
+        content = getArguments().getString("content");
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        try{
+        try {
             DisplayMetrics metrics = getResources().getDisplayMetrics();
             int width = metrics.widthPixels;
             int height = metrics.heightPixels;
-            getDialog().getWindow().setLayout((6 * width)/7, (4 * height)/5);
-        }
-        catch (NullPointerException e){
+            getDialog().getWindow().setLayout((6 * width) / 7, (4 * height) / 5);
+        } catch (NullPointerException e) {
 
         }
     }
@@ -66,22 +66,21 @@ public class ModalGuideFragment extends DialogFragment {
         });
         try {
             getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        }
-        catch (NullPointerException e)
-        {
+        } catch (NullPointerException e) {
         }
         titleTv.setText(title);
         contentTv.setText(content);
         moreInfoTitle.setText(title);
-        return  view;
+        return view;
     }
-    static ModalGuideFragment newInstance(String title,String content) {
+
+    static ModalGuideFragment newInstance(String title, String content) {
         ModalGuideFragment f = new ModalGuideFragment();
 
         // Supply num input as an argument.
         Bundle args = new Bundle();
         args.putString("title", title);
-        args.putString("content",content);
+        args.putString("content", content);
         f.setArguments(args);
 
         return f;

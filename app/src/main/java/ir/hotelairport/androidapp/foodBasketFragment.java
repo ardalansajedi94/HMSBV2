@@ -45,6 +45,7 @@ public class foodBasketFragment extends Fragment {
     private FoodBasketListAdapter foodBasketListAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     private DatabaseHandler db;
+
     public foodBasketFragment() {
         // Required empty public constructor
     }
@@ -54,11 +55,11 @@ public class foodBasketFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_food_basket, container, false);
-        db=new DatabaseHandler(getActivity());
-        submit_btn=(Button)view.findViewById(R.id.submit_order_btn);
-        basket_empty_tv=(TextView)view.findViewById(R.id.basket_empty_tv);
-        basket_list=(ListView)view.findViewById(R.id.basket_list);
+        View view = inflater.inflate(R.layout.fragment_food_basket, container, false);
+        db = new DatabaseHandler(getActivity());
+        submit_btn = (Button) view.findViewById(R.id.submit_order_btn);
+        basket_empty_tv = (TextView) view.findViewById(R.id.basket_empty_tv);
+        basket_list = (ListView) view.findViewById(R.id.basket_list);
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -68,7 +69,7 @@ public class foodBasketFragment extends Fragment {
         });
         user_detail = getActivity().getSharedPreferences(Constants.USER_DETAIL, Context.MODE_PRIVATE);
         getBasket(false);
-        basket_empty_tv.setText(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"basket_empty"));
+        basket_empty_tv.setText(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "basket_empty"));
         submit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,10 +78,10 @@ public class foodBasketFragment extends Fragment {
         });
         return view;
     }
-    private  void submitBasket()
-    {
+
+    private void submitBasket() {
         progress = new ProgressDialog(getActivity());
-        progress.setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"connecting_to_server"));
+        progress.setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "connecting_to_server"));
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
         progress.setProgress(0);
@@ -91,8 +92,8 @@ public class foodBasketFragment extends Fragment {
                 .build();
         RequestInterface requestInterface = retrofit.create(RequestInterface.class);
         Call<ServerResponse> response;
-        response = requestInterface.submit_basket(user_detail.getString(Constants.JWT,""));
-        RetrofitWithRetry.enqueueWithRetry(response,3,new Callback<ServerResponse>() {
+        response = requestInterface.submit_basket(user_detail.getString(Constants.JWT, ""));
+        RetrofitWithRetry.enqueueWithRetry(response, 3, new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, retrofit2.Response<ServerResponse> response) {
                 Log.d("status code", String.valueOf(response.code()));
@@ -101,7 +102,7 @@ public class foodBasketFragment extends Fragment {
                 switch (response.code()) {
                     case 200:
                         if (resp != null) {
-                            Toast.makeText(getActivity(),db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"submit_basket_success"), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "submit_basket_success"), Toast.LENGTH_SHORT).show();
                             getActivity().getSupportFragmentManager().popBackStack();
                         }
                         break;
@@ -109,7 +110,7 @@ public class foodBasketFragment extends Fragment {
                         if (resp != null) {
                             Toast.makeText(getActivity(), resp.getMessage(), Toast.LENGTH_SHORT).show();
                         } else
-                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"server_problem"), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "server_problem"), Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
@@ -122,12 +123,11 @@ public class foodBasketFragment extends Fragment {
             }
         });
     }
-    public void getBasket(final boolean is_refreshing)
-    {
-        if (!is_refreshing)
-        {
+
+    public void getBasket(final boolean is_refreshing) {
+        if (!is_refreshing) {
             progress = new ProgressDialog(getActivity());
-            progress.setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"connecting_to_server"));
+            progress.setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "connecting_to_server"));
             progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progress.setIndeterminate(true);
             progress.setProgress(0);
@@ -139,37 +139,31 @@ public class foodBasketFragment extends Fragment {
                 .build();
         RequestInterface requestInterface = retrofit.create(RequestInterface.class);
         Call<ServerResponse> response;
-        response = requestInterface.get_basket(user_detail.getString(Constants.JWT,""));
-        RetrofitWithRetry.enqueueWithRetry(response,3,new Callback<ServerResponse>() {
+        response = requestInterface.get_basket(user_detail.getString(Constants.JWT, ""));
+        RetrofitWithRetry.enqueueWithRetry(response, 3, new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, retrofit2.Response<ServerResponse> response) {
                 Log.d("status code", String.valueOf(response.code()));
-                if (!is_refreshing)
-                {
+                if (!is_refreshing) {
                     progress.dismiss();
-                }
-                else
-                {
+                } else {
                     swipeRefreshLayout.setRefreshing(false);
                 }
                 ServerResponse resp = response.body();
                 switch (response.code()) {
                     case 200:
                         if (resp != null) {
-                            basket=new ArrayList<Basket>();
+                            basket = new ArrayList<Basket>();
                             basket.addAll(resp.getYour_basket());
-                            if (basket.size()==0)
-                            {
+                            if (basket.size() == 0) {
                                 basket_empty_tv.setVisibility(View.VISIBLE);
                                 basket_list.setVisibility(View.INVISIBLE);
                                 submit_btn.setVisibility(View.GONE);
-                            }
-                            else
-                            {
+                            } else {
                                 basket_empty_tv.setVisibility(View.INVISIBLE);
                                 basket_list.setVisibility(View.VISIBLE);
                                 submit_btn.setVisibility(View.VISIBLE);
-                                foodBasketListAdapter=new FoodBasketListAdapter(basket,getActivity());
+                                foodBasketListAdapter = new FoodBasketListAdapter(basket, getActivity());
                                 basket_list.setAdapter(foodBasketListAdapter);
                             }
 
@@ -179,19 +173,16 @@ public class foodBasketFragment extends Fragment {
                         if (resp != null) {
                             Toast.makeText(getActivity(), resp.getMessage(), Toast.LENGTH_SHORT).show();
                         } else
-                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"server_problem"), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "server_problem"), Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
 
             @Override
             public void onFailure(Call<ServerResponse> call, Throwable t) {
-                if (!is_refreshing)
-                {
+                if (!is_refreshing) {
                     progress.dismiss();
-                }
-                else
-                {
+                } else {
                     swipeRefreshLayout.setRefreshing(false);
                 }
                 Log.d("error:", t.getMessage());

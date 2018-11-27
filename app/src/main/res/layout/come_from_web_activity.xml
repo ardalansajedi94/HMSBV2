@@ -15,11 +15,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="?attr/actionBarSize"
-            android:id="@+id/content_frame"/>
+            android:id="@+id/content_frame" />
+
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,13 +34,14 @@
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"
                 android:orientation="horizontal">
+
                 <android.support.v7.widget.Toolbar
                     android:id="@+id/toolbar"
                     android:layout_weight="4"
                     android:layout_width="0dp"
                     android:layout_height="?attr/actionBarSize"
                     android:background="@color/colorPrimary"
-                    app:popupTheme="@style/AppTheme.PopupOverlay"/>
+                    app:popupTheme="@style/AppTheme.PopupOverlay" />
 
                 <ImageView
                     android:id="@+id/logo"
@@ -64,6 +67,6 @@
         app:menu="@menu/activity_main_drawer"
         android:background="@drawable/gradient_background_horizental"
         app:itemTextColor="@color/milky"
-        android:theme="@style/NavigationTheme"/>
+        android:theme="@style/NavigationTheme" />
 
 </android.support.v4.widget.DrawerLayout>

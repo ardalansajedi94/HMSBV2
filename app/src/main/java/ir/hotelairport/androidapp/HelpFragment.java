@@ -43,6 +43,7 @@ public class HelpFragment extends Fragment {
     int category;
     private DatabaseHandler db;
     SwipeRefreshLayout swipeRefreshLayout;
+
     public HelpFragment() {
         // Required empty public constructor
     }
@@ -53,8 +54,8 @@ public class HelpFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_help, container, false);
-        db=new DatabaseHandler(getActivity());
-        this.category=getArguments().getInt("category");
+        db = new DatabaseHandler(getActivity());
+        this.category = getArguments().getInt("category");
         user_detail = getActivity().getSharedPreferences(Constants.USER_DETAIL, Context.MODE_PRIVATE);
         helpsList = (ListView) view.findViewById(R.id.helps_list);
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.activity_main_swipe_refresh_layout);
@@ -84,6 +85,7 @@ public class HelpFragment extends Fragment {
         });
         return view;
     }
+
     public static HelpFragment newInstance(int category) {
         HelpFragment myFragment = new HelpFragment();
 
@@ -93,9 +95,10 @@ public class HelpFragment extends Fragment {
 
         return myFragment;
     }
+
     private void getHelpsList() {
         progress = new ProgressDialog(getActivity());
-        progress.setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"connecting_to_server"));
+        progress.setMessage(db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "connecting_to_server"));
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
         progress.setProgress(0);
@@ -106,7 +109,7 @@ public class HelpFragment extends Fragment {
                 .build();
         RequestInterface requestInterface = retrofit.create(RequestInterface.class);
         Call<ServerResponse> response;
-        response = requestInterface.get_helps( user_detail.getInt(Constants.LANGUAGE_ID, 1),category);
+        response = requestInterface.get_helps(user_detail.getInt(Constants.LANGUAGE_ID, 1), category);
         RetrofitWithRetry.enqueueWithRetry(response, 3, new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, retrofit2.Response<ServerResponse> response) {
@@ -126,7 +129,7 @@ public class HelpFragment extends Fragment {
                         if (resp != null) {
                             Toast.makeText(getActivity(), resp.getMessage(), Toast.LENGTH_SHORT).show();
                         } else
-                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID,1),"server_problem"), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), db.getTranslationForLanguage(user_detail.getInt(Constants.LANGUAGE_ID, 1), "server_problem"), Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
