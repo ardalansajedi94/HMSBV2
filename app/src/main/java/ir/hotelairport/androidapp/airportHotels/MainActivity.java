@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity
         getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, stayBookFragment).commit();
     }
 
-    public void onDailyResuktBackEvent(DailyReserveResultBackEvent event) {
+    public void onDailyResuktBackEvent(DailyReserveResultBackEvent event ) {
         DailyStayBookFragment dailyStayBookFragment = new DailyStayBookFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, dailyStayBookFragment).commit();
     }

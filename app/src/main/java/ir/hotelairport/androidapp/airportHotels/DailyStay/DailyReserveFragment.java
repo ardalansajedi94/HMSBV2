@@ -25,12 +25,14 @@ import android.widget.Toast;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import ir.hotelairport.androidapp.R;
 import ir.hotelairport.androidapp.airportHotels.ComeFromWebActivity;
 import ir.hotelairport.androidapp.airportHotels.MainActivity;
+import ir.hotelairport.androidapp.airportHotels.PersianDigitConverter;
 import ir.hotelairport.androidapp.airportHotels.PreferenceManager.MyPreferenceManager;
 import ir.hotelairport.androidapp.airportHotels.adapters.DailyPassengerDetailAdapter;
 import ir.hotelairport.androidapp.airportHotels.api.data.BookRoomController;
@@ -50,6 +52,7 @@ public class DailyReserveFragment extends android.support.v4.app.Fragment {
     ProgressBar progress;
     CheckBox checkBox;
     TextView rules;
+    TextView totalPrice;
     boolean flag = false;
 
     public DailyReserveFragment() {
@@ -88,6 +91,7 @@ public class DailyReserveFragment extends android.support.v4.app.Fragment {
         next = view.findViewById(R.id.accept);
         main = view.findViewById(R.id.main);
         progress = view.findViewById(R.id.progress);
+        totalPrice = view.findViewById(R.id.total_price);
         checkBox = view.findViewById(R.id.checkbox);
         rules = view.findViewById(R.id.check_txt);
         List<List<PaxReview>> paxReviewList = new ArrayList<>();
@@ -146,6 +150,9 @@ public class DailyReserveFragment extends android.support.v4.app.Fragment {
         final DailyPassengerDetailAdapter passengerDetailAdapter = new DailyPassengerDetailAdapter(getActivity(), paxReview, poistion);
         recyclerView.setAdapter(passengerDetailAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        DecimalFormat formatter = new DecimalFormat("#,###,###");
+        String yourFormattedString = formatter.format(MyPreferenceManager.getInstace(getActivity()).getTotalPrice());
+        totalPrice.setText(PersianDigitConverter.PerisanNumber(String.valueOf(yourFormattedString) + " ریال"));
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

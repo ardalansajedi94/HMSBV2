@@ -223,7 +223,6 @@
             android:layout_height="32dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
-
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/check_txt"
             app:layout_constraintTop_toTopOf="@id/check_txt" />

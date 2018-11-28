@@ -40,23 +40,37 @@ import ir.hotelairport.androidapp.airportHotels.api.model.AvailabilityRes;
 ;
 
 public class DailySearchFragment extends Fragment {
+    ImageView shortStayLogo, serviceLogo;
+    Button search;
+    int shYear, shMonth, shDay;
+    boolean flag = false, dateFlag = false;
+    RadioGroup stayGroup;
+    RadioButton radioButton;
+    String date = null, cDate = null;
+    int Iday = 0, Imounth = 0, Iyear = 0;
     private ConstraintLayout arrivalDate;
     private TextView dateText;
     private ConstraintLayout arrivalCheckOut;
     private TextView checkOutDate;
-    ImageView shortStayLogo, serviceLogo;
-    Button search;
-    int shYear, shMonth, shDay;
     private ProgressBar progressBar;
     private ConstraintLayout main;
-    boolean flag = false, dateFlag = false;
-    RadioGroup stayGroup;
-    RadioButton radioButton;
+    HotelApi.AvailabilityRoomCallBack callBack = new HotelApi.AvailabilityRoomCallBack() {
+        @Override
+        public void onResponse(final AvailabilityRes res) {
+            DailyResultFragment dailyResultFragment = new DailyResultFragment();
+            dailyResultFragment.newInstance(res, shYear, shMonth, shDay, "اقامت روزانه");
+            getFragmentManager().beginTransaction().add(R.id.content_frame, dailyResultFragment).addToBackStack(null).commit();
+            EventBus.getDefault().post(new ResultFragmentShow(true));
 
+        }
 
-    String date = null, cDate = null;
-    int Iday = 0, Imounth = 0, Iyear = 0;
-
+        @Override
+        public void onFailure(String cause) {
+            Toast.makeText(getActivity(), "از اتصال اینترنت خود اطمینان حاصل کنید", Toast.LENGTH_LONG).show();
+            progressBar.setVisibility(View.GONE);
+            main.setVisibility(View.VISIBLE);
+        }
+    };
 
     @Override
     public void onStop() {
@@ -81,7 +95,6 @@ public class DailySearchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_daily_search, container, false);
     }
-
 
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
@@ -148,8 +161,8 @@ public class DailySearchFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 final DatePickerDialog arrivalDatePicker = getArrivalDatePicker();
+                arrivalDatePicker.setYearRange(new PersianCalendar().getPersianYear(),new PersianCalendar().getPersianYear());
                 arrivalDatePicker.show(getFragmentManager(), "dpd");
-
 
             }
         });
@@ -158,6 +171,7 @@ public class DailySearchFragment extends Fragment {
             public void onClick(View view) {
                 if (dateFlag) {
                     final DatePickerDialog arrivalDatePickerCheckOut = getArrivalDatePickerCheckOut();
+                    arrivalDatePickerCheckOut.setYearRange(new PersianCalendar().getPersianYear(),new PersianCalendar().getPersianYear());
                     arrivalDatePickerCheckOut.show(getFragmentManager(), "dpd");
                 } else
                     Toast.makeText(getActivity(), "ابتدا تاریخ ورود را انتخاب کنید", Toast.LENGTH_LONG).show();
@@ -177,7 +191,6 @@ public class DailySearchFragment extends Fragment {
 
 
     }
-
 
     public DatePickerDialog getArrivalDatePicker() {
 
@@ -216,7 +229,6 @@ public class DailySearchFragment extends Fragment {
 
 
         dpd.setMinDate(now);
-
         return dpd;
     }
 
@@ -271,25 +283,6 @@ public class DailySearchFragment extends Fragment {
 
         return dpd;
     }
-
-
-    HotelApi.AvailabilityRoomCallBack callBack = new HotelApi.AvailabilityRoomCallBack() {
-        @Override
-        public void onResponse(final AvailabilityRes res) {
-            DailyResultFragment dailyResultFragment = new DailyResultFragment();
-            dailyResultFragment.newInstance(res, shYear, shMonth, shDay, "اقامت روزانه");
-            getFragmentManager().beginTransaction().add(R.id.content_frame, dailyResultFragment).addToBackStack(null).commit();
-            EventBus.getDefault().post(new ResultFragmentShow(true));
-
-        }
-
-        @Override
-        public void onFailure(String cause) {
-            Toast.makeText(getActivity(), "از اتصال اینترنت خود اطمینان حاصل کنید", Toast.LENGTH_LONG).show();
-            progressBar.setVisibility(View.GONE);
-            main.setVisibility(View.VISIBLE);
-        }
-    };
 
 
 }

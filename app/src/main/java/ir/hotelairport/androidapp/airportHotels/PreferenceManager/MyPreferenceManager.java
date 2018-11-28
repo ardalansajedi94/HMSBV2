@@ -20,16 +20,16 @@ public class MyPreferenceManager {
     private static SharedPreferences sharedPreferences = null;
     private static SharedPreferences.Editor editor = null;
 
+    private MyPreferenceManager(Context context) {
+        sharedPreferences = context.getSharedPreferences("My_preference", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+    }
+
     public static MyPreferenceManager getInstace(Context context) {
         if (instance == null) {
             instance = new MyPreferenceManager(context);
         }
         return instance;
-    }
-
-    private MyPreferenceManager(Context context) {
-        sharedPreferences = context.getSharedPreferences("My_preference", Context.MODE_PRIVATE);
-        editor = sharedPreferences.edit();
     }
 
     public String getToken() {
@@ -65,6 +65,15 @@ public class MyPreferenceManager {
 
     public void putPosition(int position) {
         editor.putInt("position", position);
+        editor.apply();
+    }
+
+    public int getTotalPrice() {
+        return sharedPreferences.getInt("total_price", 0);
+    }
+
+    public void putTotalPrice(int totalPrice) {
+        editor.putInt("total_price", totalPrice);
         editor.apply();
     }
 
