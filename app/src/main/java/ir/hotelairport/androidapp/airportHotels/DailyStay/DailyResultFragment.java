@@ -45,12 +45,35 @@ public class DailyResultFragment extends Fragment {
     String nameS;
     RecyclerView recyclerView;
     Button send;
+    int totalPrice = 0;
     JsonArray roomList = new JsonArray();
     RelativeLayout main;
     TextView name, date;
     ProgressBar progress;
     ArrayList<Room> roomConfirmation = new ArrayList<>();
     ArrayList<Integer> roomCount = new ArrayList<>();
+    HotelApi.ReserveRoomCallBack callBack = new HotelApi.ReserveRoomCallBack() {
+        @Override
+        public void onResponse(ReserveRes res) {
+            MyPreferenceManager.getInstace(getActivity()).putReservedId(res.getReservedId());
+            ((MainActivity) getActivity()).onDailyResuktBackEvent(new DailyReserveResultBackEvent(true, counter, confirm));
+
+        }
+
+        @Override
+        public void onFailure(String cause) {
+
+        }
+    };
+    DailyRoomListAdapter.getRooms getRooms = new DailyRoomListAdapter.getRooms() {
+        @Override
+        public void getRooms(int[] count, Room[] confirmRoom, int position) {
+            counter[position] = count[position];
+            confirm[position] = confirmRoom[position];
+
+        }
+    };
+
 
     public DailyResultFragment() {
 
@@ -69,13 +92,11 @@ public class DailyResultFragment extends Fragment {
         return fragment;
     }
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_result, container, false);
     }
-
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -124,6 +145,16 @@ public class DailyResultFragment extends Fragment {
                     object.addProperty("ip", "0");
                     MyPreferenceManager.getInstace(getActivity()).putRoom(roomConfirmation);
                     ReserveRoomController reserveRoomController = new ReserveRoomController(callBack);
+                    for (int i = 0; i < confirm.length; i++) {
+                        if (confirm[i] != null) {
+                            int price = 0;
+                            for (int j = 0; j < confirm[i].getPrice().size(); j++) {
+                                price += (confirm[i].getPrice().get(j).getPriceByMonth() * confirm[i].getPrice().get(j).getNights());
+                            }
+                            totalPrice += (price * counter[i]);
+                        }
+                    }
+                    MyPreferenceManager.getInstace(getActivity()).putTotalPrice(totalPrice);
                     reserveRoomController.start(object, MyPreferenceManager.getInstace(getActivity()).getLoginRes().getToken_type() + " " + MyPreferenceManager.getInstace(getActivity()).getLoginRes().getAccess_token());
                 } else {
                     Toast.makeText(getActivity(), "حداقل یک اتاق باید انتخاب شود", Toast.LENGTH_LONG).show();
@@ -133,28 +164,5 @@ public class DailyResultFragment extends Fragment {
         });
         this.view = view;
     }
-
-    HotelApi.ReserveRoomCallBack callBack = new HotelApi.ReserveRoomCallBack() {
-        @Override
-        public void onResponse(ReserveRes res) {
-            MyPreferenceManager.getInstace(getActivity()).putReservedId(res.getReservedId());
-            ((MainActivity) getActivity()).onDailyResuktBackEvent(new DailyReserveResultBackEvent(true));
-
-        }
-
-        @Override
-        public void onFailure(String cause) {
-
-        }
-    };
-
-    DailyRoomListAdapter.getRooms getRooms = new DailyRoomListAdapter.getRooms() {
-        @Override
-        public void getRooms(int[] count, Room[] confirmRoom, int position) {
-            counter[position] = count[position];
-            confirm[position] = confirmRoom[position];
-
-        }
-    };
 
 }

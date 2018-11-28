@@ -160,6 +160,7 @@ public class SearchFragment extends Fragment {
         arrivalDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                arrivalDatePicker.setYearRange(new PersianCalendar().getPersianYear(),new PersianCalendar().getPersianYear());
                 arrivalDatePicker.show(getFragmentManager(), "dpd");
             }
         });
@@ -222,7 +223,6 @@ public class SearchFragment extends Fragment {
 
 
         dpd.setMinDate(now);
-
         return dpd;
     }
 

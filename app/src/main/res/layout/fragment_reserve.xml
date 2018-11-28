@@ -4,69 +4,88 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="8dp"
-    android:layout_marginEnd="8dp"
     android:layout_marginStart="8dp"
-    android:textDirection="ltr"
-    android:background="@color/white">
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="8dp"
+    android:background="@color/white"
+    android:textDirection="ltr">
 
     <ProgressBar
         android:id="@+id/progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:visibility="invisible" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.v7.widget.RecyclerView
 
         android:id="@+id/passenger"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_margin="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/total_text"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/checkbox"
 
         />
+
+    <TextView
+        android:id="@+id/total_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="مبلغ کل با احتساب مالیات بر ارزش افزوده:"
+        android:textDirection="rtl"
+        app:layout_constraintBottom_toTopOf="@id/check_txt"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/total_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:textDirection="rtl"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/check_txt"
+        app:layout_constraintRight_toLeftOf="@id/total_text" />
 
     <CheckBox
         android:id="@+id/checkbox"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@id/accept"
         app:layout_constraintLeft_toRightOf="@id/check_txt"
-        app:layout_constraintTop_toTopOf="@id/check_txt"
-        app:layout_constraintBottom_toTopOf="@id/accept" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/check_txt" />
 
     <TextView
         android:id="@+id/check_txt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
         android:gravity="right|center_vertical"
         android:text="@string/ah_checkbox_txt"
         android:textDirection="rtl"
-        app:layout_constraintTop_toBottomOf="@id/passenger"
         app:layout_constraintBottom_toTopOf="@+id/accept"
-        app:layout_constraintRight_toLeftOf="@id/checkbox"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/checkbox" />
 
     <Button
         android:id="@+id/accept"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="0dp"
         android:layout_height="48dp"
-        style="@style/Widget.AppCompat.Button.Colored"
         android:text="@string/payment"
         android:textColor="@color/milky"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintRight_toRightOf="parent" />
 
     <!--<Button-->
     <!--android:id="@+id/edit"-->

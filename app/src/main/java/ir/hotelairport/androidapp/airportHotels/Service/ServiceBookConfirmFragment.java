@@ -170,7 +170,7 @@ public class ServiceBookConfirmFragment extends Fragment {
         total = (int) (totalDob);
         DecimalFormat formatter = new DecimalFormat("#,###,###");
         String yourFormattedString = formatter.format(total);
-        totalPrice.setText(PersianDigitConverter.PerisanNumber("مبلغ کل: " + yourFormattedString + " ريال"));
+        totalPrice.setText(PersianDigitConverter.PerisanNumber("مبلغ کل با احتساب مالیات بر ارزش افزوده: " + yourFormattedString + " ريال"));
 
     }
 

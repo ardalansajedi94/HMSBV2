@@ -46,6 +46,7 @@ public class ResultFragment extends Fragment {
     RecyclerView recyclerView;
     Button send;
     String nameS;
+    int totalPrice;
     JsonArray roomList = new JsonArray();
     RelativeLayout main;
     ProgressBar progress;
@@ -123,6 +124,16 @@ public class ResultFragment extends Fragment {
                     object.add("rooms", roomList);
                     object.addProperty("ip", "0");
                     MyPreferenceManager.getInstace(getActivity()).putRoom(roomConfirmation);
+                    for (int i = 0; i < confirm.length; i++) {
+                        if (confirm[i] != null) {
+                            int price = 0;
+                            for (int j = 0; j < confirm[i].getPrice().size(); j++) {
+                                price += (confirm[i].getPrice().get(j).getPriceByMonth() * confirm[i].getPrice().get(j).getNights());
+                            }
+                            totalPrice += (price * counter[i]);
+                        }
+                    }
+                    MyPreferenceManager.getInstace(getActivity()).putTotalPrice(totalPrice);
                     ReserveRoomController reserveRoomController = new ReserveRoomController(callBack);
                     reserveRoomController.start(object, MyPreferenceManager.getInstace(getActivity()).getLoginRes().getToken_type() + " " + MyPreferenceManager.getInstace(getActivity()).getLoginRes().getAccess_token());
                 } else {
